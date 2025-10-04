@@ -1,6 +1,7 @@
 extends Area2D
 class_name LevelChunk
 
+@export var chunk_resource: ChunkResource
 
 @export_category("Camera")
 @export var lock_camera: bool = true
@@ -32,35 +33,63 @@ func _ready() -> void:
 
 
 func load_left() -> void:
-	if chunk_left == null:
+	if not is_inside_tree:
 		return
-	var c: LevelChunk = chunk_left.scene_instantiate()
-	c.global_position = link_left.global_position - c.link_right.position
-	get_parent().add_child(c)
+
+	if chunk_resource.scene_left:
+		get_parent().add_child(chunk_resource.scene_left)
+
+	elif chunk_left:
+		var c: LevelChunk = chunk_left.scene_instantiate()
+		c.global_position = link_left.global_position - c.link_right.position
+		get_parent().add_child(c)
+
+	get_parent().remove_child(self)
 
 
 func load_right() -> void:
-	if chunk_right == null:
+	if not is_inside_tree:
 		return
-	var c: LevelChunk = chunk_right.scene_instantiate()
-	c.global_position = link_right.global_position - c.link_left.position
-	get_parent().add_child(c)
+
+	if chunk_resource.scene_right:
+		get_parent().add_child(chunk_resource.scene_right)
+
+	elif chunk_right:
+		var c: LevelChunk = chunk_right.scene_instantiate()
+		c.global_position = link_right.global_position - c.link_left.position
+		get_parent().add_child(c)
+
+	get_parent().remove_child(self)
 
 
 func load_up() -> void:
-	if chunk_up == null:
+	if not is_inside_tree:
 		return
-	var c: LevelChunk = chunk_up.scene_instantiate()
-	c.global_position = link_up.global_position - c.link_down.position
-	get_parent().add_child(c)
+
+	if chunk_resource.scene_up:
+		get_parent().add_child(chunk_resource.scene_up)
+
+	elif chunk_up:
+		var c: LevelChunk = chunk_up.scene_instantiate()
+		c.global_position = link_up.global_position - c.link_down.position
+		get_parent().add_child(c)
+
+	get_parent().remove_child(self)
 
 
 func load_down() -> void:
-	if chunk_down == null:
+	if not is_inside_tree:
 		return
-	var c: LevelChunk = chunk_down.scene_instantiate()
-	c.global_position = link_down.global_position - c.link_up.position
-	get_parent().add_child(c)
+
+	if chunk_resource.scene_down:
+		get_parent().add_child(chunk_resource.scene_down)
+
+	elif chunk_down:
+		var c: LevelChunk = chunk_down.scene_instantiate()
+		c.global_position = link_down.global_position - c.link_up.position
+		get_parent().add_child(c)
+
+	get_parent().remove_child(self)
 
 
 func _on_area_entered(area: Area2D) -> void:
