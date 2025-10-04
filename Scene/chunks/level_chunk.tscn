@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5a1fxy00wvl8"]
+
+[ext_resource type="Script" uid="uid://b7vxdx6mqa5lx" path="res://Scene/chunks/level_chunk.gd" id="1_e51pq"]
+[ext_resource type="PackedScene" uid="uid://b620rq506fm21" path="res://Scene/chunks/level_chunk_link.tscn" id="2_egeeo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_egeeo"]
+size = Vector2(1300, 739)
+
+[node name="LevelChunk" type="Area2D" node_paths=PackedStringArray("link_left", "link_right")]
+script = ExtResource("1_e51pq")
+link_left = NodePath("LevelChunkLink")
+link_right = NodePath("LevelChunkLink2")
+
+[node name="TextureRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(1280, 720)
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(1, 1, 1, 0.49411765)
+
+[node name="LevelChunkLink" parent="." instance=ExtResource("2_egeeo")]
+position = Vector2(5, 207)
+
+[node name="LevelChunkLink2" parent="." instance=ExtResource("2_egeeo")]
+position = Vector2(1267, 390)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(640, 359.5)
+shape = SubResource("RectangleShape2D_egeeo")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
