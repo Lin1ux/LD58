@@ -1,13 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://8wh3usm52nkl"]
+[gd_scene load_steps=9 format=3 uid="uid://8wh3usm52nkl"]
 
 [ext_resource type="Script" uid="uid://c64x6b7ocwvt3" path="res://Player/player_movement.gd" id="1_4ntmi"]
 [ext_resource type="Texture2D" uid="uid://4xv7ag7w05ot" path="res://icon.svg" id="2_btcbx"]
 [ext_resource type="Script" uid="uid://c81ivxele714x" path="res://Player/projectile_shooter.gd" id="3_btcbx"]
+[ext_resource type="Script" uid="uid://d2pb7yrfgwgmm" path="res://Player/melee_attacker.gd" id="4_fhl08"]
 [ext_resource type="PackedScene" uid="uid://c0fui50daxc8i" path="res://backpack/item/item.tscn" id="4_gwnis"]
 [ext_resource type="Script" uid="uid://c5ixe36f56j44" path="res://Player/player_input.gd" id="5_k53q1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x02iy"]
 size = Vector2(128, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fhl08"]
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_4ntmi")
@@ -21,6 +24,17 @@ texture = ExtResource("2_btcbx")
 [node name="ProjectileShooter" type="Node2D" parent="."]
 script = ExtResource("3_btcbx")
 
+[node name="MeleeAttacker" type="Node2D" parent="."]
+script = ExtResource("4_fhl08")
+
+[node name="attack_area" type="Area2D" parent="MeleeAttacker"]
+position = Vector2(10, 0)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MeleeAttacker/attack_area"]
+shape = SubResource("RectangleShape2D_fhl08")
+
 [node name="Item" parent="." instance=ExtResource("4_gwnis")]
 
 [node name="Input" type="Node" parent="."]
@@ -28,3 +42,4 @@ unique_name_in_owner = true
 script = ExtResource("5_k53q1")
 
 [connection signal="action_primary" from="Input" to="Item" method="do"]
+[connection signal="action_secondary" from="Input" to="MeleeAttacker" method="attack"]
