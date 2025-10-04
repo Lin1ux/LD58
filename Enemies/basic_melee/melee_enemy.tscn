@@ -13,7 +13,7 @@
 size = Vector2(128, 128)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_334mp"]
-radius = 330.1515
+radius = 529.3411
 
 [node name="MeleeEnemy" type="CharacterBody2D" node_paths=PackedStringArray("hp", "nav_agent")]
 collision_layer = 4
@@ -57,6 +57,8 @@ script = ExtResource("7_705lf")
 [node name="Patrol" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
 script = ExtResource("8_r6hj8")
 enemy = NodePath("../..")
+
+[node name="MoveTowardEnemy" type="Node" parent="StateMachine"]
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 debug_enabled = true
