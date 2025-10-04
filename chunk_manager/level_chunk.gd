@@ -7,10 +7,10 @@ class_name LevelChunk
 
 
 @export_category("Link Chunks")
-@export_file("*.tscn") var chunk_left: String = ""
-@export_file("*.tscn") var chunk_right: String = ""
-@export_file("*.tscn") var chunk_up: String = ""
-@export_file("*.tscn") var chunk_down: String = ""
+@export var chunk_left: ChunkResource
+@export var chunk_right: ChunkResource
+@export var chunk_up: ChunkResource
+@export var chunk_down: ChunkResource
 
 
 @export_category("Link Nodes")
@@ -32,34 +32,34 @@ func _ready() -> void:
 
 
 func load_left() -> void:
-	if chunk_left == "":
+	if chunk_left == null:
 		return
-	var c: LevelChunk = load(chunk_left).instantiate()
+	var c: LevelChunk = chunk_left.scene_instantiate()
 	c.global_position = link_left.global_position - c.link_right.position
 	get_parent().add_child(c)
 
 
 func load_right() -> void:
-	if chunk_right == "":
+	if chunk_right == null:
 		return
-	var c: LevelChunk = load(chunk_right).instantiate()
+	var c: LevelChunk = chunk_right.scene_instantiate()
 	c.global_position = link_right.global_position - c.link_left.position
 	get_parent().add_child(c)
 
 
 func load_up() -> void:
-	if chunk_up == "":
+	if chunk_up == null:
 		return
-	var c: LevelChunk = load(chunk_up).instantiate()
-	c.global_position = link_up.global_position
+	var c: LevelChunk = chunk_up.scene_instantiate()
+	c.global_position = link_up.global_position - c.link_down.position
 	get_parent().add_child(c)
 
 
 func load_down() -> void:
-	if chunk_down == "":
+	if chunk_down == null:
 		return
-	var c: LevelChunk = load(chunk_down).instantiate()
-	c.global_position = link_down.global_position
+	var c: LevelChunk = chunk_down.scene_instantiate()
+	c.global_position = link_down.global_position - c.link_up.position
 	get_parent().add_child(c)
 
 

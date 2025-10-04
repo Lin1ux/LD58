@@ -15,7 +15,7 @@ size = Vector2(128, 128)
 [sub_resource type="CircleShape2D" id="CircleShape2D_334mp"]
 radius = 330.1515
 
-[node name="MeleeEnemy" type="CharacterBody2D" node_paths=PackedStringArray("hp", "nav_agent")]
+[node name="MeleeEnemy" type="CharacterBody2D" node_paths=PackedStringArray("hp")]
 collision_layer = 4
 collision_mask = 4
 motion_mode = 1
@@ -23,7 +23,6 @@ wall_min_slide_angle = 0.0
 script = ExtResource("1_qlm1k")
 stats = ExtResource("2_8j0x7")
 hp = NodePath("HpComponent/Health")
-nav_agent = NodePath("NavigationAgent2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 self_modulate = Color(1, 0, 0, 1)

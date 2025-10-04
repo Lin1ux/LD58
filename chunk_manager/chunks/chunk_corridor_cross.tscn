@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1iwonr7d8e5n"]
+
+[ext_resource type="PackedScene" uid="uid://c5a1fxy00wvl8" path="res://chunk_manager/level_chunk.tscn" id="1_4ygkp"]
+[ext_resource type="PackedScene" uid="uid://b620rq506fm21" path="res://chunk_manager/level_chunk_link.tscn" id="2_h8o2g"]
+
+[node name="LevelChunk" node_paths=PackedStringArray("link_left", "link_right", "link_up", "link_down") instance=ExtResource("1_4ygkp")]
+link_left = NodePath("LevelChunkLink3")
+link_right = NodePath("LevelChunkLink4")
+link_up = NodePath("LevelChunkLink")
+link_down = NodePath("LevelChunkLink2")
+
+[node name="LevelChunkLink" parent="." index="2" instance=ExtResource("2_h8o2g")]
+position = Vector2(616, 25)
+
+[node name="LevelChunkLink2" parent="." index="3" instance=ExtResource("2_h8o2g")]
+position = Vector2(678, 696)
+
+[node name="LevelChunkLink3" parent="." index="4" instance=ExtResource("2_h8o2g")]
+position = Vector2(22, 371)
+
+[node name="LevelChunkLink4" parent="." index="5" instance=ExtResource("2_h8o2g")]
+position = Vector2(1257, 381)
