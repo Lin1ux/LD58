@@ -22,18 +22,22 @@ func scene_instantiate() -> LevelChunk:
 
 	c.chunk_left = left
 	if c.chunk_left:
+		c.chunk_left.right = self
 		c.chunk_left.scene_right = scene
 
 	c.chunk_right = right
 	if c.chunk_right:
+		c.chunk_right.left = self
 		c.chunk_right.scene_left = scene
 
 	c.chunk_up = up
 	if c.chunk_up:
+		c.chunk_up.down = self
 		c.chunk_up.scene_down = scene
 
 	c.chunk_down = down
 	if c.chunk_down:
+		c.chunk_down.up = self
 		c.chunk_down.scene_up = scene
 
 	return c

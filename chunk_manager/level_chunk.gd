@@ -31,6 +31,15 @@ func _ready() -> void:
 	if link_down != null:
 		link_down.activated.connect(load_down)
 
+	if not chunk_resource.left:
+		link_left.queue_free()
+	if not chunk_resource.right:
+		link_right.queue_free()
+	if not chunk_resource.up:
+		link_up.queue_free()
+	if not chunk_resource.down:
+		link_down.queue_free()
+
 
 func load_left() -> void:
 	if not is_inside_tree:
