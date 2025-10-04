@@ -1,6 +1,7 @@
 class_name State
 extends Node
 
+@export var enemy: Enemy
 var state_machine : StateMachine
 
 func _ready() -> void:
