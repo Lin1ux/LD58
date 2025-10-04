@@ -1,9 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://c0fui50daxc8i"]
+[gd_scene load_steps=7 format=3 uid="uid://c0fui50daxc8i"]
 
 [ext_resource type="Script" uid="uid://cmnh30wxxmcx4" path="res://backpack/item/item.gd" id="1_fr52q"]
 [ext_resource type="Script" uid="uid://c68p6nb8dqr14" path="res://backpack/item/item_effect.gd" id="2_y5yfc"]
+[ext_resource type="PackedScene" uid="uid://fh5hn81k1hxo" path="res://projectile/instances/projectile1.tscn" id="2_ypcxp"]
 [ext_resource type="Script" uid="uid://b8tubi8yk7j5e" path="res://backpack/item/item_actions/item_action.gd" id="3_q716a"]
-[ext_resource type="Script" path="res://backpack/item/item_effect.gd" id="2_y5yfc"]
+[ext_resource type="Script" uid="uid://d1tfkk6affdod" path="res://backpack/item/item_actions/shoot_projectile_action.gd" id="4_pvjau"]
+
+[sub_resource type="Resource" id="Resource_ypcxp"]
+script = ExtResource("4_pvjau")
+metadata/_custom_type_script = "uid://d1tfkk6affdod"
 
 [node name="Item" type="Control"]
 layout_mode = 3
@@ -13,8 +18,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fr52q")
+proj = ExtResource("2_ypcxp")
 
 [node name="combat_start" type="Node" parent="."]
 script = ExtResource("2_y5yfc")
-effects = Array[ExtResource("3_q716a")]([null])
+effects = Array[ExtResource("3_q716a")]([SubResource("Resource_ypcxp")])
 metadata/_custom_type_script = "uid://c68p6nb8dqr14"
