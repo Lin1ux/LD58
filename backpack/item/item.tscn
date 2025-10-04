@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://c0fui50daxc8i"]
+[gd_scene load_steps=4 format=3 uid="uid://c0fui50daxc8i"]
 
 [ext_resource type="Script" uid="uid://cmnh30wxxmcx4" path="res://backpack/item/item.gd" id="1_fr52q"]
+[ext_resource type="Script" uid="uid://c68p6nb8dqr14" path="res://backpack/item/item_effect.gd" id="2_y5yfc"]
+[ext_resource type="Script" uid="uid://b8tubi8yk7j5e" path="res://backpack/item/item_actions/item_action.gd" id="3_q716a"]
+[ext_resource type="Script" path="res://backpack/item/item_effect.gd" id="2_y5yfc"]
 
 [node name="Item" type="Control"]
 layout_mode = 3
@@ -10,3 +13,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fr52q")
+
+[node name="combat_start" type="Node" parent="."]
+script = ExtResource("2_y5yfc")
+effects = Array[ExtResource("3_q716a")]([null])
+metadata/_custom_type_script = "uid://c68p6nb8dqr14"

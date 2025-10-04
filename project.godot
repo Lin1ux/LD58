@@ -15,6 +15,15 @@ run/main_scene="uid://cf4tw7btmygby"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameInfo="*res://globals/game_info.gd"
+Holder="*res://globals/holder.gd"
+
+[global_group]
+
+Player=""
+
 [layer_names]
 
 2d_physics/layer_1="Player"
