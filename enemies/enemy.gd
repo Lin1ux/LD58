@@ -1,11 +1,14 @@
 class_name Enemy
 extends CharacterBody2D
 
+@export_group("Stats")
 @export var stats : enemy_stats
+@export_group("Children")
 @export var hp : Health
-@export var player : CharacterBody2D
 @export var nav_agent : NavigationAgent2D
-
+@export var animSprite : AnimatedSprite2D
+@export_group("From Globals")
+@export var player : CharacterBody2D
 @export var nav_region : NavigationRegion2D
 
 var player_in_range : bool = false
@@ -22,6 +25,7 @@ func _physics_process(delta: float) -> void:
 	
 func move():
 	var dir = to_local(nav_agent.get_next_path_position()).normalized()
+	play_animation_based_on_direction(dir)
 	velocity = dir * stats.speed
 	move_and_slide()
 	
@@ -38,6 +42,23 @@ func deal_damage(value : int):
 	
 func heal(value : int):
 	hp.increase_hp(value)
+	
+func play_animation_based_on_direction(dir : Vector2):
+	if animSprite != null:
+		if abs(dir.x) > abs(dir.y):
+			if dir.x >= 0:
+				animSprite.play("walk_right")
+				return
+			animSprite.play("walk_left")
+			return
+		if dir.y >= 0:
+			animSprite.play("walk_up")
+			return
+		animSprite.play("walk_down")
+		
+		
+		print(dir)
+	
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	player_in_range = true

@@ -9,6 +9,8 @@ func _ready() -> void:
 
 func init():
 	timer.start()
+	if enemy.animSprite != null:
+		enemy.animSprite.play("idle")
 	
 func exit():
 	timer.stop()
