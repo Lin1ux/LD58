@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c5a1fxy00wvl8" path="res://chunk_manager/level_chunk.tscn" id="1_ewlcr"]
 [ext_resource type="PackedScene" uid="uid://b620rq506fm21" path="res://chunk_manager/level_chunk_link.tscn" id="2_kj3pc"]
-[ext_resource type="PackedScene" uid="uid://dej585mgualc8" path="res://enemies/basic_melee/melee_enemy.tscn" id="3_5tbng"]
+[ext_resource type="PackedScene" uid="uid://dej585mgualc8" path="res://Enemies/basic_melee/melee_enemy.tscn" id="3_5tbng"]
 [ext_resource type="Script" uid="uid://4l8y8a3r3bre" path="res://chunk_manager/chunks/enemy_box.gd" id="3_kj3pc"]
 [ext_resource type="PackedScene" uid="uid://c5q5wka43oyos" path="res://enemies/basic_range/range_enemy.tscn" id="4_5tbng"]
 
@@ -18,16 +18,16 @@ link_up = NodePath("LevelChunkLink")
 link_down = NodePath("LevelChunkLink2")
 
 [node name="LevelChunkLink" parent="." index="2" instance=ExtResource("2_kj3pc")]
-position = Vector2(616, 25)
+position = Vector2(640, 0)
 
 [node name="LevelChunkLink2" parent="." index="3" instance=ExtResource("2_kj3pc")]
-position = Vector2(678, 696)
+position = Vector2(640, 720)
 
 [node name="LevelChunkLink3" parent="." index="4" instance=ExtResource("2_kj3pc")]
-position = Vector2(22, 371)
+position = Vector2(0, 360)
 
 [node name="LevelChunkLink4" parent="." index="5" instance=ExtResource("2_kj3pc")]
-position = Vector2(1257, 381)
+position = Vector2(1280, 360)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." index="6" groups=["NavRegion"]]
 position = Vector2(671, 385)
