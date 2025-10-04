@@ -97,7 +97,9 @@ func load_down() -> void:
 func _on_area_entered(area: Area2D) -> void:
 	if area is CameraArea:
 		var camera: Camera2D = area.get_parent()
-		camera.limit_left = $CollisionShape2D.global_position.x - $CollisionShape2D.shape.size.x / 2
-		camera.limit_right = $CollisionShape2D.global_position.x + $CollisionShape2D.shape.size.x / 2
-		camera.limit_top = $CollisionShape2D.global_position.y - $CollisionShape2D.shape.size.y / 2
-		camera.limit_bottom = $CollisionShape2D.global_position.y + $CollisionShape2D.shape.size.y / 2
+
+		var tween = get_tree().create_tween()
+		tween.tween_property(camera, "limit_left", $CollisionShape2D.global_position.x - $CollisionShape2D.shape.size.x / 2, 0.5)
+		tween.tween_property(camera, "limit_right", $CollisionShape2D.global_position.x + $CollisionShape2D.shape.size.x / 2, 0.5)
+		tween.tween_property(camera, "limit_top", $CollisionShape2D.global_position.y - $CollisionShape2D.shape.size.y / 2, 0.5)
+		tween.tween_property(camera, "limit_bottom", $CollisionShape2D.global_position.y + $CollisionShape2D.shape.size.y / 2, 0.5)
