@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://btryo2klgv425"]
+[gd_scene load_steps=11 format=3 uid="uid://btryo2klgv425"]
 
 [ext_resource type="Script" uid="uid://cu37qgnce03l0" path="res://chunk_manager/chunk_manager.gd" id="1_vpwjp"]
 [ext_resource type="Script" uid="uid://dk0nkmpdt6wav" path="res://chunk_manager/chunks/chunk_corridor_cross.gd" id="2_r0fes"]
@@ -15,8 +15,23 @@ metadata/_custom_type_script = "uid://dk0nkmpdt6wav"
 script = ExtResource("2_r0fes")
 metadata/_custom_type_script = "uid://dk0nkmpdt6wav"
 
+[sub_resource type="Resource" id="Resource_r0fes"]
+script = ExtResource("2_r0fes")
+metadata/_custom_type_script = "uid://dk0nkmpdt6wav"
+
+[sub_resource type="Resource" id="Resource_f3nan"]
+script = ExtResource("2_r0fes")
+metadata/_custom_type_script = "uid://dk0nkmpdt6wav"
+
+[sub_resource type="Resource" id="Resource_hsgg3"]
+script = ExtResource("2_r0fes")
+metadata/_custom_type_script = "uid://dk0nkmpdt6wav"
+
 [sub_resource type="Resource" id="Resource_wuc6d"]
 script = ExtResource("2_r0fes")
+left = SubResource("Resource_r0fes")
+right = SubResource("Resource_f3nan")
+up = SubResource("Resource_hsgg3")
 metadata/_custom_type_script = "uid://dk0nkmpdt6wav"
 
 [sub_resource type="Resource" id="Resource_05tkj"]
