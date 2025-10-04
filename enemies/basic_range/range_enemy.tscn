@@ -1,0 +1,82 @@
+[gd_scene load_steps=11 format=3 uid="uid://c5q5wka43oyos"]
+
+[ext_resource type="Script" uid="uid://c8inq07s68024" path="res://enemies/enemy.gd" id="1_s413b"]
+[ext_resource type="Resource" uid="uid://byl3x28cedxxq" path="res://enemies/basic_range/range_enemy.tres" id="2_xbok2"]
+[ext_resource type="Texture2D" uid="uid://4xv7ag7w05ot" path="res://icon.svg" id="3_v3km1"]
+[ext_resource type="Script" uid="uid://bu52csc8672sl" path="res://components/health/health.gd" id="4_a6hem"]
+[ext_resource type="Script" uid="uid://b0q26mmn2phr" path="res://components/health/block.gd" id="5_3er8p"]
+[ext_resource type="Script" uid="uid://dex36sgb78kcq" path="res://stateMachine/state_machine.gd" id="6_fcs4g"]
+[ext_resource type="Script" uid="uid://dom1sktirierh" path="res://enemies/basic_range/range_patrol.gd" id="7_xbok2"]
+[ext_resource type="Script" uid="uid://dtdlervwpa8u" path="res://enemies/basic_range/shoot.gd" id="8_xbok2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r34rm"]
+size = Vector2(128, 128)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_334mp"]
+radius = 529.3411
+
+[node name="RangeEnemy" type="CharacterBody2D" node_paths=PackedStringArray("hp", "nav_agent")]
+collision_layer = 4
+collision_mask = 4
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_s413b")
+stats = ExtResource("2_xbok2")
+hp = NodePath("HpComponent/Health")
+nav_agent = NodePath("NavigationAgent2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0, 1, 0, 1)
+texture = ExtResource("3_v3km1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_r34rm")
+
+[node name="HpComponent" type="Node2D" parent="."]
+
+[node name="Health" type="Node" parent="HpComponent"]
+script = ExtResource("4_a6hem")
+
+[node name="Block" type="Node" parent="HpComponent" node_paths=PackedStringArray("base_health")]
+script = ExtResource("5_3er8p")
+base_health = NodePath("../Health")
+
+[node name="Enemy_view_Range" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy_view_Range"]
+shape = SubResource("CircleShape2D_334mp")
+debug_color = Color(0.36078432, 0.5803922, 0.5803922, 0.12941177)
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("start_state")]
+script = ExtResource("6_fcs4g")
+start_state = NodePath("RangePatrol")
+
+[node name="RangePatrol" type="Node" parent="StateMachine" node_paths=PackedStringArray("timer", "enemy")]
+script = ExtResource("7_xbok2")
+timer = NodePath("ReloadTimer")
+enemy = NodePath("../..")
+
+[node name="ReloadTimer" type="Timer" parent="StateMachine/RangePatrol"]
+autostart = true
+
+[node name="Shoot" type="Node" parent="StateMachine" node_paths=PackedStringArray("timer", "enemy")]
+script = ExtResource("8_xbok2")
+timer = NodePath("ShootDuration")
+enemy = NodePath("../..")
+
+[node name="ShootDuration" type="Timer" parent="StateMachine/Shoot"]
+wait_time = 0.5
+autostart = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+
+[node name="makePathTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="body_entered" from="Enemy_view_Range" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Enemy_view_Range" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="StateMachine/RangePatrol/ReloadTimer" to="StateMachine/RangePatrol" method="_on_reload_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Shoot/ShootDuration" to="StateMachine/Shoot" method="_on_shoot_duration_timeout"]
+[connection signal="timeout" from="makePathTimer" to="." method="_on_make_path_timer_timeout"]
