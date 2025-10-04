@@ -1,9 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://dej585mgualc8"]
+[gd_scene load_steps=10 format=3 uid="uid://dej585mgualc8"]
 
 [ext_resource type="Texture2D" uid="uid://4xv7ag7w05ot" path="res://icon.svg" id="1_jqf5h"]
-[ext_resource type="Script" uid="uid://c8inq07s68024" path="res://Enemies/basic_melee/enemy.gd" id="1_qlm1k"]
+[ext_resource type="Script" uid="uid://c8inq07s68024" path="res://enemies/basic_melee/enemy.gd" id="1_qlm1k"]
+[ext_resource type="Resource" uid="uid://bpnoph6sj0nvd" path="res://enemies/basic_melee/basic_enemy.tres" id="2_8j0x7"]
 [ext_resource type="Script" uid="uid://bu52csc8672sl" path="res://components/health/health.gd" id="3_ptky7"]
 [ext_resource type="Script" uid="uid://b0q26mmn2phr" path="res://components/health/block.gd" id="4_8j0x7"]
+[ext_resource type="Script" uid="uid://dex36sgb78kcq" path="res://stateMachine/state_machine.gd" id="6_tnjni"]
+[ext_resource type="Script" uid="uid://cf02bjcx3j1s0" path="res://stateMachine/state.gd" id="7_705lf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r34rm"]
 size = Vector2(128, 128)
@@ -11,8 +14,12 @@ size = Vector2(128, 128)
 [sub_resource type="CircleShape2D" id="CircleShape2D_334mp"]
 radius = 330.1515
 
-[node name="MeleeEnemy" type="CharacterBody2D"]
+[node name="MeleeEnemy" type="CharacterBody2D" node_paths=PackedStringArray("hp")]
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("1_qlm1k")
+stats = ExtResource("2_8j0x7")
+hp = NodePath("HpComponent/Health")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 self_modulate = Color(1, 0, 0, 1)
@@ -30,11 +37,19 @@ script = ExtResource("3_ptky7")
 script = ExtResource("4_8j0x7")
 base_health = NodePath("../Health")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Enemy_view_Range" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy_view_Range"]
 shape = SubResource("CircleShape2D_334mp")
 debug_color = Color(0.36078432, 0.5803922, 0.5803922, 0.12941177)
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("start_state")]
+script = ExtResource("6_tnjni")
+start_state = NodePath("BasicState")
+
+[node name="BasicState" type="Node" parent="StateMachine" node_paths=PackedStringArray("next_state")]
+script = ExtResource("7_705lf")
+next_state = NodePath(".")
+
+[connection signal="body_entered" from="Enemy_view_Range" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Enemy_view_Range" to="." method="_on_area_2d_body_exited"]

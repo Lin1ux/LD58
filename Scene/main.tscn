@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://g7p4wida221u" path="res://Scene/game_info.gd" id="1_r34rm"]
 [ext_resource type="PackedScene" uid="uid://ctxp0xi8dehf3" path="res://Player/player.tscn" id="2_sblpm"]
-[ext_resource type="PackedScene" uid="uid://dej585mgualc8" path="res://Enemies/basic_melee/melee_enemy.tscn" id="3_r34rm"]
+[ext_resource type="PackedScene" uid="uid://dej585mgualc8" path="res://enemies/basic_melee/melee_enemy.tscn" id="3_r34rm"]
 
 [node name="Scene" type="Node2D"]
 
