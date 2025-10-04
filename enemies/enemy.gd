@@ -12,6 +12,7 @@ extends CharacterBody2D
 @export var nav_region : NavigationRegion2D
 
 var player_in_range : bool = false
+var enemy_direction : int = Direction.Dir.DOWN
 
 func _ready():
 	nav_region = GameInfo.nav_region
@@ -45,19 +46,15 @@ func heal(value : int):
 	
 func play_animation_based_on_direction(dir : Vector2):
 	if animSprite != null:
-		if abs(dir.x) > abs(dir.y):
-			if dir.x >= 0:
+		match Direction.get_direction(dir):
+			Direction.Dir.UP: 
+				animSprite.play("walk_up")
+			Direction.Dir.DOWN: 
+				animSprite.play("walk_down")
+			Direction.Dir.LEFT: 
+				animSprite.play("walk_left")
+			Direction.Dir.RIGHT: 
 				animSprite.play("walk_right")
-				return
-			animSprite.play("walk_left")
-			return
-		if dir.y >= 0:
-			animSprite.play("walk_up")
-			return
-		animSprite.play("walk_down")
-		
-		
-		print(dir)
 	
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
