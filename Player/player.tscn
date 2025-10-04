@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://8wh3usm52nkl"]
+[gd_scene load_steps=15 format=3 uid="uid://8wh3usm52nkl"]
 
 [ext_resource type="Script" uid="uid://c64x6b7ocwvt3" path="res://Player/player_movement.gd" id="1_4ntmi"]
 [ext_resource type="Script" uid="uid://c81ivxele714x" path="res://Player/projectile_shooter.gd" id="3_btcbx"]
@@ -9,6 +9,8 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x02iy"]
 size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fhl08"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vtle1"]
 atlas = ExtResource("5_fhl08")
@@ -52,8 +54,6 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fhl08"]
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_4ntmi")
