@@ -10,10 +10,10 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	current_state.update()
-	
+
 func _physics_process(delta: float) -> void:
 	current_state.fixed_update()
-	
+
 func change_state(next_state : State):
 	current_state.exit()
 	current_state = next_state
@@ -27,4 +27,3 @@ func change_state_str(next_state : String):
 	current_state = state
 	current_state.init()
 #func _process(delta: float) -> void:
-	
