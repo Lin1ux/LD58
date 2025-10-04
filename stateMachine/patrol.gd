@@ -4,23 +4,20 @@ extends State
 var target_position : Vector2
 
 func init() -> void:
-	target_position = enemy.global_position + Vector2(randf_range(-10,10), randf_range(-10,10))
-	#NavigationServer2D.region_get_random_point(enemy.nav_agent.get_rid(), 1, false)
-	#if enemy.nav_agent.is_target_reachable():
-	#	enemy.make_path_to_point(target_position)
-	#	print("New Point", target_position)
-	#else:
-	#	init()
+	target_position = NavigationServer2D.region_get_random_point(GameInfo.nav_region.get_rid(), 1, false)
+	print(NavigationServer2D.region_get_random_point(GameInfo.nav_region.get_rid(), 1, false))
+	enemy.make_path_to_point(target_position)
 	
 func update():
-	pass
-	#print(NavigationServer2D.region_get_random_point(enemy.nav_region.get_rid(), 1, false))
+	if target_position == Vector2.ZERO:
+		init()
+	#print(NavigationServer2D.region_get_random_point(GameInfo.nav_region.get_rid(), 1, false))
+	#print(NavigationServer2D.region_get_random_point(GameInfo.nav_region.get_rid(), 1, false))
 	#print("Update")
 	
 func fixed_update():
-	return
 	enemy.move()
-	if enemy.nav_agent.is_target_reached():
+	if enemy.nav_agent.is_navigation_finished():
 		exit()
 	
 func exit() -> void:

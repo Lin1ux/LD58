@@ -23,6 +23,7 @@ Holder="*res://globals/holder.gd"
 [global_group]
 
 Player=""
+NavRegion=""
 
 [layer_names]
 
