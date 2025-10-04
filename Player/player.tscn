@@ -1,22 +1,62 @@
-[gd_scene load_steps=7 format=3 uid="uid://8wh3usm52nkl"]
+[gd_scene load_steps=13 format=3 uid="uid://8wh3usm52nkl"]
 
 [ext_resource type="Script" uid="uid://c64x6b7ocwvt3" path="res://Player/player_movement.gd" id="1_4ntmi"]
-[ext_resource type="Texture2D" uid="uid://4xv7ag7w05ot" path="res://icon.svg" id="2_btcbx"]
 [ext_resource type="Script" uid="uid://c81ivxele714x" path="res://Player/projectile_shooter.gd" id="3_btcbx"]
 [ext_resource type="PackedScene" uid="uid://c0fui50daxc8i" path="res://backpack/item/item.tscn" id="4_gwnis"]
+[ext_resource type="Texture2D" uid="uid://3ecoqirpae5k" path="res://Player/goblin_anim_front.png" id="5_fhl08"]
 [ext_resource type="Script" uid="uid://c5ixe36f56j44" path="res://Player/player_input.gd" id="5_k53q1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x02iy"]
-size = Vector2(128, 128)
+size = Vector2(64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vtle1"]
+atlas = ExtResource("5_fhl08")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_od3ui"]
+atlas = ExtResource("5_fhl08")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00tjw"]
+atlas = ExtResource("5_fhl08")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3vf3"]
+atlas = ExtResource("5_fhl08")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apopc"]
+atlas = ExtResource("5_fhl08")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5htga"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vtle1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_od3ui")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00tjw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3vf3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apopc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_4ntmi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_x02iy")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_btcbx")
 
 [node name="ProjectileShooter" type="Node2D" parent="."]
 script = ExtResource("3_btcbx")
@@ -26,5 +66,9 @@ script = ExtResource("3_btcbx")
 [node name="Input" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("5_k53q1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5htga")
+autoplay = "default"
 
 [connection signal="action_primary" from="Input" to="Item" method="do"]

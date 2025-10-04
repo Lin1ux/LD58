@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b7vxdx6mqa5lx" path="res://chunk_manager/level_chunk.gd" id="1_e51pq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_egeeo"]
-size = Vector2(1300, 739)
+size = Vector2(1280, 720)
 
 [node name="LevelChunk" type="Area2D"]
 script = ExtResource("1_e51pq")
@@ -15,7 +15,7 @@ offset_bottom = 720.0
 color = Color(1, 1, 1, 0.49411765)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(640, 359.5)
+position = Vector2(640, 360)
 shape = SubResource("RectangleShape2D_egeeo")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

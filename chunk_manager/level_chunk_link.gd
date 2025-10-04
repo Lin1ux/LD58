@@ -12,13 +12,11 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 
 func _on_timer_timeout() -> void:
-	print("AAAAAAAAAAAAAAAAAAA yeah")
 	can_trigger = true
 
 
 func _on_tree_entered() -> void:
 	$Timer.start()
-	print("AAAAAAAAAAAAAAAAAAA start")
 
 
 func _on_tree_exited() -> void:
