@@ -6,3 +6,9 @@ class_name Item
 
 
 #endregion
+
+
+func _ready() -> void:
+	var x = get_node("combat_start")
+	var params : CastParams = CastParams.new()
+	x.execute()
