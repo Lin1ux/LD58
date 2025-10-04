@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://p5k0rm2445cc"]
+
+[ext_resource type="Script" uid="uid://g7p4wida221u" path="res://Scene/game_info.gd" id="1_n002x"]
+[ext_resource type="PackedScene" uid="uid://ctxp0xi8dehf3" path="res://Player/player.tscn" id="2_ufrwl"]
+[ext_resource type="PackedScene" uid="uid://dej585mgualc8" path="res://enemies/basic_melee/melee_enemy.tscn" id="3_32r3b"]
+
+[node name="Scene" type="Node2D"]
+
+[node name="Game" type="Node" parent="." node_paths=PackedStringArray("Player")]
+script = ExtResource("1_n002x")
+Player = NodePath("../Player")
+
+[node name="Player" parent="." instance=ExtResource("2_ufrwl")]
+
+[node name="MeleeEnemy" parent="." instance=ExtResource("3_32r3b")]
+position = Vector2(823, 303)

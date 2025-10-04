@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://b620rq506fm21"]
+
+[ext_resource type="Script" uid="uid://b84aukmdp310q" path="res://Scene/chunks/level_chunk_link.gd" id="1_0msia"]
+[ext_resource type="Texture2D" uid="uid://4xv7ag7w05ot" path="res://icon.svg" id="2_lwilj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0msia"]
+radius = 32.0
+
+[node name="LevelChunkLink" type="Node2D"]
+script = ExtResource("1_0msia")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_0msia")
+
+[node name="Icon" type="Sprite2D" parent="."]
+scale = Vector2(0.375, 0.375)
+texture = ExtResource("2_lwilj")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
