@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dej585mgualc8"]
+[gd_scene load_steps=11 format=3 uid="uid://dej585mgualc8"]
 
 [ext_resource type="Texture2D" uid="uid://4xv7ag7w05ot" path="res://icon.svg" id="1_jqf5h"]
 [ext_resource type="Script" uid="uid://c8inq07s68024" path="res://enemies/basic_melee/enemy.gd" id="1_qlm1k"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://b0q26mmn2phr" path="res://components/health/block.gd" id="4_8j0x7"]
 [ext_resource type="Script" uid="uid://dex36sgb78kcq" path="res://stateMachine/state_machine.gd" id="6_tnjni"]
 [ext_resource type="Script" uid="uid://cf02bjcx3j1s0" path="res://stateMachine/state.gd" id="7_705lf"]
+[ext_resource type="Script" uid="uid://ctf452botew5m" path="res://stateMachine/patrol.gd" id="8_r6hj8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r34rm"]
 size = Vector2(128, 128)
@@ -47,11 +48,14 @@ debug_color = Color(0.36078432, 0.5803922, 0.5803922, 0.12941177)
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("start_state")]
 script = ExtResource("6_tnjni")
-start_state = NodePath("BasicState")
+start_state = NodePath("Patrol")
 
-[node name="BasicState" type="Node" parent="StateMachine" node_paths=PackedStringArray("next_state")]
+[node name="BasicState" type="Node" parent="StateMachine"]
 script = ExtResource("7_705lf")
-next_state = NodePath(".")
+
+[node name="Patrol" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("8_r6hj8")
+enemy = NodePath("../..")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 debug_enabled = true

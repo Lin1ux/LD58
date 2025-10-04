@@ -1,9 +1,11 @@
+class_name Enemy
 extends CharacterBody2D
 
 @export var stats : enemy_stats
 @export var hp : Health
 @export var player : CharacterBody2D
 
+var nav_region : NavigationRegion2D
 var nav_agent : NavigationAgent2D
 
 var player_in_range : bool = false
@@ -14,15 +16,18 @@ func _ready():
 	
 #Przenieść później do maszyny stanów
 func _physics_process(delta: float) -> void:
-	move_towards_player()
+	move()
 	
-func move_towards_player():
+func move():
 	var dir = to_local(nav_agent.get_next_path_position()).normalized()
 	velocity = dir * stats.speed
 	move_and_slide()
 	
 func make_path_to_player():
 	nav_agent.target_position = player.global_position 
+	
+func make_path_to_point(new_position :Vector2):
+	nav_agent.target_position = new_position
 
 func deal_damage(value : int):
 	hp.decrease_hp(value)

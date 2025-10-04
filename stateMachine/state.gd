@@ -1,7 +1,6 @@
 class_name State
 extends Node
 
-@export var next_state : State
 var state_machine : StateMachine
 
 func _ready() -> void:
@@ -20,4 +19,4 @@ func fixed_update():
 	
 func exit() -> void:
 	print("Exit")
-	state_machine.change_state(next_state)
+	state_machine.change_state_str("")
