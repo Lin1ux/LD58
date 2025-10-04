@@ -1,20 +1,20 @@
 [gd_scene load_steps=12 format=3 uid="uid://dej585mgualc8"]
 
 [ext_resource type="Texture2D" uid="uid://4xv7ag7w05ot" path="res://icon.svg" id="1_jqf5h"]
-[ext_resource type="Script" uid="uid://c8inq07s68024" path="res://enemies/basic_melee/enemy.gd" id="1_qlm1k"]
+[ext_resource type="Script" uid="uid://c8inq07s68024" path="res://enemies/enemy.gd" id="1_qlm1k"]
 [ext_resource type="Resource" uid="uid://bpnoph6sj0nvd" path="res://enemies/basic_melee/basic_enemy.tres" id="2_8j0x7"]
 [ext_resource type="Script" uid="uid://bu52csc8672sl" path="res://components/health/health.gd" id="3_ptky7"]
 [ext_resource type="Script" uid="uid://b0q26mmn2phr" path="res://components/health/block.gd" id="4_8j0x7"]
 [ext_resource type="Script" uid="uid://dex36sgb78kcq" path="res://stateMachine/state_machine.gd" id="6_tnjni"]
-[ext_resource type="Script" uid="uid://cf02bjcx3j1s0" path="res://stateMachine/state.gd" id="7_705lf"]
 [ext_resource type="Script" uid="uid://ctf452botew5m" path="res://stateMachine/patrol.gd" id="8_r6hj8"]
 [ext_resource type="Script" uid="uid://cqpkyp1jgr3ij" path="res://stateMachine/move_toward_enemy.gd" id="9_1dp4n"]
+[ext_resource type="Script" uid="uid://btygjhupogsbn" path="res://stateMachine/wait.gd" id="9_qf82m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r34rm"]
 size = Vector2(128, 128)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_334mp"]
-radius = 529.3411
+radius = 167.24234
 
 [node name="MeleeEnemy" type="CharacterBody2D" node_paths=PackedStringArray("hp", "nav_agent")]
 collision_layer = 4
@@ -52,19 +52,26 @@ debug_color = Color(0.36078432, 0.5803922, 0.5803922, 0.12941177)
 script = ExtResource("6_tnjni")
 start_state = NodePath("Patrol")
 
-[node name="BasicState" type="Node" parent="StateMachine"]
-script = ExtResource("7_705lf")
-
 [node name="Patrol" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
 script = ExtResource("8_r6hj8")
 enemy = NodePath("../..")
 
-[node name="MoveTowardEnemy" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
+[node name="MoveTowardEnemy" type="Node" parent="StateMachine" node_paths=PackedStringArray("timer", "enemy")]
 script = ExtResource("9_1dp4n")
+timer = NodePath("PathUpdater")
 enemy = NodePath("../..")
 
 [node name="PathUpdater" type="Timer" parent="StateMachine/MoveTowardEnemy"]
 wait_time = 0.5
+autostart = true
+
+[node name="Wait" type="Node" parent="StateMachine" node_paths=PackedStringArray("timer", "enemy")]
+script = ExtResource("9_qf82m")
+timer = NodePath("WaitTimer")
+next_state = "Patrol"
+enemy = NodePath("../..")
+
+[node name="WaitTimer" type="Timer" parent="StateMachine/Wait"]
 autostart = true
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
@@ -77,4 +84,5 @@ autostart = true
 [connection signal="body_entered" from="Enemy_view_Range" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Enemy_view_Range" to="." method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="StateMachine/MoveTowardEnemy/PathUpdater" to="StateMachine/MoveTowardEnemy" method="_on_path_updater_timeout"]
+[connection signal="timeout" from="StateMachine/Wait/WaitTimer" to="StateMachine/Wait" method="_on_wait_timer_timeout"]
 [connection signal="timeout" from="makePathTimer" to="." method="_on_make_path_timer_timeout"]
