@@ -56,5 +56,10 @@ next_state = NodePath(".")
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 debug_enabled = true
 
+[node name="makePathTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
 [connection signal="body_entered" from="Enemy_view_Range" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Enemy_view_Range" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="makePathTimer" to="." method="_on_make_path_timer_timeout"]

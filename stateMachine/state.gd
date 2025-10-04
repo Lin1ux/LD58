@@ -11,10 +11,12 @@ func init() -> void:
 	print("Init")
 	
 func update():
-	print("Update")
+	pass
+	#print("Update")
 	
 func fixed_update():
-	print("Fixed Update")
+	pass
+	#print("Fixed Update")
 	
 func exit() -> void:
 	print("Exit")

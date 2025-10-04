@@ -1,18 +1,25 @@
-[gd_scene load_steps=7 format=3 uid="uid://cf4tw7btmygby"]
+[gd_scene load_steps=8 format=3 uid="uid://cf4tw7btmygby"]
 
 [ext_resource type="PackedScene" uid="uid://c5a1fxy00wvl8" path="res://Scene/chunks/level_chunk.tscn" id="1_r34rm"]
-[ext_resource type="Script" path="res://Scene/game_info.gd" id="2_3amdw"]
-[ext_resource type="PackedScene" path="res://Player/player.tscn" id="2_sblpm"]
-[ext_resource type="PackedScene" uid="uid://dej585mgualc8" path="res://Enemies/basic_melee/melee_enemy.tscn" id="3_r34rm"]
-[ext_resource type="Script" uid="uid://cgue1afyx57xx" path="res://Scene/camera_area.gd" id="4_2wwxx"]
+[ext_resource type="Script" uid="uid://g7p4wida221u" path="res://Scene/game_info.gd" id="2_3amdw"]
+[ext_resource type="PackedScene" uid="uid://ctxp0xi8dehf3" path="res://Player/player.tscn" id="2_sblpm"]
+[ext_resource type="PackedScene" uid="uid://dej585mgualc8" path="res://enemies/basic_melee/melee_enemy.tscn" id="3_r34rm"]
+[ext_resource type="Script" path="res://Scene/camera_area.gd" id="4_2wwxx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r34rm"]
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_3amdw"]
+vertices = PackedVector2Array(598.0703, -327.04688, 602.9219, 333.0078, -612.1406, 334.97656, -621.85156, -333.9375)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-632, -344, 608, -337, 613, 343, -622, 345)])
+
 [node name="Scene" type="Node2D"]
 
-[node name="Game" type="Node" parent="." node_paths=PackedStringArray("Player")]
-script = ExtResource("1_r34rm")
-Player = NodePath("../Player")
+[node name="Game" type="Node" parent="." node_paths=PackedStringArray("player", "enemy_box")]
+script = ExtResource("2_3amdw")
+player = NodePath("../Player")
+enemy_box = NodePath("../EnemyBox")
+
 [node name="LevelChunk" parent="." instance=ExtResource("1_r34rm")]
 position = Vector2(-643, -360)
 chunk_left = "uid://c5a1fxy00wvl8"
@@ -29,5 +36,11 @@ script = ExtResource("4_2wwxx")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Camera2D/CameraArea"]
 shape = SubResource("CircleShape2D_r34rm")
 
-[node name="MeleeEnemy" parent="." instance=ExtResource("3_r34rm")]
+[node name="EnemyBox" type="Node2D" parent="."]
+
+[node name="MeleeEnemy" parent="EnemyBox" instance=ExtResource("3_r34rm")]
 position = Vector2(346, 112)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(0, -5)
+navigation_polygon = SubResource("NavigationPolygon_3amdw")
