@@ -24,6 +24,7 @@ func change_state_str(next_state : String):
 	if state == null:
 		printerr("unknown State")
 		return
+	current_state.exit()
 	current_state = state
 	current_state.init()
 #func _process(delta: float) -> void:

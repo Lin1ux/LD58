@@ -6,7 +6,7 @@ extends CharacterBody2D
 @export var player : CharacterBody2D
 @export var nav_agent : NavigationAgent2D
 
-var nav_region : NavigationRegion2D
+@export var nav_region : NavigationRegion2D
 
 var player_in_range : bool = false
 

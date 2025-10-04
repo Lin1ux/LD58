@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://b84aukmdp310q" path="res://chunk_manager/level_chunk_link.gd" id="1_0msia"]
 [ext_resource type="Texture2D" uid="uid://4xv7ag7w05ot" path="res://icon.svg" id="2_lwilj"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_0msia"]
-radius = 32.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qfrgv"]
+size = Vector2(64, 64)
 
 [node name="LevelChunkLink" type="Node2D"]
 script = ExtResource("1_0msia")
@@ -12,10 +12,11 @@ script = ExtResource("1_0msia")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_0msia")
+shape = SubResource("RectangleShape2D_qfrgv")
 
 [node name="Icon" type="Sprite2D" parent="."]
-scale = Vector2(0.375, 0.375)
+position = Vector2(-7.1525574e-07, -3.5762787e-06)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_lwilj")
 
 [node name="Timer" type="Timer" parent="."]

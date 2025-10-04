@@ -10,13 +10,13 @@ link_up = NodePath("LevelChunkLink")
 link_down = NodePath("LevelChunkLink2")
 
 [node name="LevelChunkLink" parent="." index="2" instance=ExtResource("2_h8o2g")]
-position = Vector2(616, 25)
+position = Vector2(640, 0)
 
 [node name="LevelChunkLink2" parent="." index="3" instance=ExtResource("2_h8o2g")]
-position = Vector2(678, 696)
+position = Vector2(640, 720)
 
 [node name="LevelChunkLink3" parent="." index="4" instance=ExtResource("2_h8o2g")]
-position = Vector2(22, 371)
+position = Vector2(0, 360)
 
 [node name="LevelChunkLink4" parent="." index="5" instance=ExtResource("2_h8o2g")]
-position = Vector2(1257, 381)
+position = Vector2(1280, 360)
