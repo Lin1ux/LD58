@@ -22,7 +22,7 @@ func rotate():
 
 @export var proj : PackedScene
 
-func _process(_delta: float) -> void:
+func do() -> void:
 	var x : ItemEffect= get_node("combat_start") as ItemEffect
 	var params : CastParams = CastParams.new()
 	params.item = self

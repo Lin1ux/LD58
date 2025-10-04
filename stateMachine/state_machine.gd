@@ -18,7 +18,7 @@ func change_state(next_state : State):
 	current_state.exit()
 	current_state = next_state
 	current_state.init()
-	
+
 func change_state_str(next_state : String):
 	var state = get_node(next_state)
 	if state == null:
