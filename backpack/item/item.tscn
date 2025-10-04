@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c0fui50daxc8i"]
 
 [ext_resource type="Script" uid="uid://cmnh30wxxmcx4" path="res://backpack/item/item.gd" id="1_fr52q"]
-[ext_resource type="Script" uid="uid://c68p6nb8dqr14" path="res://backpack/item/item_effect.gd" id="2_y5yfc"]
+[ext_resource type="Script" path="res://backpack/item/item_effect.gd" id="2_y5yfc"]
 
 [node name="Item" type="Control"]
 layout_mode = 3
@@ -14,4 +14,3 @@ script = ExtResource("1_fr52q")
 
 [node name="combat_start" type="Node" parent="."]
 script = ExtResource("2_y5yfc")
-metadata/_custom_type_script = "uid://c68p6nb8dqr14"
