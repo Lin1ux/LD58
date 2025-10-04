@@ -1,3 +1,4 @@
+class_name enemy_stats
 extends Resource
 
 @export var hp : int

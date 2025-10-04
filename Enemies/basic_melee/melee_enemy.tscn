@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dej585mgualc8"]
+[gd_scene load_steps=7 format=3 uid="uid://dej585mgualc8"]
 
 [ext_resource type="Texture2D" uid="uid://4xv7ag7w05ot" path="res://icon.svg" id="1_jqf5h"]
 [ext_resource type="Script" uid="uid://c8inq07s68024" path="res://Enemies/basic_melee/enemy.gd" id="1_qlm1k"]
+[ext_resource type="Script" uid="uid://bu52csc8672sl" path="res://components/health/health.gd" id="3_ptky7"]
+[ext_resource type="Script" uid="uid://b0q26mmn2phr" path="res://components/health/block.gd" id="4_8j0x7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r34rm"]
 size = Vector2(128, 128)
@@ -18,6 +20,15 @@ texture = ExtResource("1_jqf5h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_r34rm")
+
+[node name="HpComponent" type="Node2D" parent="."]
+
+[node name="Health" type="Node" parent="HpComponent"]
+script = ExtResource("3_ptky7")
+
+[node name="Block" type="Node" parent="HpComponent" node_paths=PackedStringArray("base_health")]
+script = ExtResource("4_8j0x7")
+base_health = NodePath("../Health")
 
 [node name="Area2D" type="Area2D" parent="."]
 
