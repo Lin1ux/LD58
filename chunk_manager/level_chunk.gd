@@ -7,13 +7,6 @@ class_name LevelChunk
 @export var lock_camera: bool = true
 
 
-@export_category("Link Chunks")
-@export var chunk_left: ChunkResource
-@export var chunk_right: ChunkResource
-@export var chunk_up: ChunkResource
-@export var chunk_down: ChunkResource
-
-
 @export_category("Link Nodes")
 @export var link_left: LevelChunkLink = null
 @export var link_right: LevelChunkLink = null
@@ -48,8 +41,8 @@ func load_left() -> void:
 	if chunk_resource.scene_left:
 		get_parent().add_child(chunk_resource.scene_left)
 
-	elif chunk_left:
-		var c: LevelChunk = chunk_left.scene_instantiate()
+	elif chunk_resource.left:
+		var c: LevelChunk = chunk_resource.left.scene_instantiate()
 		c.global_position = link_left.global_position - c.link_right.position
 		get_parent().add_child(c)
 
@@ -63,8 +56,8 @@ func load_right() -> void:
 	if chunk_resource.scene_right:
 		get_parent().add_child(chunk_resource.scene_right)
 
-	elif chunk_right:
-		var c: LevelChunk = chunk_right.scene_instantiate()
+	elif chunk_resource.right:
+		var c: LevelChunk = chunk_resource.right.scene_instantiate()
 		c.global_position = link_right.global_position - c.link_left.position
 		get_parent().add_child(c)
 
@@ -78,8 +71,8 @@ func load_up() -> void:
 	if chunk_resource.scene_up:
 		get_parent().add_child(chunk_resource.scene_up)
 
-	elif chunk_up:
-		var c: LevelChunk = chunk_up.scene_instantiate()
+	elif chunk_resource.up:
+		var c: LevelChunk = chunk_resource.up.scene_instantiate()
 		c.global_position = link_up.global_position - c.link_down.position
 		get_parent().add_child(c)
 
@@ -93,8 +86,8 @@ func load_down() -> void:
 	if chunk_resource.scene_down:
 		get_parent().add_child(chunk_resource.scene_down)
 
-	elif chunk_down:
-		var c: LevelChunk = chunk_down.scene_instantiate()
+	elif chunk_resource.down:
+		var c: LevelChunk = chunk_resource.down.scene_instantiate()
 		c.global_position = link_down.global_position - c.link_up.position
 		get_parent().add_child(c)
 
