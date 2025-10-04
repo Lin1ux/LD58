@@ -5,7 +5,7 @@
 
 [node name="Projectile1" type="Area2D"]
 script = ExtResource("1_h052y")
-speed = 5.0
+speed = 200.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_cxuoh")
