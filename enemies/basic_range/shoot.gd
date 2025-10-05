@@ -9,11 +9,10 @@ func _ready() -> void:
 func init():
 	timer.set_paused(false)
 	enemy.animSprite.play("idle")
-	print("SHOOT")
-	
 	
 	
 func exit():
+	enemy.attack()
 	timer.set_paused(true)
 
 func _on_shoot_duration_timeout() -> void:

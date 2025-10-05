@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://c5q5wka43oyos"]
+[gd_scene load_steps=37 format=3 uid="uid://c5q5wka43oyos"]
 
 [ext_resource type="Script" uid="uid://c8inq07s68024" path="res://enemies/enemy.gd" id="1_s413b"]
 [ext_resource type="Resource" uid="uid://byl3x28cedxxq" path="res://enemies/basic_range/range_enemy.tres" id="2_xbok2"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://dex36sgb78kcq" path="res://stateMachine/state_machine.gd" id="6_fcs4g"]
 [ext_resource type="Script" uid="uid://dom1sktirierh" path="res://enemies/basic_range/range_patrol.gd" id="7_xbok2"]
 [ext_resource type="Script" uid="uid://dtdlervwpa8u" path="res://enemies/basic_range/shoot.gd" id="8_xbok2"]
+[ext_resource type="Script" uid="uid://cyrdoid1g2jin" path="res://components/projectileSpawner/projectile_spawner.gd" id="9_bsi2c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_odv0p"]
 atlas = ExtResource("3_003pf")
@@ -193,7 +194,7 @@ size = Vector2(18, 45)
 [sub_resource type="CircleShape2D" id="CircleShape2D_334mp"]
 radius = 529.3411
 
-[node name="RangeEnemy" type="CharacterBody2D" node_paths=PackedStringArray("hp", "nav_agent", "animSprite")]
+[node name="RangeEnemy" type="CharacterBody2D" node_paths=PackedStringArray("hp", "nav_agent", "animSprite", "projectile_component")]
 collision_layer = 4
 collision_mask = 4
 motion_mode = 1
@@ -203,6 +204,7 @@ stats = ExtResource("2_xbok2")
 hp = NodePath("HpComponent/Health")
 nav_agent = NodePath("NavigationAgent2D")
 animSprite = NodePath("AnimatedSprite2D")
+projectile_component = NodePath("ProjectileComponent")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_186g2")
@@ -221,6 +223,10 @@ script = ExtResource("4_a6hem")
 [node name="Block" type="Node" parent="HpComponent" node_paths=PackedStringArray("base_health")]
 script = ExtResource("5_3er8p")
 base_health = NodePath("../Health")
+
+[node name="ProjectileComponent" type="Node2D" parent="." node_paths=PackedStringArray("enemy")]
+script = ExtResource("9_bsi2c")
+enemy = NodePath("..")
 
 [node name="Enemy_view_Range" type="Area2D" parent="."]
 

@@ -7,6 +7,7 @@ extends CharacterBody2D
 @export var hp : Health
 @export var nav_agent : NavigationAgent2D
 @export var animSprite : AnimatedSprite2D
+@export var projectile_component : Enemy_Projectile_Spawner
 @export_group("From Globals")
 @export var player : CharacterBody2D
 @export var nav_region : NavigationRegion2D
@@ -17,12 +18,6 @@ var enemy_direction : int = Direction.Dir.DOWN
 func _ready():
 	nav_region = GameInfo.nav_region
 	hp.init(stats.hp)
-	
-	
-#Przenieść później do maszyny stanów
-func _physics_process(delta: float) -> void:
-	pass
-	#move()
 	
 func move():
 	var dir = to_local(nav_agent.get_next_path_position()).normalized()
@@ -55,7 +50,9 @@ func play_animation_based_on_direction(dir : Vector2):
 				animSprite.play("walk_left")
 			Direction.Dir.RIGHT: 
 				animSprite.play("walk_right")
-	
+				
+func attack():
+	projectile_component.spawn_projectile(stats.attack_pattern)
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	player_in_range = true

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c64x6b7ocwvt3" path="res://Player/player_movement.gd" id="1_4ntmi"]
 [ext_resource type="Script" uid="uid://c81ivxele714x" path="res://Player/projectile_shooter.gd" id="3_btcbx"]
-[ext_resource type="Script" path="res://Player/melee_attacker.gd" id="4_fhl08"]
+[ext_resource type="Script" uid="uid://d2pb7yrfgwgmm" path="res://Player/melee_attacker.gd" id="4_fhl08"]
 [ext_resource type="PackedScene" uid="uid://c0fui50daxc8i" path="res://backpack/item/item.tscn" id="4_gwnis"]
 [ext_resource type="Texture2D" uid="uid://3ecoqirpae5k" path="res://Player/goblin_anim_front.png" id="5_fhl08"]
 [ext_resource type="Script" path="res://Player/player_input.gd" id="5_k53q1"]
