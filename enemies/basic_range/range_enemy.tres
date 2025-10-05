@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="enemy_stats" load_steps=3 format=3 uid="uid://byl3x28cedxxq"]
 
-[ext_resource type="PackedScene" uid="uid://fh5hn81k1hxo" path="res://projectile/instances/projectile1.tscn" id="1_mypyj"]
+[ext_resource type="PackedScene" uid="uid://t5kahvmk1ufb" path="res://projectile/instances/enemy_projectile1.tscn" id="1_o7nna"]
 [ext_resource type="Script" uid="uid://bi0128a43c3jb" path="res://Resources/enemy_stats.gd" id="2_mypyj"]
 
 [resource]
@@ -8,5 +8,5 @@ script = ExtResource("2_mypyj")
 hp = 5
 speed = 200.0
 dmg = 5
-attack_pattern = ExtResource("1_mypyj")
+attack_pattern = ExtResource("1_o7nna")
 metadata/_custom_type_script = "uid://bi0128a43c3jb"
