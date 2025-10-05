@@ -1,16 +1,16 @@
 [gd_scene load_steps=37 format=3 uid="uid://c5q5wka43oyos"]
 
-[ext_resource type="Script" uid="uid://c8inq07s68024" path="res://enemies/enemy.gd" id="1_s413b"]
-[ext_resource type="Resource" uid="uid://byl3x28cedxxq" path="res://enemies/basic_range/range_enemy.tres" id="2_xbok2"]
-[ext_resource type="Texture2D" uid="uid://cew177or4lj5q" path="res://enemies/basic_range/archer_anim_front.png" id="3_003pf"]
+[ext_resource type="Script" uid="uid://c8inq07s68024" path="res://Enemies/enemy.gd" id="1_s413b"]
+[ext_resource type="Resource" uid="uid://byl3x28cedxxq" path="res://Enemies/basic_range/range_enemy.tres" id="2_xbok2"]
+[ext_resource type="Texture2D" uid="uid://dqx1gdagbw1rb" path="res://enemies/basic_range/archer_anim_front.png" id="3_003pf"]
 [ext_resource type="Script" uid="uid://bu52csc8672sl" path="res://components/health/health.gd" id="4_a6hem"]
-[ext_resource type="Texture2D" uid="uid://ue2boq6kfidy" path="res://enemies/basic_range/archer_anim_side1.png" id="4_bsi2c"]
+[ext_resource type="Texture2D" uid="uid://cc5fpl4e76ok7" path="res://enemies/basic_range/archer_anim_side1.png" id="4_bsi2c"]
 [ext_resource type="Script" uid="uid://b0q26mmn2phr" path="res://components/health/block.gd" id="5_3er8p"]
-[ext_resource type="Texture2D" uid="uid://dvrbmfo6mnixa" path="res://enemies/basic_range/archer_anim_side2.png" id="5_srbp1"]
-[ext_resource type="Texture2D" uid="uid://055sqeuqv08q" path="res://enemies/basic_range/archer_anim_back.png" id="6_aeys3"]
+[ext_resource type="Texture2D" uid="uid://d1slgla5rorvp" path="res://enemies/basic_range/archer_anim_side2.png" id="5_srbp1"]
+[ext_resource type="Texture2D" uid="uid://p3g3vwbhe3de" path="res://enemies/basic_range/archer_anim_back.png" id="6_aeys3"]
 [ext_resource type="Script" uid="uid://dex36sgb78kcq" path="res://stateMachine/state_machine.gd" id="6_fcs4g"]
-[ext_resource type="Script" uid="uid://dom1sktirierh" path="res://enemies/basic_range/range_patrol.gd" id="7_xbok2"]
-[ext_resource type="Script" uid="uid://dtdlervwpa8u" path="res://enemies/basic_range/shoot.gd" id="8_xbok2"]
+[ext_resource type="Script" uid="uid://dom1sktirierh" path="res://Enemies/basic_range/range_patrol.gd" id="7_xbok2"]
+[ext_resource type="Script" uid="uid://dtdlervwpa8u" path="res://Enemies/basic_range/shoot.gd" id="8_xbok2"]
 [ext_resource type="Script" uid="uid://cyrdoid1g2jin" path="res://components/projectileSpawner/projectile_spawner.gd" id="9_bsi2c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_odv0p"]
@@ -37,26 +37,6 @@ region = Rect2(384, 0, 128, 128)
 atlas = ExtResource("3_003pf")
 region = Rect2(512, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1p47l"]
-atlas = ExtResource("4_bsi2c")
-region = Rect2(0, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gmhtw"]
-atlas = ExtResource("4_bsi2c")
-region = Rect2(128, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8ys5d"]
-atlas = ExtResource("4_bsi2c")
-region = Rect2(256, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1luen"]
-atlas = ExtResource("4_bsi2c")
-region = Rect2(384, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mogpj"]
-atlas = ExtResource("4_bsi2c")
-region = Rect2(512, 0, 128, 128)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_c22ow"]
 atlas = ExtResource("5_srbp1")
 region = Rect2(0, 0, 128, 128)
@@ -75,6 +55,26 @@ region = Rect2(384, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a174g"]
 atlas = ExtResource("5_srbp1")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1p47l"]
+atlas = ExtResource("4_bsi2c")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gmhtw"]
+atlas = ExtResource("4_bsi2c")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ys5d"]
+atlas = ExtResource("4_bsi2c")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1luen"]
+atlas = ExtResource("4_bsi2c")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mogpj"]
+atlas = ExtResource("4_bsi2c")
 region = Rect2(512, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1g31y"]
@@ -129,26 +129,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1p47l")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gmhtw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8ys5d")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1luen")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mogpj")
-}],
-"loop": true,
-"name": &"walk_left",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_c22ow")
 }, {
 "duration": 1.0,
@@ -162,6 +142,26 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_a174g")
+}],
+"loop": true,
+"name": &"walk_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1p47l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gmhtw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ys5d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1luen")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mogpj")
 }],
 "loop": true,
 "name": &"walk_right",
@@ -208,7 +208,7 @@ attack_component = NodePath("ProjectileComponent")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_186g2")
-animation = &"walk_down"
+animation = &"walk_right"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
