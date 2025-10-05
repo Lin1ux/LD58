@@ -14,6 +14,7 @@ script = ExtResource("1_w6inc")
 backpack_size = Vector2i(3, 7)
 
 [node name="GridContainer" type="GridContainer" parent="."]
+z_index = -1
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -22,3 +23,4 @@ offset_bottom = 40.0
 modulate = Color(1, 0.47058824, 0.12156863, 1)
 layout_mode = 2
 texture = ExtResource("2_8ycfh")
+metadata/location = Vector2i(0, 0)

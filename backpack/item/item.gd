@@ -37,6 +37,7 @@ func _draw() -> void:
 		draw_rect(rect,Color.GREEN)
 
 @export var proj : PackedScene
+var placement : Vector2i
 
 
 func rotate_vector(vec : Vector2):

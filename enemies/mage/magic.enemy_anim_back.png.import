@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://xnnfndh5630g"
-path="res://.godot/imported/magic.enemy_anim_back.png-08f245328b00759f3c1fff9b47fc0459.ctex"
+path="res://.godot/imported/magic.enemy_anim_back.png-ce04c7bc5c6017f15d77227f0994ccdc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://enemies/mage/magic.enemy_anim_back.png"
-dest_files=["res://.godot/imported/magic.enemy_anim_back.png-08f245328b00759f3c1fff9b47fc0459.ctex"]
+source_file="res://Enemies/mage/magic.enemy_anim_back.png"
+dest_files=["res://.godot/imported/magic.enemy_anim_back.png-ce04c7bc5c6017f15d77227f0994ccdc.ctex"]
 
 [params]
 
