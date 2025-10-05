@@ -8,6 +8,7 @@ func _ready() -> void:
 
 func init():
 	timer.set_paused(false)
+	enemy.animSprite.play("idle")
 	print("SHOOT")
 	
 	
