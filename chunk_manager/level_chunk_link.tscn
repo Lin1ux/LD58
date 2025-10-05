@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b620rq506fm21"]
 
 [ext_resource type="Script" uid="uid://b84aukmdp310q" path="res://chunk_manager/level_chunk_link.gd" id="1_0msia"]
-[ext_resource type="Texture2D" uid="uid://4xv7ag7w05ot" path="res://icon.svg" id="2_lwilj"]
+[ext_resource type="Texture2D" uid="uid://cc8w1qek1m2db" path="res://chunk_manager/door.png" id="2_qfrgv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qfrgv"]
 size = Vector2(128, 64)
@@ -16,8 +16,7 @@ shape = SubResource("RectangleShape2D_qfrgv")
 
 [node name="Icon" type="Sprite2D" parent="."]
 position = Vector2(-7.1525574e-07, -3.5762787e-06)
-scale = Vector2(1, 0.5)
-texture = ExtResource("2_lwilj")
+texture = ExtResource("2_qfrgv")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
