@@ -12,3 +12,5 @@ var nav_region : NavigationRegion2D :
 		if nav_region == null:
 			nav_region = get_tree().get_first_node_in_group("NavRegion")
 		return nav_region
+
+var backpack_cell_size:int = 128

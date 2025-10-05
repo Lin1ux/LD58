@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cs0i70voxc4s1"
-path="res://.godot/imported/knight_anim_side1.png-c266c85ef270923fe1124ad23f9eef43.ctex"
+path="res://.godot/imported/knight_anim_side1.png-905a7bff1a5210951b0864b61d9ea8be.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://enemies/basic_melee/knight_anim_side1.png"
-dest_files=["res://.godot/imported/knight_anim_side1.png-c266c85ef270923fe1124ad23f9eef43.ctex"]
+source_file="res://Enemies/basic_melee/knight_anim_side1.png"
+dest_files=["res://.godot/imported/knight_anim_side1.png-905a7bff1a5210951b0864b61d9ea8be.ctex"]
 
 [params]
 
