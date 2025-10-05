@@ -1,11 +1,41 @@
-[gd_scene load_steps=3 format=3 uid="uid://c5a1fxy00wvl8"]
+[gd_scene load_steps=6 format=3 uid="uid://c5a1fxy00wvl8"]
 
 [ext_resource type="Script" uid="uid://b7vxdx6mqa5lx" path="res://chunk_manager/level_chunk.gd" id="1_e51pq"]
+[ext_resource type="Texture2D" uid="uid://dl83fhye2go8w" path="res://tiles/tiles.png" id="2_47on0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_egeeo"]
 size = Vector2(1280, 720)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_524pu"]
+texture = ExtResource("2_47on0")
+texture_region_size = Vector2i(64, 64)
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_d7l6k"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_524pu")
+
 [node name="LevelChunk" type="Area2D"]
+position = Vector2(-640, -360)
 script = ExtResource("1_e51pq")
 
 [node name="TextureRect" type="ColorRect" parent="."]
@@ -13,9 +43,13 @@ custom_minimum_size = Vector2(1280, 720)
 offset_right = 1280.0
 offset_bottom = 720.0
 color = Color(1, 1, 1, 0.49411765)
+metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(640, 360)
 shape = SubResource("RectangleShape2D_egeeo")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_d7l6k")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
