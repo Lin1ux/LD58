@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xnnfndh5630g"
-path="res://.godot/imported/magic.enemy_anim_back.png-ce04c7bc5c6017f15d77227f0994ccdc.ctex"
+uid="uid://cc8w1qek1m2db"
+path="res://.godot/imported/door.png-0b3ff49950a49a10e368d5f7772ef9af.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemies/mage/magic.enemy_anim_back.png"
-dest_files=["res://.godot/imported/magic.enemy_anim_back.png-ce04c7bc5c6017f15d77227f0994ccdc.ctex"]
+source_file="res://chunk_manager/door.png"
+dest_files=["res://.godot/imported/door.png-0b3ff49950a49a10e368d5f7772ef9af.ctex"]
 
 [params]
 

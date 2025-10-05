@@ -1,46 +1,88 @@
 extends CharacterBody2D
 class_name Player
 
+var input_queue: Array[Direction.Dir] = []
+var _input_queue_first: Direction.Dir
+func input_queue_push(input: Direction.Dir) -> void:
+	if input_queue.has(input):
+		input_queue.erase(input)
+	input_queue.append(input)
+func input_queue_erase(input: Direction.Dir) -> void:
+	if input_queue.has(input):
+		input_queue.erase(input)
+func input_queue_first() -> Direction.Dir:
+	if input_queue.size() == 0:
+		return _input_queue_first
+	_input_queue_first = input_queue[0]
+	return _input_queue_first
+
 @export var SPEED : float = 300.0
+@export var ACCEL: float = 30
+@export var decel: float = 0.8
+@export var idle_threshold: float = 1
 @export var animSprite : AnimatedSprite2D
 
-func _physics_process(delta: float) -> void:
-	
+func _physics_process(_delta: float) -> void:
 
-	var direction_x := Input.get_axis("ui_left", "ui_right")
-	var direction_y := Input.get_axis("ui_up", "ui_down")
+
+	var direction_x := Input.get_axis("move_left", "move_right")
+	var direction_y := Input.get_axis("move_up", "move_down")
+
+	if Input.is_action_just_pressed("move_left"):
+		input_queue_push(Direction.Dir.LEFT)
+	if Input.is_action_just_released("move_left"):
+		input_queue_erase(Direction.Dir.LEFT)
+	if Input.is_action_just_pressed("move_right"):
+		input_queue_push(Direction.Dir.RIGHT)
+	if Input.is_action_just_released("move_right"):
+		input_queue_erase(Direction.Dir.RIGHT)
+	if Input.is_action_just_pressed("move_up"):
+		input_queue_push(Direction.Dir.UP)
+	if Input.is_action_just_released("move_up"):
+		input_queue_erase(Direction.Dir.UP)
+	if Input.is_action_just_pressed("move_down"):
+		input_queue_push(Direction.Dir.DOWN)
+	if Input.is_action_just_released("move_down"):
+		input_queue_erase(Direction.Dir.DOWN)
+
 	if direction_x:
-		velocity.x = direction_x * SPEED
+		velocity.x += direction_x * ACCEL
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		
+		velocity.x *= decel
+	velocity.x = clamp(velocity.x, -SPEED, SPEED)
+	if abs(velocity.x) < idle_threshold:
+		velocity.x = 0
+
 
 	if direction_y:
-		velocity.y = direction_y * SPEED
+		velocity.y += direction_y * ACCEL
 	else:
-		velocity.y = move_toward(velocity.y, 0, SPEED)
-		
-	if velocity.x == 0 && velocity.y == 0:
+		velocity.y *= decel
+	velocity.y = clamp(velocity.y, -SPEED, SPEED)
+	if abs(velocity.y) < idle_threshold:
+		velocity.y = 0
+
+	if velocity.length() == 0:
 		animSprite.play("idle")
 		animSprite.scale.x = 1
 	else:
-		play_animation_based_on_direction(velocity)
-			
+		play_animation_based_on_direction()
+
 
 	move_and_slide()
-	
-func play_animation_based_on_direction(dir : Vector2):
+
+func play_animation_based_on_direction():
 	if animSprite != null:
-		match Direction.get_direction(dir):
-			Direction.Dir.UP: 
-				animSprite.play("walk_up")
-				animSprite.scale.x = 1
-			Direction.Dir.DOWN: 
+		match input_queue_first():
+			Direction.Dir.UP:
 				animSprite.play("walk_down")
 				animSprite.scale.x = 1
-			Direction.Dir.LEFT: 
+			Direction.Dir.DOWN:
+				animSprite.play("walk_up")
+				animSprite.scale.x = 1
+			Direction.Dir.LEFT:
 				animSprite.play("walk_right")
 				animSprite.scale.x = -1
-			Direction.Dir.RIGHT: 
+			Direction.Dir.RIGHT:
 				animSprite.play("walk_right")
 				animSprite.scale.x = 1
