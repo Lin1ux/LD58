@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://dej585mgualc8"]
+[gd_scene load_steps=39 format=3 uid="uid://dej585mgualc8"]
 
 [ext_resource type="Script" uid="uid://c8inq07s68024" path="res://enemies/enemy.gd" id="1_qlm1k"]
 [ext_resource type="Resource" uid="uid://bpnoph6sj0nvd" path="res://enemies/basic_melee/basic_enemy.tres" id="2_8j0x7"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://dex36sgb78kcq" path="res://stateMachine/state_machine.gd" id="6_tnjni"]
 [ext_resource type="Script" uid="uid://ctf452botew5m" path="res://stateMachine/patrol.gd" id="8_r6hj8"]
 [ext_resource type="Script" uid="uid://cqpkyp1jgr3ij" path="res://stateMachine/move_toward_enemy.gd" id="9_1dp4n"]
+[ext_resource type="Script" uid="uid://b871h5wng1qnw" path="res://components/melee_attacker/enemy_melee_attacker.gd" id="9_hgfw1"]
 [ext_resource type="Script" uid="uid://btygjhupogsbn" path="res://stateMachine/wait.gd" id="9_qf82m"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_osp0l"]
@@ -191,19 +192,24 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r34rm"]
 size = Vector2(48, 64)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4smdr"]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_334mp"]
 radius = 373.01205
 
-[node name="MeleeEnemy" type="CharacterBody2D" node_paths=PackedStringArray("hp", "nav_agent", "animSprite")]
+[node name="MeleeEnemy" type="CharacterBody2D" node_paths=PackedStringArray("hp", "nav_agent", "animSprite", "attack_component")]
 collision_layer = 4
 collision_mask = 4
 motion_mode = 1
 wall_min_slide_angle = 0.0
+platform_floor_layers = 4294967044
+platform_wall_layers = 4
 script = ExtResource("1_qlm1k")
 stats = ExtResource("2_8j0x7")
 hp = NodePath("HpComponent/Health")
 nav_agent = NodePath("NavigationAgent2D")
 animSprite = NodePath("AnimatedSprite2D")
+attack_component = NodePath("MeleeAttacker")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_osp0l")
@@ -222,6 +228,20 @@ script = ExtResource("3_ptky7")
 [node name="Block" type="Node" parent="HpComponent" node_paths=PackedStringArray("base_health")]
 script = ExtResource("4_8j0x7")
 base_health = NodePath("../Health")
+
+[node name="MeleeAttacker" type="Node2D" parent="." node_paths=PackedStringArray("attack_area", "collision_shape_2d", "enemy")]
+script = ExtResource("9_hgfw1")
+attack_area = NodePath("attack_area")
+collision_shape_2d = NodePath("attack_area/CollisionShape2D")
+enemy = NodePath("..")
+
+[node name="attack_area" type="Area2D" parent="MeleeAttacker"]
+position = Vector2(10, 0)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MeleeAttacker/attack_area"]
+shape = SubResource("RectangleShape2D_4smdr")
 
 [node name="Enemy_view_Range" type="Area2D" parent="."]
 
@@ -246,10 +266,17 @@ enemy = NodePath("../..")
 wait_time = 0.5
 autostart = true
 
+[node name="Attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("timer", "enemy")]
+script = ExtResource("9_qf82m")
+timer = NodePath("attackTimer")
+enemy = NodePath("../..")
+
+[node name="attackTimer" type="Timer" parent="StateMachine/Attack"]
+autostart = true
+
 [node name="Wait" type="Node" parent="StateMachine" node_paths=PackedStringArray("timer", "enemy")]
 script = ExtResource("9_qf82m")
 timer = NodePath("WaitTimer")
-next_state = "Patrol"
 enemy = NodePath("../..")
 
 [node name="WaitTimer" type="Timer" parent="StateMachine/Wait"]
@@ -265,5 +292,6 @@ autostart = true
 [connection signal="body_entered" from="Enemy_view_Range" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Enemy_view_Range" to="." method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="StateMachine/MoveTowardEnemy/PathUpdater" to="StateMachine/MoveTowardEnemy" method="_on_path_updater_timeout"]
+[connection signal="timeout" from="StateMachine/Attack/attackTimer" to="StateMachine/Attack" method="_on_wait_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Wait/WaitTimer" to="StateMachine/Wait" method="_on_wait_timer_timeout"]
 [connection signal="timeout" from="makePathTimer" to="." method="_on_make_path_timer_timeout"]

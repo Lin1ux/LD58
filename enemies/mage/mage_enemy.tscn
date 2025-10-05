@@ -1,0 +1,238 @@
+[gd_scene load_steps=33 format=3 uid="uid://bovsbdxya144l"]
+
+[ext_resource type="Script" uid="uid://c8inq07s68024" path="res://enemies/enemy.gd" id="1_ytdn6"]
+[ext_resource type="PackedScene" uid="uid://360smjum6bt5" path="res://projectile/areaInstances/area1.tscn" id="2_8ccc7"]
+[ext_resource type="Texture2D" uid="uid://cbcmc3giv70e5" path="res://enemies/mage/magic.enemy_anim_front.png" id="3_eegg0"]
+[ext_resource type="Script" uid="uid://bi0128a43c3jb" path="res://resources/enemy_stats.gd" id="3_hu4r1"]
+[ext_resource type="Texture2D" uid="uid://cpcghwd47hpu1" path="res://enemies/mage/magic.enemy_anim_side.png" id="4_8ccc7"]
+[ext_resource type="Texture2D" uid="uid://xnnfndh5630g" path="res://enemies/mage/magic.enemy_anim_back.png" id="5_hu4r1"]
+[ext_resource type="Script" uid="uid://bu52csc8672sl" path="res://components/health/health.gd" id="7_cxq7f"]
+[ext_resource type="Script" uid="uid://b0q26mmn2phr" path="res://components/health/block.gd" id="8_h0tcu"]
+[ext_resource type="Script" uid="uid://bq6sj0hlxjpsc" path="res://components/areaSpawner/area_spawner.gd" id="9_8ccc7"]
+[ext_resource type="Script" uid="uid://dex36sgb78kcq" path="res://stateMachine/state_machine.gd" id="10_5wtav"]
+[ext_resource type="Script" uid="uid://dom1sktirierh" path="res://enemies/basic_range/range_patrol.gd" id="11_m1wg7"]
+[ext_resource type="Script" uid="uid://c6u5f62o1dh21" path="res://enemies/mage/shoot.gd" id="12_8ccc7"]
+
+[sub_resource type="Resource" id="Resource_kbtti"]
+script = ExtResource("3_hu4r1")
+can_flip_sprite = true
+hp = 5
+speed = 100.0
+dmg = 10
+attack_pattern = ExtResource("2_8ccc7")
+metadata/_custom_type_script = "uid://bi0128a43c3jb"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kbtti"]
+atlas = ExtResource("3_eegg0")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y8ats"]
+atlas = ExtResource("5_hu4r1")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ffmpu"]
+atlas = ExtResource("5_hu4r1")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_psvrn"]
+atlas = ExtResource("5_hu4r1")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qyts0"]
+atlas = ExtResource("5_hu4r1")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7bvml"]
+atlas = ExtResource("5_hu4r1")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6xofh"]
+atlas = ExtResource("4_8ccc7")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ss58i"]
+atlas = ExtResource("4_8ccc7")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fo5q7"]
+atlas = ExtResource("4_8ccc7")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xbhb6"]
+atlas = ExtResource("4_8ccc7")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q0rm5"]
+atlas = ExtResource("4_8ccc7")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n2lxx"]
+atlas = ExtResource("3_eegg0")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jqrn0"]
+atlas = ExtResource("3_eegg0")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h0ni0"]
+atlas = ExtResource("3_eegg0")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cw6ya"]
+atlas = ExtResource("3_eegg0")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ru8cd"]
+atlas = ExtResource("3_eegg0")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8jotg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kbtti")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y8ats")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ffmpu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_psvrn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qyts0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7bvml")
+}],
+"loop": true,
+"name": &"walk_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6xofh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ss58i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fo5q7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xbhb6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q0rm5")
+}],
+"loop": true,
+"name": &"walk_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n2lxx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jqrn0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h0ni0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cw6ya")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ru8cd")
+}],
+"loop": true,
+"name": &"walk_up",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r34rm"]
+size = Vector2(18, 45)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_334mp"]
+radius = 529.3411
+
+[node name="MageEnemy" type="CharacterBody2D" node_paths=PackedStringArray("hp", "nav_agent", "animSprite", "attack_component")]
+collision_layer = 4
+collision_mask = 4
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_ytdn6")
+stats = SubResource("Resource_kbtti")
+hp = NodePath("HpComponent/Health")
+nav_agent = NodePath("NavigationAgent2D")
+animSprite = NodePath("AnimatedSprite2D")
+attack_component = NodePath("AreaSpawnerComponent")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8jotg")
+animation = &"walk_down"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 4.5)
+shape = SubResource("RectangleShape2D_r34rm")
+
+[node name="HpComponent" type="Node2D" parent="."]
+
+[node name="Health" type="Node" parent="HpComponent"]
+script = ExtResource("7_cxq7f")
+
+[node name="Block" type="Node" parent="HpComponent" node_paths=PackedStringArray("base_health")]
+script = ExtResource("8_h0tcu")
+base_health = NodePath("../Health")
+
+[node name="AreaSpawnerComponent" type="Node2D" parent="." node_paths=PackedStringArray("enemy")]
+script = ExtResource("9_8ccc7")
+enemy = NodePath("..")
+
+[node name="Enemy_view_Range" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy_view_Range"]
+shape = SubResource("CircleShape2D_334mp")
+debug_color = Color(0.36078432, 0.5803922, 0.5803922, 0.12941177)
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("start_state")]
+script = ExtResource("10_5wtav")
+start_state = NodePath("RangePatrol")
+
+[node name="RangePatrol" type="Node" parent="StateMachine" node_paths=PackedStringArray("timer", "enemy")]
+script = ExtResource("11_m1wg7")
+timer = NodePath("ReloadTimer")
+enemy = NodePath("../..")
+
+[node name="ReloadTimer" type="Timer" parent="StateMachine/RangePatrol"]
+autostart = true
+
+[node name="Shoot" type="Node" parent="StateMachine" node_paths=PackedStringArray("timer", "enemy")]
+script = ExtResource("12_8ccc7")
+timer = NodePath("ShootDuration")
+enemy = NodePath("../..")
+
+[node name="ShootDuration" type="Timer" parent="StateMachine/Shoot"]
+wait_time = 0.5
+autostart = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+
+[node name="makePathTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="body_entered" from="Enemy_view_Range" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Enemy_view_Range" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="StateMachine/RangePatrol/ReloadTimer" to="StateMachine/RangePatrol" method="_on_reload_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Shoot/ShootDuration" to="StateMachine/Shoot" method="_on_shoot_duration_timeout"]
+[connection signal="timeout" from="makePathTimer" to="." method="_on_make_path_timer_timeout"]

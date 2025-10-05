@@ -14,6 +14,8 @@ func fixed_update():
 	enemy.move()
 	if !enemy.player_in_range:
 		state_machine.change_state_str("Patrol")	
+	if enemy.global_position.distance_to(GameInfo.player.global_position ) < enemy.stats.melee_attack_range:
+		state_machine.change_state_str("Attack")	
 	
 func exit() -> void:
 	timer.stop()

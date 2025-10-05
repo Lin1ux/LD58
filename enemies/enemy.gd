@@ -7,7 +7,7 @@ extends CharacterBody2D
 @export var hp : Health
 @export var nav_agent : NavigationAgent2D
 @export var animSprite : AnimatedSprite2D
-@export var projectile_component : Enemy_Projectile_Spawner
+@export var attack_component : Node2D
 @export_group("From Globals")
 @export var player : CharacterBody2D
 @export var nav_region : NavigationRegion2D
@@ -41,18 +41,31 @@ func heal(value : int):
 	
 func play_animation_based_on_direction(dir : Vector2):
 	if animSprite != null:
+		animSprite.scale.x = 1
 		match Direction.get_direction(dir):
 			Direction.Dir.UP: 
 				animSprite.play("walk_up")
 			Direction.Dir.DOWN: 
 				animSprite.play("walk_down")
 			Direction.Dir.LEFT: 
-				animSprite.play("walk_left")
+				if stats.can_flip_sprite:
+					animSprite.play("walk_right")
+					animSprite.scale.x = -1
+				else:
+					animSprite.play("walk_left")
 			Direction.Dir.RIGHT: 
 				animSprite.play("walk_right")
 				
 func attack():
-	projectile_component.spawn_projectile(stats.attack_pattern)
+	if attack_component is Enemy_Projectile_Spawner:
+		attack_component.spawn_projectile(stats.attack_pattern)
+		return
+	if attack_component is MeleeAtacker:
+		attack_component.attack()
+		return
+	if attack_component is Enemy_Area_Spawner:
+		attack_component.spawn_area(stats.attack_pattern)
+		return
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	player_in_range = true

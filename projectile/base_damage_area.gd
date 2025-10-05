@@ -1,0 +1,16 @@
+class_name DamageArea
+extends Node
+
+@export var damage: int
+@export var area : Area2D
+	
+func deal_damage():
+	for i in area.get_overlapping_areas():
+		print("hit",i.name)
+
+func _on_attack_damage_timeout() -> void:
+	deal_damage()
+
+
+func _on_destroy_timer_timeout() -> void:
+	self.queue_free()

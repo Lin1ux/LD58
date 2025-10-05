@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://360smjum6bt5"]
+
+[ext_resource type="Script" uid="uid://dm048x8a7tsa5" path="res://projectile/base_damage_area.gd" id="1_kw0yr"]
+[ext_resource type="Texture2D" uid="uid://4xv7ag7w05ot" path="res://icon.svg" id="2_fh76k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v27e3"]
+size = Vector2(48, 48)
+
+[node name="AreaDamage" type="Node2D" node_paths=PackedStringArray("area")]
+script = ExtResource("1_kw0yr")
+area = NodePath("Area2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(1, 0, 0, 1)
+scale = Vector2(0.453125, 0.453125)
+texture = ExtResource("2_fh76k")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_v27e3")
+debug_color = Color(0.84705883, 0, 0.27450982, 0.41960785)
+
+[node name="AttackDamage" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="DestroyTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="AttackDamage" to="." method="_on_attack_damage_timeout"]
+[connection signal="timeout" from="DestroyTimer" to="." method="_on_destroy_timer_timeout"]

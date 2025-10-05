@@ -1,13 +1,13 @@
 [gd_scene load_steps=28 format=3 uid="uid://8wh3usm52nkl"]
 
-[ext_resource type="Script" uid="uid://c64x6b7ocwvt3" path="res://Player/player_movement.gd" id="1_4ntmi"]
-[ext_resource type="Script" uid="uid://c81ivxele714x" path="res://Player/projectile_shooter.gd" id="3_btcbx"]
-[ext_resource type="Script" uid="uid://d2pb7yrfgwgmm" path="res://Player/melee_attacker.gd" id="4_fhl08"]
+[ext_resource type="Script" uid="uid://c64x6b7ocwvt3" path="res://player/player_movement.gd" id="1_4ntmi"]
+[ext_resource type="Script" uid="uid://c81ivxele714x" path="res://player/projectile_shooter.gd" id="3_btcbx"]
+[ext_resource type="Script" uid="uid://d2pb7yrfgwgmm" path="res://player/melee_attacker.gd" id="4_fhl08"]
 [ext_resource type="PackedScene" uid="uid://c0fui50daxc8i" path="res://backpack/item/item.tscn" id="4_gwnis"]
-[ext_resource type="Texture2D" uid="uid://3ecoqirpae5k" path="res://Player/goblin_anim_front.png" id="5_fhl08"]
-[ext_resource type="Script" path="res://Player/player_input.gd" id="5_k53q1"]
-[ext_resource type="Texture2D" uid="uid://6ag3ntqgwpe4" path="res://Player/goblin_anim_side.png" id="7_od3ui"]
-[ext_resource type="Texture2D" uid="uid://dei2v408cknuj" path="res://Player/goblin_anim_back.png" id="8_00tjw"]
+[ext_resource type="Texture2D" uid="uid://3ecoqirpae5k" path="res://player/goblin_anim_front.png" id="5_fhl08"]
+[ext_resource type="Script" uid="uid://c5ixe36f56j44" path="res://player/player_input.gd" id="5_k53q1"]
+[ext_resource type="Texture2D" uid="uid://6ag3ntqgwpe4" path="res://player/goblin_anim_side.png" id="7_od3ui"]
+[ext_resource type="Texture2D" uid="uid://dei2v408cknuj" path="res://player/goblin_anim_back.png" id="8_00tjw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x02iy"]
 size = Vector2(64, 64)

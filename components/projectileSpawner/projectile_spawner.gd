@@ -2,7 +2,6 @@ class_name Enemy_Projectile_Spawner
 extends Node2D
 
 @export var enemy : Enemy
-#@export var projectile : PackedScene
 @export var dmg : int
 @export var speed : float = 400
 	
@@ -20,7 +19,6 @@ func spawn_projectile(attack_pattern : PackedScene):
 		print("pattern is null")
 		return
 	Holder.add_child(projectile)
-	#var direction = (get_global_mouse_position() - global_position).normalized()
 	var direction = enemy.global_position.direction_to(GameInfo.player.global_position)
 	projectile.global_position = global_position
 	projectile.damage = dmg
