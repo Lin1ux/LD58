@@ -1,15 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://b4gniww5q5cv8"]
+[gd_scene load_steps=7 format=4 uid="uid://b4gniww5q5cv8"]
 
 [ext_resource type="PackedScene" uid="uid://c5a1fxy00wvl8" path="res://chunk_manager/level_chunk.tscn" id="1_ewlcr"]
 [ext_resource type="PackedScene" uid="uid://b620rq506fm21" path="res://chunk_manager/level_chunk_link.tscn" id="2_kj3pc"]
 [ext_resource type="PackedScene" uid="uid://dej585mgualc8" path="res://Enemies/basic_melee/melee_enemy.tscn" id="3_5tbng"]
 [ext_resource type="Script" uid="uid://4l8y8a3r3bre" path="res://chunk_manager/chunks/enemy_box.gd" id="3_kj3pc"]
-[ext_resource type="PackedScene" uid="uid://c5q5wka43oyos" path="res://enemies/basic_range/range_enemy.tscn" id="4_5tbng"]
+[ext_resource type="PackedScene" uid="uid://c5q5wka43oyos" path="res://Enemies/basic_range/range_enemy.tscn" id="4_5tbng"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_hiwo2"]
-vertices = PackedVector2Array(574.03125, 290.09375, -608.1875, 301.89844, -620.78906, -336, 575.96094, -336.9922)
+vertices = PackedVector2Array(502, 222, -534, 222, -534, -238, 502, -238)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-631, -346, 586, -347, 584, 300, -618, 312)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-544, -248, 512, -248, 512, 232, -544, 232)])
 
 [node name="LevelChunk" node_paths=PackedStringArray("link_left", "link_right", "link_up", "link_down") instance=ExtResource("1_ewlcr")]
 link_left = NodePath("LevelChunkLink3")
@@ -18,19 +18,22 @@ link_up = NodePath("LevelChunkLink")
 link_down = NodePath("LevelChunkLink2")
 
 [node name="LevelChunkLink" parent="." index="2" instance=ExtResource("2_kj3pc")]
-position = Vector2(640, 0)
+position = Vector2(641, 32)
 
 [node name="LevelChunkLink2" parent="." index="3" instance=ExtResource("2_kj3pc")]
-position = Vector2(640, 720)
+position = Vector2(641, 672)
+rotation = 3.1415927
 
 [node name="LevelChunkLink3" parent="." index="4" instance=ExtResource("2_kj3pc")]
-position = Vector2(0, 360)
+position = Vector2(32, 385)
+rotation = -1.5707964
 
 [node name="LevelChunkLink4" parent="." index="5" instance=ExtResource("2_kj3pc")]
-position = Vector2(1280, 360)
+position = Vector2(1248, 384)
+rotation = 1.5707964
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." index="6" groups=["NavRegion"]]
-position = Vector2(671, 385)
+position = Vector2(656, 368)
 navigation_polygon = SubResource("NavigationPolygon_hiwo2")
 
 [node name="EnemyBox" type="Node2D" parent="." index="7" node_paths=PackedStringArray("nav_region")]
@@ -43,3 +46,6 @@ position = Vector2(-308, 49)
 
 [node name="MeleeEnemy" parent="EnemyBox" index="1" instance=ExtResource("3_5tbng")]
 position = Vector2(346, 112)
+
+[node name="TileMapLayer" parent="." index="8"]
+tile_map_data = PackedByteArray("AAD/////AAABAAAAAAD//wAAAAABAAAAAAD//wEAAAABAAAAAAD//wIAAAABAAAAAAD//wMAAAABAAAAAAD//wQAAAABAAAAAAD//wUAAAABAAAAAAD//wYAAAABAAAAAAD//wcAAAABAAAAAAD//wgAAAABAAAAAAD//wkAAAABAAAAAAD//woAAAABAAAAAAD//wsAAAABAAAAAAAAAP//AAABAAAAAAAAAAAAAAABAAAAAAAAAAEAAAABAAAAAAAAAAIAAAABAAAAAAAAAAMAAAABAAAAAAAAAAQAAAABAAAAAAAAAAcAAAABAAAAAAAAAAgAAAABAAAAAAAAAAkAAAABAAAAAAAAAAoAAAABAAAAAAAAAAsAAAABAAAAAAABAP//AAABAAAAAAABAAAAAAABAAAAAAABAAoAAAABAAAAAAABAAsAAAABAAAAAAACAP//AAABAAAAAAACAAAAAAABAAAAAAACAAoAAAABAAAAAAACAAsAAAABAAAAAAADAP//AAABAAAAAAADAAAAAAABAAAAAAADAAoAAAABAAAAAAADAAsAAAABAAAAAAAEAP//AAABAAAAAAAEAAAAAAABAAAAAAAEAAoAAAABAAAAAAAEAAsAAAABAAAAAAAFAP//AAABAAAAAAAFAAAAAAABAAAAAAAFAAoAAAABAAAAAAAFAAsAAAABAAAAAAAGAP//AAABAAAAAAAGAAAAAAABAAAAAAAGAAoAAAABAAAAAAAGAAsAAAABAAAAAAAHAP//AAABAAAAAAAHAAAAAAABAAAAAAAHAAoAAAABAAAAAAAHAAsAAAABAAAAAAAIAP//AAABAAAAAAAIAAAAAAABAAAAAAAIAAoAAAABAAAAAAAIAAsAAAABAAAAAAAJAP//AAABAAAAAAAJAAsAAAABAAAAAAAKAP//AAABAAAAAAAKAAsAAAABAAAAAAALAP//AAABAAAAAAALAAAAAAABAAAAAAALAAoAAAABAAAAAAALAAsAAAABAAAAAAAMAP//AAABAAAAAAAMAAAAAAABAAAAAAAMAAoAAAABAAAAAAAMAAsAAAABAAAAAAANAP//AAABAAAAAAANAAAAAAABAAAAAAANAAoAAAABAAAAAAANAAsAAAABAAAAAAAOAP//AAABAAAAAAAOAAAAAAABAAAAAAAOAAoAAAABAAAAAAAOAAsAAAABAAAAAAAPAP//AAABAAAAAAAPAAAAAAABAAAAAAAPAAoAAAABAAAAAAAPAAsAAAABAAAAAAAQAP//AAABAAAAAAAQAAAAAAABAAAAAAAQAAoAAAABAAAAAAAQAAsAAAABAAAAAAARAP//AAABAAAAAAARAAAAAAABAAAAAAARAAoAAAABAAAAAAARAAsAAAABAAAAAAASAP//AAABAAAAAAASAAAAAAABAAAAAAASAAoAAAABAAAAAAASAAsAAAABAAAAAAATAP//AAABAAAAAAATAAAAAAABAAAAAAATAAEAAAABAAAAAAATAAIAAAABAAAAAAATAAMAAAABAAAAAAATAAQAAAABAAAAAAATAAcAAAABAAAAAAATAAgAAAABAAAAAAATAAkAAAABAAAAAAATAAoAAAABAAAAAAATAAsAAAABAAAAAAAUAP//AAABAAAAAAAUAAAAAAABAAAAAAAUAAEAAAABAAAAAAAUAAIAAAABAAAAAAAUAAMAAAABAAAAAAAUAAQAAAABAAAAAAAUAAUAAAABAAAAAAAUAAYAAAABAAAAAAAUAAcAAAABAAAAAAAUAAgAAAABAAAAAAAUAAkAAAABAAAAAAAUAAoAAAABAAAAAAAUAAsAAAABAAAAAAA=")

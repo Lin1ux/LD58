@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://4xv7ag7w05ot" path="res://icon.svg" id="2_lwilj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qfrgv"]
-size = Vector2(64, 64)
+size = Vector2(128, 64)
 
 [node name="LevelChunkLink" type="Node2D"]
 script = ExtResource("1_0msia")
@@ -16,7 +16,7 @@ shape = SubResource("RectangleShape2D_qfrgv")
 
 [node name="Icon" type="Sprite2D" parent="."]
 position = Vector2(-7.1525574e-07, -3.5762787e-06)
-scale = Vector2(0.5, 0.5)
+scale = Vector2(1, 0.5)
 texture = ExtResource("2_lwilj")
 
 [node name="Timer" type="Timer" parent="."]
