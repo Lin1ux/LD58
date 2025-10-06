@@ -99,6 +99,7 @@ func play_animation_based_on_direction():
 
 func kill_player():
 	print("Player Killed")
+	get_tree().change_scene_to_file("res://Scene/end.tscn")
 
 func hp_changed(percantege : float):
 	GlobalSignals.player_amount_hp.emit(percantege)

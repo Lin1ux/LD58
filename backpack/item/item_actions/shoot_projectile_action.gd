@@ -18,3 +18,4 @@ func execute(params : CastParams):
 		shooter = GameInfo.player.get_node("ProjectileShooter")
 
 	shooter.shoot_projectile_straight(params.projectile)
+	params.projectile = null
