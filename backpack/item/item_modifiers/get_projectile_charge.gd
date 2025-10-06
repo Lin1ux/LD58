@@ -3,7 +3,7 @@ class_name GetProjectileWithCharge
 
 @export var charges_count : int = 1
 var chargres_left =1
-@export var projectile : BaseProjectile
+@export var projectile : PackedScene
 
 func reset():
 	chargres_left = charges_count
@@ -15,4 +15,4 @@ func execute(params : CastParams):
 		return
 
 	chargres_left-=1
-	params.projectile = projectile
+	params.projectile = projectile.instantiate()

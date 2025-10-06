@@ -6,6 +6,7 @@ class_name Backpack
 @onready var texture_rect: TextureRect = $GridContainer/TextureRect
 
 const ITEM = preload("res://backpack/item/instances/bow2.tscn")
+const arrow = preload("res://backpack/item/instances/arrow_baisic.tscn")
 
 
 
@@ -17,14 +18,18 @@ func _input(event: InputEvent) -> void:
 		return
 
 	if event is InputEventMouseButton:
-		if event.button_index == 1 and event.is_pressed():
+		if event.button_index == 1 and event.pressed:
 			if curently_held == null:
+
 				curently_held = ITEM.instantiate()
 				add_child(curently_held)
 			else:
 
 				place_item()
 
+		if event.button_index == 3 and event.pressed:
+			curently_held = arrow.instantiate()
+			add_child(curently_held)
 
 		if event.button_index == 2 and event.is_pressed():
 
@@ -147,6 +152,3 @@ func _draw() -> void:
 
 				var rect = Rect2((previev.placement + x) * GameInfo.backpack_cell_size,Vector2(20,20))
 				draw_rect(rect,Color.YELLOW)
-			for x : Item in previev.get_starred_items():
-				if x:
-					print(x.item_name,x.name," " ,previev.get_starred_items())

@@ -1,15 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://btjkp243ed0iu"]
+[gd_scene load_steps=6 format=3 uid="uid://btjkp243ed0iu"]
 
 [ext_resource type="Script" uid="uid://cmnh30wxxmcx4" path="res://backpack/item/item.gd" id="1_hoxc4"]
 [ext_resource type="PackedScene" uid="uid://fh5hn81k1hxo" path="res://projectile/instances/projectile1.tscn" id="2_i8e60"]
 [ext_resource type="Script" uid="uid://c68p6nb8dqr14" path="res://backpack/item/item_effect.gd" id="3_kabha"]
-[ext_resource type="Script" uid="uid://b8tubi8yk7j5e" path="res://backpack/item/item_actions/item_action.gd" id="4_imrvb"]
-[ext_resource type="Script" uid="uid://d1tfkk6affdod" path="res://backpack/item/item_actions/shoot_projectile_action.gd" id="5_2h08f"]
+[ext_resource type="Script" uid="uid://ds6j88erxdmgx" path="res://backpack/item/item_modifiers/get_projectile_charge.gd" id="5_6xyur"]
 [ext_resource type="Texture2D" uid="uid://ba556g4ksvn13" path="res://backpack/item/item_sprites/arrow_basic.png" id="6_abwuu"]
-
-[sub_resource type="Resource" id="Resource_ypcxp"]
-script = ExtResource("5_2h08f")
-metadata/_custom_type_script = "uid://d1tfkk6affdod"
 
 [node name="Item" type="Control"]
 layout_mode = 3
@@ -31,5 +26,9 @@ texture = ExtResource("6_abwuu")
 
 [node name="combat_start" type="Node" parent="."]
 script = ExtResource("3_kabha")
-effects = Array[ExtResource("4_imrvb")]([SubResource("Resource_ypcxp")])
 metadata/_custom_type_script = "uid://c68p6nb8dqr14"
+
+[node name="get_charge" type="Node" parent="."]
+script = ExtResource("5_6xyur")
+projectile = ExtResource("2_i8e60")
+metadata/_custom_type_script = "uid://ds6j88erxdmgx"
