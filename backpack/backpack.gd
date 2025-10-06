@@ -89,6 +89,8 @@ func pick_up_item():
 	if check_bounds(coords):
 		var previev :Item= items[coords.y][coords.x]
 
+		if previev == null:
+			return
 		curently_held = previev
 
 		for p in curently_held.get_rotated_ocupations():
