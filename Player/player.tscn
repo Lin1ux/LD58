@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://8wh3usm52nkl"]
+[gd_scene load_steps=83 format=3 uid="uid://8wh3usm52nkl"]
 
 [ext_resource type="Script" uid="uid://c64x6b7ocwvt3" path="res://Player/player_movement.gd" id="1_4ntmi"]
 [ext_resource type="Script" uid="uid://dbydmy6pl4uy4" path="res://components/health/hp_component.gd" id="3_apopc"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://c5ixe36f56j44" path="res://Player/player_input.gd" id="5_k53q1"]
 [ext_resource type="Texture2D" uid="uid://6ag3ntqgwpe4" path="res://Player/goblin_anim_side.png" id="7_od3ui"]
 [ext_resource type="Texture2D" uid="uid://dei2v408cknuj" path="res://Player/goblin_anim_back.png" id="8_00tjw"]
+[ext_resource type="Texture2D" uid="uid://3dx8ok6ayujc" path="res://Enemies/basic_melee/slash_anim.png" id="8_b1ygp"]
 [ext_resource type="Texture2D" uid="uid://dxswbfrgo7q47" path="res://Player/goblin_anim_negative_front.png" id="12_o28un"]
 [ext_resource type="Texture2D" uid="uid://cvlqe3tnv2kcv" path="res://Player/goblin_anim_negative_side.png" id="13_n471f"]
 [ext_resource type="Texture2D" uid="uid://dmlhwdp0j5go6" path="res://Player/goblin_anim_negative_back.png" id="14_7emwf"]
@@ -25,6 +26,89 @@ size = Vector2(64, 64)
 size = Vector2(19, 33)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fhl08"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gpjlu"]
+atlas = ExtResource("8_b1ygp")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8mwp6"]
+atlas = ExtResource("8_b1ygp")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7v2uk"]
+atlas = ExtResource("8_b1ygp")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m6nl3"]
+atlas = ExtResource("8_b1ygp")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8hx1r"]
+atlas = ExtResource("8_b1ygp")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qas3k"]
+atlas = ExtResource("8_b1ygp")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ntwt4"]
+atlas = ExtResource("8_b1ygp")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kdg72"]
+atlas = ExtResource("8_b1ygp")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qpoj2"]
+atlas = ExtResource("8_b1ygp")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3e3ym"]
+atlas = ExtResource("8_b1ygp")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3e3ym"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gpjlu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8mwp6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7v2uk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m6nl3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8hx1r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qas3k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ntwt4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kdg72")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qpoj2")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 60.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3e3ym")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5htga"]
 atlas = ExtResource("5_fhl08")
@@ -484,6 +568,14 @@ collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MeleeAttacker/attack_area"]
 shape = SubResource("RectangleShape2D_fhl08")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MeleeAttacker/attack_area"]
+z_index = 1
+position = Vector2(22, 0)
+scale = Vector2(-1, 1)
+sprite_frames = SubResource("SpriteFrames_3e3ym")
+animation = &"idle"
+autoplay = "idle"
 
 [node name="Input" type="Node" parent="."]
 unique_name_in_owner = true

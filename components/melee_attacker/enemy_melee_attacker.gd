@@ -14,3 +14,4 @@ func attack(size : Vector2 = Vector2.ONE * 200, callback : Callable = func x() :
 		if hp_component != null:
 			hp_component.health.decrease_hp(enemy.stats.dmg)
 		#print("hitting ", x.name)
+		
