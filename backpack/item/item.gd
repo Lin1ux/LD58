@@ -117,18 +117,18 @@ func _process(_delta: float) -> void:
 		max_x = max(max_x, space.x + 1)
 		max_y = max(max_y, space.y + 1)
 
-	$TextureRect.position.x = min_x * 64
-	$TextureRect.position.y = min_y * 64
-	$TextureRect.size.x = (max_x - min_x) * 64
-	$TextureRect.size.y = (max_y - min_y) * 64
+	$TextureRect.position.x = min_x * GameInfo.backpack_cell_size
+	$TextureRect.position.y = min_y * GameInfo.backpack_cell_size
+	$TextureRect.size.x = (max_x - min_x) * GameInfo.backpack_cell_size
+	$TextureRect.size.y = (max_y - min_y) * GameInfo.backpack_cell_size
 
 	$TextureRect.rotation = PI/2 * orientation
 	if orientation == 1:
-		$TextureRect.position.x += 64
+		$TextureRect.position.x += GameInfo.backpack_cell_size
 	if orientation == 2:
-		$TextureRect.position.x += 64
-		$TextureRect.position.y += 64
+		$TextureRect.position.x += GameInfo.backpack_cell_size
+		$TextureRect.position.y += GameInfo.backpack_cell_size
 	if orientation == 3:
-		$TextureRect.position.y += 64
+		$TextureRect.position.y += GameInfo.backpack_cell_size
 
 	print($TextureRect.position, $TextureRect.size)
