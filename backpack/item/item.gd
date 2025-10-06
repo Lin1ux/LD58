@@ -2,6 +2,7 @@ extends Control
 class_name Item
 
 #region przestrzen igora
+@export var item_name : String =""
 
 @export var spaces_taken: Array[Vector2i]
 @export var spaces_starred: Array[Vector2i]
@@ -72,7 +73,13 @@ func get_starred_items() ->Array[Item]:
 
 	for star_pos in get_rotated_stars():
 		var vec = placement + star_pos
-		items.push_back(backpack[vec.y][vec.x])
+		var item = backpack.items[vec.y][vec.x]
+		if item == null:
+			continue
+		if item  in items:
+			continue
+
+		items.push_back(item)
 
 	return items
 
