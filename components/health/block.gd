@@ -8,11 +8,9 @@ func init(start_hp : int) -> void:
 
 func increase_hp(value : int):
 	base_health.increase_hp(value)
-		
+
 func decrease_hp(value : int):
 	value -= block
 	if value < 0:
 		return
 	base_health.decrease_hp(value)
-	
-	
