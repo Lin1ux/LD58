@@ -6,7 +6,7 @@ class_name Item
 @export var spaces_taken: Array[Vector2i]
 @export var spaces_starred: Array[Vector2i]
 
-
+var color
 
 var orientation : int = 0 :
 	set(value):
@@ -34,7 +34,7 @@ func rotate():
 func _draw() -> void:
 	for vec in spaces_taken:
 		var rect := Rect2(rotate_vector(vec) * GameInfo.backpack_cell_size,Vector2(GameInfo.backpack_cell_size,GameInfo.backpack_cell_size))
-		draw_rect(rect,Color.GREEN)
+		draw_rect(rect,color)
 
 @export var proj : PackedScene
 var placement : Vector2i
@@ -65,6 +65,19 @@ func get_rotated_stars()->Array[Vector2i]:
 	return arr
 
 
+func get_starred_items() ->Array[Item]:
+	var items :Array[Item] = []
+
+	var backpack := GameInfo.backpack
+
+	for star_pos in get_rotated_stars():
+		var vec = placement + star_pos
+		items.push_back(backpack[vec.y][vec.x])
+
+	return items
+
+
+
 func do() -> void:
 	var x : ItemEffect= get_node("combat_start") as ItemEffect
 	var params : CastParams = CastParams.new()
@@ -73,3 +86,6 @@ func do() -> void:
 
 
 	x.execute(params)
+
+func _ready():
+	color = Color(randf_range(0,1),randf_range(0,1),randf_range(0,1))

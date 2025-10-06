@@ -1,9 +1,10 @@
 extends Control
+class_name Backpack
 
 @export var backpack_size : Vector2i
 @onready var grid_container: GridContainer = $GridContainer
 @onready var texture_rect: TextureRect = $GridContainer/TextureRect
-const ITEM = preload("uid://c0fui50daxc8i")
+const ITEM = preload("res://backpack/item/instances/bow2.tscn")
 
 
 
@@ -45,7 +46,6 @@ func place_item():
 
 		items[pom.y][pom.x] = curently_held
 		curently_held.position = coords * GameInfo.backpack_cell_size
-		curently_held.visible = false
 		curently_held.placement = coords
 	curently_held = null
 
@@ -84,9 +84,6 @@ func _process(delta: float) -> void:
 	if curently_held:
 		curently_held.position = get_global_mouse_position()
 		curently_held.queue_redraw()
-
-
-
 
 	queue_redraw()
 

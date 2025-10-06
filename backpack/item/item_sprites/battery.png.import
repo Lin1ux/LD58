@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ba556g4ksvn13"
-path="res://.godot/imported/arrow_basic.png-ddc255c871a1d584494edde535f66ecc.ctex"
+uid="uid://dh74b738aribi"
+path="res://.godot/imported/battery.png-c8669eb7d9a5c18568980e277435c09c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://backpack/item/arrow_basic.png"
-dest_files=["res://.godot/imported/arrow_basic.png-ddc255c871a1d584494edde535f66ecc.ctex"]
+source_file="res://backpack/item/item_sprites/battery.png"
+dest_files=["res://.godot/imported/battery.png-c8669eb7d9a5c18568980e277435c09c.ctex"]
 
 [params]
 

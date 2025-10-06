@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1yam1te0xaal"
-path="res://.godot/imported/bow_wood.png-1f81ab1b1f157fa1451f1320bd9bdc54.ctex"
+uid="uid://b0iqprqxcthsq"
+path="res://.godot/imported/dyktafon.png-3372d6c48ef82668b8f57f5b9e9814d5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://backpack/item/bow_wood.png"
-dest_files=["res://.godot/imported/bow_wood.png-1f81ab1b1f157fa1451f1320bd9bdc54.ctex"]
+source_file="res://backpack/item/item_sprites/dyktafon.png"
+dest_files=["res://.godot/imported/dyktafon.png-3372d6c48ef82668b8f57f5b9e9814d5.ctex"]
 
 [params]
 

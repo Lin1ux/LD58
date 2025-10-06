@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bp7h2wfwrpe6f"
-path="res://.godot/imported/lighter.png-a24141a6684a0d6847911b74e18c41d3.ctex"
+uid="uid://bu4otvd7iadt4"
+path="res://.godot/imported/sword_metal.png-0ce244ba8aaf4bd082423c2e7f03b90d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://backpack/item/lighter.png"
-dest_files=["res://.godot/imported/lighter.png-a24141a6684a0d6847911b74e18c41d3.ctex"]
+source_file="res://backpack/item/item_sprites/sword_metal.png"
+dest_files=["res://.godot/imported/sword_metal.png-0ce244ba8aaf4bd082423c2e7f03b90d.ctex"]
 
 [params]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=33 format=3 uid="uid://8wh3usm52nkl"]
 
 [ext_resource type="Script" uid="uid://c64x6b7ocwvt3" path="res://Player/player_movement.gd" id="1_4ntmi"]
-[ext_resource type="Script" uid="uid://dbydmy6pl4uy4" path="res://components/health/hp_component.gd" id="3_apopc"]
+[ext_resource type="Script" path="res://components/health/hp_component.gd" id="3_apopc"]
 [ext_resource type="Script" uid="uid://c81ivxele714x" path="res://Player/projectile_shooter.gd" id="3_btcbx"]
 [ext_resource type="Script" uid="uid://bu52csc8672sl" path="res://components/health/health.gd" id="3_x3vf3"]
 [ext_resource type="Script" uid="uid://b0q26mmn2phr" path="res://components/health/block.gd" id="4_apopc"]

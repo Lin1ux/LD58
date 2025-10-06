@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvikwt64b24rn"
-path="res://.godot/imported/wybuchov.png-b8cf4ca6182b3e94b920d59094f32b3e.ctex"
+uid="uid://bgukxag38qitf"
+path="res://.godot/imported/arrow_bounce.png-96f0e311c7fd55c8fa753a36ccaec874.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://backpack/item/wybuchov.png"
-dest_files=["res://.godot/imported/wybuchov.png-b8cf4ca6182b3e94b920d59094f32b3e.ctex"]
+source_file="res://backpack/item/item_sprites/arrow_bounce.png"
+dest_files=["res://.godot/imported/arrow_bounce.png-96f0e311c7fd55c8fa753a36ccaec874.ctex"]
 
 [params]
 

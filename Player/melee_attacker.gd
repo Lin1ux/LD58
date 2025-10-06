@@ -6,7 +6,7 @@ class_name MelleAtacker
 
 
 
-func attack(size : Vector2 = Vector2.ONE * 200, callback : Callable = func x() : pass):
+func attack(size : Vector2 = Vector2.ONE * 200, callback : Callable = func x(hp : HpComponent) : pass):
 	collision_shape_2d.shape.size = size
 	attack_area.position.x = size.x/2
 	look_at(get_global_mouse_position())
