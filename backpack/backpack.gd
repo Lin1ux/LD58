@@ -6,6 +6,7 @@ class_name Backpack
 @onready var texture_rect: TextureRect = $GridContainer/TextureRect
 
 const ITEM = preload("res://backpack/item/instances/bow2.tscn")
+const arrow = preload("res://backpack/item/instances/arrow_baisic.tscn")
 
 
 
@@ -17,18 +18,25 @@ func _input(event: InputEvent) -> void:
 		return
 
 	if event is InputEventMouseButton:
-		if event.button_index == 1 and event.is_pressed():
+		if event.button_index == 1 and event.pressed:
 			if curently_held == null:
+
 				curently_held = ITEM.instantiate()
 				add_child(curently_held)
 			else:
 
 				place_item()
 
+		if event.button_index == 3 and event.pressed:
+			curently_held = arrow.instantiate()
+			add_child(curently_held)
 
 		if event.button_index == 2 and event.is_pressed():
+
 			if curently_held != null:
 				curently_held.orientation+=1
+			else:
+				pick_up_item()
 
 
 func place_item():
@@ -73,6 +81,21 @@ func check_bounds(vec : Vector2i)->bool:
 
 func check_is_free(vec: Vector2i)->bool:
 	return items[vec.y][vec.x]==null
+
+func pick_up_item():
+	var pos: Vector2i= get_local_mouse_position()
+	var coords: Vector2i= pos/ GameInfo.backpack_cell_size
+
+	if check_bounds(coords):
+		var previev :Item= items[coords.y][coords.x]
+
+		curently_held = previev
+
+		for p in curently_held.get_rotated_ocupations():
+			var vec = p + curently_held.placement
+			items[vec.y][vec.x] = null
+
+
 
 func _ready() -> void:
 	visible = false
@@ -129,6 +152,3 @@ func _draw() -> void:
 
 				var rect = Rect2((previev.placement + x) * GameInfo.backpack_cell_size,Vector2(20,20))
 				draw_rect(rect,Color.YELLOW)
-			for x : Item in previev.get_starred_items():
-				if x:
-					print(x.item_name,x.name," " ,previev.get_starred_items())

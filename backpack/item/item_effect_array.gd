@@ -6,5 +6,6 @@ class_name ItemEffectArray
 
 
 func execute(params : CastParams):
+	print("working")
 	for effect in effects:
 		effect.execute(params)
