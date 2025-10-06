@@ -12,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_1r6h2")
 item_name = "battery"
 spaces_taken = Array[Vector2i]([Vector2i(0, 0)])
@@ -21,7 +22,9 @@ proj = ExtResource("2_uiol1")
 layout_mode = 0
 offset_right = 64.0
 offset_bottom = 64.0
+mouse_filter = 2
 texture = ExtResource("3_dqykw")
+expand_mode = 1
 
 [node name="GetManaAndStats" type="Node" parent="."]
 script = ExtResource("4_4ngpq")
