@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c0fui50daxc8i"]
+[gd_scene load_steps=6 format=3 uid="uid://c0fui50daxc8i"]
 
 [ext_resource type="Script" uid="uid://cmnh30wxxmcx4" path="res://backpack/item/item.gd" id="1_fr52q"]
 [ext_resource type="Script" uid="uid://c68p6nb8dqr14" path="res://backpack/item/item_effect.gd" id="2_y5yfc"]
 [ext_resource type="PackedScene" uid="uid://fh5hn81k1hxo" path="res://projectile/instances/projectile1.tscn" id="2_ypcxp"]
+[ext_resource type="Texture2D" uid="uid://b58nce3j08dry" path="res://backpack/item/item_sprites/item_potion_health.png" id="5_ypcxp"]
 [ext_resource type="Script" uid="uid://ds6j88erxdmgx" path="res://backpack/item/item_modifiers/get_projectile_charge.gd" id="6_a54v2"]
 
 [node name="Item" type="Control"]
@@ -24,3 +25,11 @@ metadata/_custom_type_script = "uid://c68p6nb8dqr14"
 
 [node name="get_charge" type="Node" parent="."]
 script = ExtResource("6_a54v2")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+top_level = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_ypcxp")
+expand_mode = 1
