@@ -30,5 +30,6 @@ metadata/_custom_type_script = "uid://c68p6nb8dqr14"
 
 [node name="get_charge" type="Node" parent="."]
 script = ExtResource("5_6xyur")
+charges_count = 10
 projectile = ExtResource("2_i8e60")
 metadata/_custom_type_script = "uid://ds6j88erxdmgx"
