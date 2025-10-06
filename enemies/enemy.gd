@@ -18,6 +18,7 @@ var enemy_direction : int = Direction.Dir.DOWN
 func _ready():
 	nav_region = GameInfo.nav_region
 	hp.init(stats.hp)
+	hp.dead.connect(kill)
 	
 func move():
 	var dir = to_local(nav_agent.get_next_path_position()).normalized()
@@ -31,10 +32,10 @@ func make_path_to_player():
 func make_path_to_point(new_position :Vector2):
 	nav_agent.target_position = new_position
 
-func deal_damage(value : int):
-	hp.decrease_hp(value)
-	if hp.health < 0:
-		queue_free()
+#func deal_damage(value : int):
+#	hp.decrease_hp(value)
+#	if hp.health < 0:
+#		queue_free()
 	
 func heal(value : int):
 	hp.increase_hp(value)
@@ -66,6 +67,9 @@ func attack():
 	if attack_component is Enemy_Area_Spawner:
 		attack_component.spawn_area(stats.attack_pattern)
 		return
+		
+func kill():
+	queue_free()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	player_in_range = true

@@ -11,7 +11,7 @@ func init() -> void:
 	timer.set_paused(false)
 	if enemy.nav_region != null:
 		target_position = NavigationServer2D.region_get_random_point(enemy.nav_region.get_rid(), 1, false)
-		print(NavigationServer2D.region_get_random_point(enemy.nav_region.get_rid(), 1, false))
+		#print(NavigationServer2D.region_get_random_point(enemy.nav_region.get_rid(), 1, false))
 		enemy.make_path_to_point(target_position)
 	else:
 		target_position = Vector2.ZERO
@@ -23,7 +23,6 @@ func update():
 func fixed_update():
 	enemy.move()
 	if enemy.nav_agent.is_navigation_finished():
-		print("CHANGE")
 		state_machine.change_state_str("RangePatrol")
 	
 func exit() -> void:

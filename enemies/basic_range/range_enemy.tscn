@@ -1,14 +1,15 @@
-[gd_scene load_steps=37 format=3 uid="uid://c5q5wka43oyos"]
+[gd_scene load_steps=39 format=3 uid="uid://c5q5wka43oyos"]
 
 [ext_resource type="Script" uid="uid://c8inq07s68024" path="res://Enemies/enemy.gd" id="1_s413b"]
 [ext_resource type="Resource" uid="uid://byl3x28cedxxq" path="res://Enemies/basic_range/range_enemy.tres" id="2_xbok2"]
-[ext_resource type="Texture2D" uid="uid://dqx1gdagbw1rb" path="res://enemies/basic_range/archer_anim_front.png" id="3_003pf"]
+[ext_resource type="Texture2D" uid="uid://dqx1gdagbw1rb" path="res://Enemies/basic_range/archer_anim_front.png" id="3_003pf"]
 [ext_resource type="Script" uid="uid://bu52csc8672sl" path="res://components/health/health.gd" id="4_a6hem"]
-[ext_resource type="Texture2D" uid="uid://cc5fpl4e76ok7" path="res://enemies/basic_range/archer_anim_side1.png" id="4_bsi2c"]
+[ext_resource type="Texture2D" uid="uid://cc5fpl4e76ok7" path="res://Enemies/basic_range/archer_anim_side1.png" id="4_bsi2c"]
 [ext_resource type="Script" uid="uid://b0q26mmn2phr" path="res://components/health/block.gd" id="5_3er8p"]
-[ext_resource type="Texture2D" uid="uid://d1slgla5rorvp" path="res://enemies/basic_range/archer_anim_side2.png" id="5_srbp1"]
-[ext_resource type="Texture2D" uid="uid://p3g3vwbhe3de" path="res://enemies/basic_range/archer_anim_back.png" id="6_aeys3"]
+[ext_resource type="Texture2D" uid="uid://d1slgla5rorvp" path="res://Enemies/basic_range/archer_anim_side2.png" id="5_srbp1"]
+[ext_resource type="Texture2D" uid="uid://p3g3vwbhe3de" path="res://Enemies/basic_range/archer_anim_back.png" id="6_aeys3"]
 [ext_resource type="Script" uid="uid://dex36sgb78kcq" path="res://stateMachine/state_machine.gd" id="6_fcs4g"]
+[ext_resource type="Script" uid="uid://dbydmy6pl4uy4" path="res://components/health/hp_component.gd" id="7_83xyc"]
 [ext_resource type="Script" uid="uid://dom1sktirierh" path="res://Enemies/basic_range/range_patrol.gd" id="7_xbok2"]
 [ext_resource type="Script" uid="uid://dtdlervwpa8u" path="res://Enemies/basic_range/shoot.gd" id="8_xbok2"]
 [ext_resource type="Script" uid="uid://cyrdoid1g2jin" path="res://components/projectileSpawner/projectile_spawner.gd" id="9_bsi2c"]
@@ -191,6 +192,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r34rm"]
 size = Vector2(18, 45)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qrgfv"]
+size = Vector2(31, 45)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_334mp"]
 radius = 529.3411
 
@@ -201,7 +205,7 @@ motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_s413b")
 stats = ExtResource("2_xbok2")
-hp = NodePath("HpComponent/Health")
+hp = NodePath("HPController/Health")
 nav_agent = NodePath("NavigationAgent2D")
 animSprite = NodePath("AnimatedSprite2D")
 attack_component = NodePath("ProjectileComponent")
@@ -215,12 +219,21 @@ autoplay = "idle"
 position = Vector2(1, 4.5)
 shape = SubResource("RectangleShape2D_r34rm")
 
-[node name="HpComponent" type="Node2D" parent="."]
+[node name="HPController" type="Area2D" parent="." node_paths=PackedStringArray("health")]
+collision_layer = 16
+collision_mask = 16
+script = ExtResource("7_83xyc")
+health = NodePath("Health")
 
-[node name="Health" type="Node" parent="HpComponent"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HPController"]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_qrgfv")
+debug_color = Color(0.96862745, 0, 0, 0.41960785)
+
+[node name="Health" type="Node" parent="HPController"]
 script = ExtResource("4_a6hem")
 
-[node name="Block" type="Node" parent="HpComponent" node_paths=PackedStringArray("base_health")]
+[node name="Block" type="Node" parent="HPController" node_paths=PackedStringArray("base_health")]
 script = ExtResource("5_3er8p")
 base_health = NodePath("../Health")
 

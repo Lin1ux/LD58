@@ -1,6 +1,8 @@
 class_name Health
 extends Node
 
+signal dead
+
 var health : int
 var max_health : int
 
@@ -15,7 +17,9 @@ func increase_hp(value : int):
 		
 func decrease_hp(value : int):
 	health -= value
-	if health < 0:
+	if health <= 0:
 		health = 0
+		dead.emit()
+	print("Current Health =",health)
 		
 	

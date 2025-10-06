@@ -3,27 +3,35 @@ class_name Player
 
 var input_queue: Array[Direction.Dir] = []
 var _input_queue_first: Direction.Dir
+
 func input_queue_push(input: Direction.Dir) -> void:
 	if input_queue.has(input):
 		input_queue.erase(input)
 	input_queue.append(input)
+	
 func input_queue_erase(input: Direction.Dir) -> void:
 	if input_queue.has(input):
 		input_queue.erase(input)
+		
 func input_queue_first() -> Direction.Dir:
 	if input_queue.size() == 0:
 		return _input_queue_first
 	_input_queue_first = input_queue[0]
 	return _input_queue_first
 
+@export var start_HP = 10
 @export var SPEED : float = 300.0
 @export var ACCEL: float = 30
 @export var decel: float = 0.8
 @export var idle_threshold: float = 1
 @export var animSprite : AnimatedSprite2D
+@export var HP : Health
+
+func _ready():
+	HP.init(start_HP)
+	HP.dead.connect(kill_player)	
 
 func _physics_process(_delta: float) -> void:
-
 
 	var direction_x := Input.get_axis("move_left", "move_right")
 	var direction_y := Input.get_axis("move_up", "move_down")
@@ -86,3 +94,6 @@ func play_animation_based_on_direction():
 			Direction.Dir.RIGHT:
 				animSprite.play("walk_right")
 				animSprite.scale.x = 1
+	
+func kill_player():
+	print("Player Killed")

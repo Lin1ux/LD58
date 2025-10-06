@@ -16,5 +16,4 @@ func exit():
 	timer.set_paused(true)
 
 func _on_shoot_duration_timeout() -> void:
-	print("TIMER")
 	state_machine.change_state_str("RangePatrol")
