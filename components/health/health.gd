@@ -19,12 +19,12 @@ func increase_hp(value : int):
 	hp_changed.emit(health/max_health)
 		
 func decrease_hp(value : int):
+	print("DMG GET: ",value)
 	health -= value
 	damage_dealt.emit()
 	hp_changed.emit(health/max_health)
 	if health <= 0:
 		health = 0
 		dead.emit()
-	print("Current Health =",health)
 		
 	

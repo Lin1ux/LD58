@@ -1,6 +1,7 @@
 extends State
-#chujk
+
 @export var timer : Timer
+@export var attack_anim_sprite : AnimatedSprite2D
 
 func _ready() -> void:
 	super._ready()
@@ -10,8 +11,11 @@ func init():
 	timer.start()
 	if enemy.animSprite != null:
 		enemy.animSprite.play("idle")
+	if attack_anim_sprite != null:
+		attack_anim_sprite.play("attack")
 	
 func exit():
+	enemy.attack()
 	timer.stop()
 	
 

@@ -6,6 +6,6 @@
 script = ExtResource("1_240tk")
 hp = 10
 speed = 150.0
-dmg = 5
-melee_attack_range = 50.0
+dmg = 7
+melee_attack_range = 20.0
 metadata/_custom_type_script = "uid://bi0128a43c3jb"
