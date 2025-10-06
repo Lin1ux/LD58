@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://dej585mgualc8"]
+[gd_scene load_steps=57 format=3 uid="uid://dej585mgualc8"]
 
 [ext_resource type="Script" uid="uid://c8inq07s68024" path="res://Enemies/enemy.gd" id="1_qlm1k"]
 [ext_resource type="Resource" uid="uid://bpnoph6sj0nvd" path="res://Enemies/basic_melee/basic_enemy.tres" id="2_8j0x7"]
@@ -14,6 +14,8 @@
 [ext_resource type="Script" uid="uid://cqpkyp1jgr3ij" path="res://stateMachine/move_toward_enemy.gd" id="9_1dp4n"]
 [ext_resource type="Script" uid="uid://b871h5wng1qnw" path="res://components/melee_attacker/enemy_melee_attacker.gd" id="9_hgfw1"]
 [ext_resource type="Script" uid="uid://btygjhupogsbn" path="res://stateMachine/wait.gd" id="9_qf82m"]
+[ext_resource type="Texture2D" uid="uid://3dx8ok6ayujc" path="res://Enemies/basic_melee/slash_anim.png" id="11_1dua1"]
+[ext_resource type="Script" uid="uid://bghpnwaj8juqf" path="res://stateMachine/attack.gd" id="15_7rq43"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_osp0l"]
 atlas = ExtResource("3_qf82m")
@@ -198,6 +200,89 @@ size = Vector2(31, 45)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4smdr"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_7rq43"]
+atlas = ExtResource("11_1dua1")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_brrwx"]
+atlas = ExtResource("11_1dua1")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gjntj"]
+atlas = ExtResource("11_1dua1")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tyjfi"]
+atlas = ExtResource("11_1dua1")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cwscd"]
+atlas = ExtResource("11_1dua1")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aaeyw"]
+atlas = ExtResource("11_1dua1")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2jttu"]
+atlas = ExtResource("11_1dua1")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d7mf5"]
+atlas = ExtResource("11_1dua1")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4ful"]
+atlas = ExtResource("11_1dua1")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1dua1"]
+atlas = ExtResource("11_1dua1")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k2a88"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7rq43")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_brrwx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gjntj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tyjfi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cwscd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aaeyw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2jttu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d7mf5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t4ful")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1dua1")
+}],
+"loop": true,
+"name": &"start",
+"speed": 5.0
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_334mp"]
 radius = 373.01205
 
@@ -294,6 +379,15 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MeleeAttacker/attack_area"]
 shape = SubResource("RectangleShape2D_4smdr")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MeleeAttacker/attack_area"]
+z_index = 1
+position = Vector2(-10, 0)
+rotation = 3.1415927
+scale = Vector2(1, -1)
+sprite_frames = SubResource("SpriteFrames_k2a88")
+animation = &"attack"
+autoplay = "start"
+
 [node name="Enemy_view_Range" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy_view_Range"]
@@ -317,9 +411,10 @@ enemy = NodePath("../..")
 wait_time = 0.5
 autostart = true
 
-[node name="Attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("timer", "enemy")]
-script = ExtResource("9_qf82m")
+[node name="Attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("timer", "attack_anim_sprite", "enemy")]
+script = ExtResource("15_7rq43")
 timer = NodePath("attackTimer")
+attack_anim_sprite = NodePath("../../MeleeAttacker/attack_area/AnimatedSprite2D")
 enemy = NodePath("../..")
 
 [node name="attackTimer" type="Timer" parent="StateMachine/Attack"]
