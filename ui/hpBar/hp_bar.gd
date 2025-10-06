@@ -4,7 +4,7 @@ extends Control
 @export var hp_bar : ProgressBar
 @export var damage_bar : ProgressBar
 
-var hp
+var hp = 0
 
 func _ready():
 	GlobalSignals.player_get_damage.connect(update_hp_bar)
@@ -15,7 +15,6 @@ func _process(delta: float) -> void:
 		init_health(GameInfo.player.HP.health)
 
 func init_health(value : int):
-	print("zajebie sie",value)
 	hp = value
 	hp_bar.max_value = hp
 	hp_bar.min_value = 0

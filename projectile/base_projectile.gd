@@ -4,9 +4,11 @@ class_name BaseProjectile
 @export var direction: Vector2
 @export var damage: int
 @export var speed : float
+@export var sprite : Sprite2D
 
 func initiate_projectile(vec: Vector2) -> void:
 	direction = vec * speed
+	rotation = direction.angle() + deg_to_rad(-90)
 
 func _process(delta: float) -> void:
 	position += direction * delta
