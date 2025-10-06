@@ -285,8 +285,9 @@ animations = [{
 radius = 5.0
 height = 46.0
 
-[node name="AreaDamage" type="Node2D" node_paths=PackedStringArray("area", "anim_sprite")]
+[node name="Wybuchov" type="Node2D" node_paths=PackedStringArray("area", "anim_sprite")]
 script = ExtResource("1_py5co")
+damage = 1
 area = NodePath("Area2D")
 anim_sprite = NodePath("AnimatedSprite2D")
 
