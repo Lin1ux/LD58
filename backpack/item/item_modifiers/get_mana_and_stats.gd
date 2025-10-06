@@ -14,6 +14,9 @@ func execute(params : CastParams):
 	params.dmg += dmg_boost
 	params.scale += scale_boost
 
+	if params.required_mana <=0 :
+		return
+
 	if(mana_left <= 0):
 		return
 	if params.projectile != null:

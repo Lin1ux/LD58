@@ -24,7 +24,8 @@ func _input(event: InputEvent) -> void:
 
 
 		if event.button_index == 2 and event.is_pressed():
-			curently_held.orientation+=1
+			if curently_held != null:
+				curently_held.orientation+=1
 
 
 func place_item():

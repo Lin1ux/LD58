@@ -12,7 +12,8 @@ var attacker : AreaSpawner
 
 func execute(params : CastParams):
 
-
+	for stared_item in params.item.get_starred_items():
+		var getter = stared_item.get_node_or_null("mana") as GetManaAndStats
 
 	if attacker == null:
 		attacker = GameInfo.player.get_node("AreaSpawner")
