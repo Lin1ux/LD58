@@ -97,6 +97,10 @@ func pick_up_item():
 			items[vec.y][vec.x] = null
 
 func item_select(item: String) -> void:
+	if curently_held != null:
+		curently_held.queue_free()
+		curently_held = null
+
 	curently_held = item_instances[item].instantiate()
 	add_child(curently_held)
 

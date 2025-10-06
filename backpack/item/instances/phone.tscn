@@ -1,9 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bq75w8rcfp82b"]
+[gd_scene load_steps=5 format=3 uid="uid://b2c4liycxgj0l"]
 
 [ext_resource type="Script" uid="uid://cmnh30wxxmcx4" path="res://backpack/item/item.gd" id="1_gdf8v"]
 [ext_resource type="PackedScene" uid="uid://fh5hn81k1hxo" path="res://projectile/instances/projectile1.tscn" id="2_jn7e6"]
 [ext_resource type="Texture2D" uid="uid://dh74b738aribi" path="res://backpack/item/item_sprites/battery.png" id="3_gge5m"]
-[ext_resource type="Script" path="res://backpack/item/item_modifiers/get_mana_and_stats.gd" id="4_1enae"]
+[ext_resource type="Script" uid="uid://deatd4y67gq0u" path="res://backpack/item/item_modifiers/get_mana_and_stats.gd" id="4_1enae"]
 
 [node name="phone" type="Control"]
 layout_mode = 3
@@ -12,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_gdf8v")
 item_name = "Phone"
 spaces_taken = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 2), Vector2i(0, 3)])
@@ -23,6 +24,7 @@ layout_mode = 0
 offset_right = 64.0
 offset_bottom = 64.0
 scale = Vector2(1.5, 1.5)
+mouse_filter = 2
 texture = ExtResource("3_gge5m")
 
 [node name="GetManaAndStats" type="Node" parent="."]
