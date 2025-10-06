@@ -1,7 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://c7b5sxgwmd8uf"]
+[gd_scene load_steps=4 format=3 uid="uid://c7b5sxgwmd8uf"]
 
 [ext_resource type="Script" uid="uid://bqvs3mgpqq3ck" path="res://backpack/backpack.gd" id="1_w6inc"]
 [ext_resource type="Texture2D" uid="uid://bc66701pkkc71" path="res://tiles/backpack_tiles.png" id="2_8ycfh"]
+
+[sub_resource type="GDScript" id="GDScript_8ycfh"]
+script/source = "extends Button
+
+func _pressed() -> void:
+	Input.action_press(\"backpack\")
+	Input.action_release(\"backpack\")
+"
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
@@ -48,6 +56,11 @@ offset_top = 48.0
 offset_right = -38.0
 offset_bottom = 410.0
 grow_horizontal = 0
+
+[node name="Button" type="Button" parent="Backpack/VBoxContainer"]
+layout_mode = 2
+text = "Close Backpack"
+script = SubResource("GDScript_8ycfh")
 
 [node name="Clear" type="Button" parent="Backpack/VBoxContainer"]
 layout_mode = 2

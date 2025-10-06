@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cf4tw7btmygby"]
+[gd_scene load_steps=9 format=3 uid="uid://cf4tw7btmygby"]
 
 [ext_resource type="PackedScene" uid="uid://ctshvxrunbdbk" path="res://ui/hpBar/hp_bar.tscn" id="1_1xcnr"]
 [ext_resource type="PackedScene" uid="uid://btryo2klgv425" path="res://chunk_manager/chunk_manager.tscn" id="1_2wwxx"]
@@ -7,10 +7,43 @@
 [ext_resource type="PackedScene" uid="uid://8wh3usm52nkl" path="res://Player/player.tscn" id="2_sblpm"]
 [ext_resource type="Script" uid="uid://cgue1afyx57xx" path="res://Scene/camera_area.gd" id="4_2wwxx"]
 
+[sub_resource type="GDScript" id="GDScript_1xcnr"]
+script/source = "extends Button
+
+func _pressed() -> void:
+	Input.action_press(\"backpack\")
+	Input.action_release(\"backpack\")
+"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r34rm"]
 size = Vector2(64, 64)
 
 [node name="Scene" type="Node2D"]
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer2"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Button" type="Button" parent="CanvasLayer2/Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -156.0
+offset_top = 40.0
+offset_right = -41.0
+offset_bottom = 108.0
+grow_horizontal = 0
+text = "BACKPACK
+[TAB / E]"
+script = SubResource("GDScript_1xcnr")
 
 [node name="HpBar" type="CanvasLayer" parent="."]
 
