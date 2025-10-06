@@ -40,19 +40,30 @@ func _draw() -> void:
 var placement : Vector2i
 
 
-func rotate_vector(vec : Vector2):
+func rotate_vector(vec : Vector2i)->Vector2i:
 	match orientation:
 		0:
 			return vec
 		1:
-			return Vector2(-vec.y,vec.x)
+			return Vector2i(-vec.y,vec.x)
 		2:
-			return Vector2(-vec.x,-vec.y)
+			return Vector2i(-vec.x,-vec.y)
 		3:
-			return Vector2(vec.y,-vec.x)
+			return Vector2i(vec.y,-vec.x)
+	return Vector2i.ZERO
 
-func get_rotated_ocupations():
-	return spaces_taken.map(func (vec): rotate_vector(vec))
+func get_rotated_ocupations()->Array[Vector2i]:
+	var arr : Array[Vector2i]
+	for x in spaces_taken:
+		arr.push_back(rotate_vector(x))
+	return arr
+
+func get_rotated_stars()->Array[Vector2i]:
+	var arr : Array[Vector2i]
+	for x in spaces_starred:
+		arr.push_back(rotate_vector(x))
+	return arr
+
 
 func do() -> void:
 	var x : ItemEffect= get_node("combat_start") as ItemEffect
