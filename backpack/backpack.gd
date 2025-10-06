@@ -5,10 +5,17 @@ class_name Backpack
 @onready var grid_container: GridContainer = $GridContainer
 @onready var texture_rect: TextureRect = $GridContainer/TextureRect
 
-const ITEM = preload("res://backpack/item/instances/bow2.tscn")
-const arrow = preload("res://backpack/item/instances/arrow_baisic.tscn")
-
-
+const item_instances: Dictionary[String, PackedScene] = {
+	"Basic Arrow": preload("res://backpack/item/instances/arrow_baisic.tscn"),
+	"Battery": preload("res://backpack/item/instances/battery.tscn"),
+	"Longbow": preload("res://backpack/item/instances/bow2.tscn"),
+	"Shortbow": preload("res://backpack/item/instances/bow.tscn"),
+	"Phone": preload("res://backpack/item/instances/phone.tscn"),
+	"Recorder": preload("res://backpack/item/instances/recorder.tscn"),
+	"Greatsword": preload("res://backpack/item/instances/sword2.tscn"),
+	"Sword": preload("res://backpack/item/instances/sword.tscn"),
+	"Cocktail :)": preload("res://backpack/item/instances/wybuchov.tscn"),
+}
 
 var items : Array[Array]
 
@@ -19,17 +26,9 @@ func _input(event: InputEvent) -> void:
 
 	if event is InputEventMouseButton:
 		if event.button_index == 1 and event.pressed:
-			if curently_held == null:
-
-				curently_held = ITEM.instantiate()
-				add_child(curently_held)
-			else:
-
+			if curently_held != null:
 				place_item()
 
-		if event.button_index == 3 and event.pressed:
-			curently_held = arrow.instantiate()
-			add_child(curently_held)
 
 		if event.button_index == 2 and event.is_pressed():
 
@@ -97,10 +96,20 @@ func pick_up_item():
 			var vec = p + curently_held.placement
 			items[vec.y][vec.x] = null
 
-
+func item_select(item: String) -> void:
+	curently_held = item_instances[item].instantiate()
+	add_child(curently_held)
 
 func _ready() -> void:
 	visible = false
+
+
+	for ii in item_instances:
+		var b := Button.new()
+		b.text = ii
+		b.pressed.connect(item_select.bind(ii))
+		$VBoxContainer.add_child(b)
+
 
 	texture_rect.size = Vector2(GameInfo.backpack_cell_size,GameInfo.backpack_cell_size)
 	items.resize(backpack_size.y)
@@ -154,3 +163,11 @@ func _draw() -> void:
 
 				var rect = Rect2((previev.placement + x) * GameInfo.backpack_cell_size,Vector2(20,20))
 				draw_rect(rect,Color.YELLOW)
+
+
+func _on_clear_pressed() -> void:
+	for row in range(len(items)):
+		for item in range(len(items[row])):
+			if items[row][item] != null:
+				items[row][item].queue_free()
+				items[row][item] = null
