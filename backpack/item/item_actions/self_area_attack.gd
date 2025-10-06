@@ -11,8 +11,16 @@ var attacker : AreaSpawner
 
 func execute(params : CastParams):
 
+	params.required_mana = mana_cost
+
 	for stared_item in params.item.get_starred_items():
-		var getter = stared_item.get_node_or_null("mana") as GetManaAndStats
+		var getter = stared_item.get_node_or_null("GetManaAndStats") as GetManaAndStats
+		if getter != null:
+			getter.execute(params)
+
+	print("required mana ",params.required_mana)
+	if(params.required_mana > 0):
+		return
 
 	if attacker == null:
 		attacker = GameInfo.player.get_node("AreaSpawner")

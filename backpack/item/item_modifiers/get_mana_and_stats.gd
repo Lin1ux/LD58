@@ -22,6 +22,9 @@ func execute(params : CastParams):
 	if params.projectile != null:
 		return
 
+	var pom = mana_left
 	mana_left-=params.required_mana
-	if mana_left < 0:
-		params.required_mana = abs(mana_left)
+	params.required_mana -=pom
+
+	#if mana_left < 0:
+	#	params.required_mana = abs(mana_left)
