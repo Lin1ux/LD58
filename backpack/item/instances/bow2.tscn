@@ -32,10 +32,8 @@ proj = ExtResource("2_y723p")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 64.0
-offset_bottom = 128.0
-scale = Vector2(1.5, 1.5)
 texture = ExtResource("3_aguxj")
+expand_mode = 1
 
 [node name="triggered" type="Node" parent="."]
 script = ExtResource("4_y723p")

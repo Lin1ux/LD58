@@ -1,0 +1,70 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0del1vpka74w"]
+
+[ext_resource type="Script" uid="uid://b3k76xcpvwv3w" path="res://Scene/menu.gd" id="1_b23qx"]
+
+[node name="Menu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_b23qx")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -383.0
+offset_top = 72.0
+offset_right = 383.0
+offset_bottom = 209.0
+grow_horizontal = 2
+rotation = 0.06862851
+theme_override_colors/font_color = Color(1, 1, 0.4862745, 1)
+theme_override_colors/font_shadow_color = Color(0, 0.19215687, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0.19215687, 0, 1)
+theme_override_constants/shadow_offset_y = 25
+theme_override_constants/outline_size = 100
+theme_override_constants/shadow_outline_size = 100
+theme_override_font_sizes/font_size = 128
+text = "Collector's Cove"
+
+[node name="Start" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -130.0
+offset_top = 104.0
+offset_right = 130.0
+offset_bottom = 204.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "START"
+
+[node name="Label2" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 43.0
+offset_top = -56.0
+offset_right = 83.0
+offset_bottom = -33.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 0.4862745, 1)
+theme_override_colors/font_outline_color = Color(0, 0.19215687, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 24
+text = "© 2025
+shamotte, Liniux, ZedGame, igorekkedziorek, skyyqs, kenekkoo"
+
+[connection signal="pressed" from="Control/Start" to="." method="_on_start_pressed"]

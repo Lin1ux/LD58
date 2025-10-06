@@ -102,3 +102,33 @@ func _ready():
 
 func _on_input_action_primary() -> void:
 	pass # Replace with function body.
+
+
+func _process(_delta: float) -> void:
+	var min_x: float = 100
+	var max_x: float = -100
+	var min_y: float = 100
+	var max_y: float = -100
+
+	print(get_rotated_ocupations())
+	for space in spaces_taken:
+		min_x = min(min_x, space.x)
+		min_y = min(min_y, space.y)
+		max_x = max(max_x, space.x + 1)
+		max_y = max(max_y, space.y + 1)
+
+	$TextureRect.position.x = min_x * GameInfo.backpack_cell_size
+	$TextureRect.position.y = min_y * GameInfo.backpack_cell_size
+	$TextureRect.size.x = (max_x - min_x) * GameInfo.backpack_cell_size
+	$TextureRect.size.y = (max_y - min_y) * GameInfo.backpack_cell_size
+
+	$TextureRect.rotation = PI/2 * orientation
+	if orientation == 1:
+		$TextureRect.position.x += GameInfo.backpack_cell_size
+	if orientation == 2:
+		$TextureRect.position.x += GameInfo.backpack_cell_size
+		$TextureRect.position.y += GameInfo.backpack_cell_size
+	if orientation == 3:
+		$TextureRect.position.y += GameInfo.backpack_cell_size
+
+	print($TextureRect.position, $TextureRect.size)

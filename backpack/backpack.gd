@@ -13,6 +13,9 @@ var items : Array[Array]
 
 var curently_held : Item
 func _input(event: InputEvent) -> void:
+	if not visible:
+		return
+
 	if event is InputEventMouseButton:
 		if event.button_index == 1 and event.is_pressed():
 			if curently_held == null:
@@ -32,6 +35,10 @@ func _input(event: InputEvent) -> void:
 
 
 func place_item():
+	if not visible:
+		return
+
+
 	var pos: Vector2i= get_local_mouse_position()
 	var coords: Vector2i= pos/ GameInfo.backpack_cell_size
 
@@ -86,6 +93,8 @@ func pick_up_item():
 
 
 func _ready() -> void:
+	visible = false
+
 	texture_rect.size = Vector2(GameInfo.backpack_cell_size,GameInfo.backpack_cell_size)
 	items.resize(backpack_size.y)
 	for y in range(backpack_size.y):
@@ -101,6 +110,12 @@ func _ready() -> void:
 	grid_container.remove_child(texture_rect)
 
 func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("backpack"):
+		visible = not visible
+
+	if not visible:
+		return
+
 	if curently_held:
 		curently_held.position = get_global_mouse_position()
 		curently_held.queue_redraw()
@@ -111,6 +126,9 @@ func _process(delta: float) -> void:
 
 
 func _draw() -> void:
+	if not visible:
+		return
+
 	for row in range(items.size()):
 		for coll in range(backpack_size.x):
 			var cell: Item = items[row][coll]

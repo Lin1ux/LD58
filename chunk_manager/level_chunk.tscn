@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=4 uid="uid://c5a1fxy00wvl8"]
 
 [ext_resource type="Script" uid="uid://b7vxdx6mqa5lx" path="res://chunk_manager/level_chunk.gd" id="1_e51pq"]
-[ext_resource type="Texture2D" uid="uid://ccfg00heksrhi" path="res://tiles/set.png" id="2_47on0"]
+[ext_resource type="Texture2D" uid="uid://btmap7ac0wy2y" path="res://tiles/set.png" id="2_47on0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_egeeo"]
 size = Vector2(1280, 720)
@@ -103,6 +103,14 @@ texture_region_size = Vector2i(64, 64)
 0:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 0:5/0 = 0
 0:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+5:2/0 = 0
+5:3/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+7:2/0 = 0
+6:2/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_d7l6k"]
 tile_size = Vector2i(64, 64)

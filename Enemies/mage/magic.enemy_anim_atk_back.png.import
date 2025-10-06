@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btmap7ac0wy2y"
-path="res://.godot/imported/set.png-03e8fffdda69dd31fce817a647e1cbc8.ctex"
+uid="uid://botwn3ypvkg1s"
+path="res://.godot/imported/magic.enemy_anim_atk_back.png-c1c4bf8a4b76f330cd43fba7a5692356.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tiles/set.png"
-dest_files=["res://.godot/imported/set.png-03e8fffdda69dd31fce817a647e1cbc8.ctex"]
+source_file="res://Enemies/mage/magic.enemy_anim_atk_back.png"
+dest_files=["res://.godot/imported/magic.enemy_anim_atk_back.png-c1c4bf8a4b76f330cd43fba7a5692356.ctex"]
 
 [params]
 
