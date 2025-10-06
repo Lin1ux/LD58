@@ -15,6 +15,7 @@ const item_instances: Dictionary[String, PackedScene] = {
 	"Greatsword": preload("res://backpack/item/instances/sword2.tscn"),
 	"Sword": preload("res://backpack/item/instances/sword.tscn"),
 	"Cocktail :)": preload("res://backpack/item/instances/wybuchov.tscn"),
+	"Soul Stone": preload("res://backpack/item/instances/soul_stone.tscn")
 }
 
 var items : Array[Array]
