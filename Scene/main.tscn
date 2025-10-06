@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cf4tw7btmygby"]
+[gd_scene load_steps=7 format=3 uid="uid://cf4tw7btmygby"]
 
 [ext_resource type="PackedScene" uid="uid://btryo2klgv425" path="res://chunk_manager/chunk_manager.tscn" id="1_2wwxx"]
 [ext_resource type="PackedScene" uid="uid://c7b5sxgwmd8uf" path="res://backpack/backpack.tscn" id="1_3amdw"]
+[ext_resource type="PackedScene" uid="uid://b0del1vpka74w" path="res://Scene/menu.tscn" id="2_3amdw"]
 [ext_resource type="PackedScene" uid="uid://8wh3usm52nkl" path="res://Player/player.tscn" id="2_sblpm"]
 [ext_resource type="Script" uid="uid://cgue1afyx57xx" path="res://Scene/camera_area.gd" id="4_2wwxx"]
 
@@ -11,6 +12,8 @@ size = Vector2(64, 64)
 [node name="Scene" type="Node2D"]
 
 [node name="CanvasLayer" parent="." instance=ExtResource("1_3amdw")]
+
+[node name="Menu" parent="." instance=ExtResource("2_3amdw")]
 
 [node name="ChunkManager" parent="." instance=ExtResource("1_2wwxx")]
 

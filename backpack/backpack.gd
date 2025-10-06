@@ -75,6 +75,8 @@ func check_is_free(vec: Vector2i)->bool:
 	return items[vec.y][vec.x]==null
 
 func _ready() -> void:
+	visible = false
+
 	texture_rect.size = Vector2(GameInfo.backpack_cell_size,GameInfo.backpack_cell_size)
 	items.resize(backpack_size.y)
 	for y in range(backpack_size.y):
