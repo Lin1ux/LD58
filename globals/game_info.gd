@@ -21,3 +21,5 @@ var backpack : Backpack :
 		return backpack
 
 var backpack_cell_size:int = 98
+
+var finished_rooms = 0
