@@ -11,7 +11,7 @@ func spawn_area_in_global_holder(area : DamageArea):
 		return
 	Holder.add_child(area)
 	area.global_position = get_global_mouse_position()	#TODO add max range for this and check if it's on map etc.
-	
+
 func spawn_area_in_holder(area : DamageArea):
 	#var area : DamageArea = attack_pattern.instantiate()
 	if area == null:

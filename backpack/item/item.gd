@@ -10,6 +10,7 @@ class_name Item
 @export var triggered : ItemEffect
 
 var color
+var connected = false
 
 var orientation : int = 0 :
 	set(value):
@@ -99,6 +100,22 @@ func do() -> void:
 func _ready():
 	color = Color(randf_range(0,1),randf_range(0,1),randf_range(0,1))
 
+	var x = get_node_or_null("triggered")
+
+	if not connected:
+		if x != null:
+			var params : CastParams = CastParams.new()
+			params.item = self
+			var cal := Callable(triggered.execute)
+			var cal2 = cal.bind(params)
+
+			GameInfo.player.get_node("Input").action_primary.connect(cal2)
+
+			connected = true
+
+
+func placed():
+	pass
 
 func _on_input_action_primary() -> void:
 	pass # Replace with function body.
@@ -110,7 +127,7 @@ func _process(_delta: float) -> void:
 	var min_y: float = 100
 	var max_y: float = -100
 
-	print(get_rotated_ocupations())
+
 	for space in spaces_taken:
 		min_x = min(min_x, space.x)
 		min_y = min(min_y, space.y)
@@ -130,5 +147,3 @@ func _process(_delta: float) -> void:
 		$TextureRect.position.y += GameInfo.backpack_cell_size
 	if orientation == 3:
 		$TextureRect.position.y += GameInfo.backpack_cell_size
-
-	print($TextureRect.position, $TextureRect.size)
