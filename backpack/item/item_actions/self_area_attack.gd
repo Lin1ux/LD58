@@ -1,7 +1,6 @@
 extends ItemAction
 class_name SelfAreaAttack
 
-
 var attacker : AreaSpawner
 @export var attack_size : Vector2
 @export var damage : int

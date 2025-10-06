@@ -7,6 +7,8 @@ class_name Item
 @export var spaces_taken: Array[Vector2i]
 @export var spaces_starred: Array[Vector2i]
 
+@export var triggered : ItemEffect
+
 var color
 
 var orientation : int = 0 :
@@ -86,13 +88,17 @@ func get_starred_items() ->Array[Item]:
 
 
 func do() -> void:
-	var x : ItemEffect= get_node("combat_start") as ItemEffect
+	#var x : ItemEffect= get_node("triggered") as ItemEffect
 	var params : CastParams = CastParams.new()
 	params.item = self
 	params.projectile = proj.instantiate() as BaseProjectile
 
 
-	x.execute(params)
+	triggered.execute(params)
 
 func _ready():
 	color = Color(randf_range(0,1),randf_range(0,1),randf_range(0,1))
+
+
+func _on_input_action_primary() -> void:
+	pass # Replace with function body.

@@ -202,8 +202,8 @@ size = Vector2(31, 45)
 radius = 373.01205
 
 [node name="MeleeEnemy" type="CharacterBody2D" node_paths=PackedStringArray("hp", "nav_agent", "animSprite", "attack_component")]
-collision_layer = 4
-collision_mask = 4
+collision_layer = 2
+collision_mask = 5
 motion_mode = 1
 wall_min_slide_angle = 0.0
 platform_floor_layers = 4294967044
