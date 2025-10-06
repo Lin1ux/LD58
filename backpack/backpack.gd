@@ -4,6 +4,7 @@ class_name Backpack
 @export var backpack_size : Vector2i
 @onready var grid_container: GridContainer = $GridContainer
 @onready var texture_rect: TextureRect = $GridContainer/TextureRect
+
 const ITEM = preload("res://backpack/item/instances/bow2.tscn")
 
 
@@ -106,6 +107,9 @@ func _draw() -> void:
 		var previev :Item= items[coords.y][coords.x]
 		if previev != null:
 			for x in previev.get_rotated_stars():
-				print(previev.placement + x)
+
 				var rect = Rect2((previev.placement + x) * GameInfo.backpack_cell_size,Vector2(20,20))
 				draw_rect(rect,Color.YELLOW)
+			for x : Item in previev.get_starred_items():
+				if x:
+					print(x.item_name,x.name," " ,previev.get_starred_items())

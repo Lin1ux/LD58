@@ -30,6 +30,8 @@ func input_queue_first() -> Direction.Dir:
 func _ready():
 	HP.init(start_HP)
 	HP.dead.connect(kill_player)	
+	HP.hp_changed.connect(hp_changed)
+	HP.damage_dealt.connect(get_damage)
 
 func _physics_process(_delta: float) -> void:
 
@@ -97,3 +99,9 @@ func play_animation_based_on_direction():
 	
 func kill_player():
 	print("Player Killed")
+	
+func hp_changed(percantege : float):
+	GlobalSignals.player_amount_hp.emit(percantege)
+	
+func get_damage():
+	GlobalSignals.player_get_damage.emit()
