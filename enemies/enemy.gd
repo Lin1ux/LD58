@@ -69,16 +69,11 @@ func attack():
 		return
 		
 func kill():
+	GlobalSignals.enemy_dead.emit()
 	queue_free()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	player_in_range = true
-	print("Player In")
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	player_in_range = false
-	print("Player Out")
-
-func _on_make_path_timer_timeout() -> void:
-	pass
-	#make_path_to_player()

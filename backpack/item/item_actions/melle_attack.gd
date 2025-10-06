@@ -9,7 +9,7 @@ var attacker : MelleAtacker
 func execute(params : CastParams):
 	if attacker == null:
 		attacker = GameInfo.player.get_node("MeleeAttacker")
-	attacker.attack(attack_size,)
+	attacker.attack(attack_size,callback)
 
 func callback(hp : HpComponent):
 	hp.health.decrease_hp(damage)
