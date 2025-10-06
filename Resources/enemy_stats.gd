@@ -10,3 +10,6 @@ extends Resource
 @export var attack_pattern : PackedScene
 @export_group("Melee parameters")
 @export var melee_attack_range : float
+@export_group("Scaling multiplayers")
+@export var hp_multiplayer : float 
+@export var dmg_multiplayer : float 

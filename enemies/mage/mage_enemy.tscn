@@ -19,8 +19,10 @@ script = ExtResource("3_hu4r1")
 can_flip_sprite = true
 hp = 5
 speed = 100.0
-dmg = 10
+dmg = 5
 attack_pattern = ExtResource("2_8ccc7")
+hp_multiplayer = 0.05
+dmg_multiplayer = 0.2
 metadata/_custom_type_script = "uid://bi0128a43c3jb"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kbtti"]

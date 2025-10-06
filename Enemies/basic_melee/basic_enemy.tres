@@ -8,4 +8,6 @@ hp = 10
 speed = 150.0
 dmg = 7
 melee_attack_range = 20.0
+hp_multiplayer = 0.2
+dmg_multiplayer = 0.1
 metadata/_custom_type_script = "uid://bi0128a43c3jb"
