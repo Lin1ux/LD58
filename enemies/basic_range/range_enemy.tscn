@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://c5q5wka43oyos"]
+[gd_scene load_steps=42 format=3 uid="uid://c5q5wka43oyos"]
 
 [ext_resource type="Script" uid="uid://c8inq07s68024" path="res://Enemies/enemy.gd" id="1_s413b"]
 [ext_resource type="Resource" uid="uid://byl3x28cedxxq" path="res://Enemies/basic_range/range_enemy.tres" id="2_xbok2"]
@@ -198,9 +198,46 @@ size = Vector2(31, 45)
 [sub_resource type="CircleShape2D" id="CircleShape2D_334mp"]
 radius = 529.3411
 
-[node name="RangeEnemy" type="CharacterBody2D" node_paths=PackedStringArray("hp", "nav_agent", "animSprite", "attack_component")]
+[sub_resource type="Animation" id="Animation_qrgfv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_83xyc"]
+resource_name = "get_damage"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 0.041234665, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(18.892157, 18.892157, 18.892157, 1), Color(18.892157, 18.892157, 18.892157, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mf52x"]
+_data = {
+&"RESET": SubResource("Animation_qrgfv"),
+&"get_damage": SubResource("Animation_83xyc")
+}
+
+[node name="RangeEnemy" type="CharacterBody2D" node_paths=PackedStringArray("hp", "nav_agent", "animSprite", "attack_component", "anim")]
 collision_layer = 2
-collision_mask = 5
+collision_mask = 4
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_s413b")
@@ -209,6 +246,7 @@ hp = NodePath("HPController/Health")
 nav_agent = NodePath("NavigationAgent2D")
 animSprite = NodePath("AnimatedSprite2D")
 attack_component = NodePath("ProjectileComponent")
+anim = NodePath("AnimationPlayer")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_186g2")
@@ -242,6 +280,7 @@ script = ExtResource("9_bsi2c")
 enemy = NodePath("..")
 
 [node name="Enemy_view_Range" type="Area2D" parent="."]
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy_view_Range"]
 shape = SubResource("CircleShape2D_334mp")
@@ -274,6 +313,11 @@ debug_enabled = true
 [node name="makePathTimer" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_mf52x")
+}
 
 [connection signal="body_entered" from="Enemy_view_Range" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Enemy_view_Range" to="." method="_on_area_2d_body_exited"]

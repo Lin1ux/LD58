@@ -1,10 +1,16 @@
-[gd_scene load_steps=8 format=4 uid="uid://c5a1fxy00wvl8"]
+[gd_scene load_steps=9 format=4 uid="uid://c5a1fxy00wvl8"]
 
 [ext_resource type="Script" uid="uid://b7vxdx6mqa5lx" path="res://chunk_manager/level_chunk.gd" id="1_e51pq"]
 [ext_resource type="Texture2D" uid="uid://btmap7ac0wy2y" path="res://tiles/set.png" id="2_47on0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_egeeo"]
 size = Vector2(1280, 720)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_47on0"]
+vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)])
+agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_47on0"]
 texture = ExtResource("2_47on0")
@@ -14,17 +20,25 @@ texture_region_size = Vector2i(64, 64)
 2:0/0 = 0
 3:0/0 = 0
 4:0/0 = 0
+4:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_47on0")
 5:0/0 = 0
+5:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_47on0")
 6:0/0 = 0
+6:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_47on0")
 7:0/0 = 0
+7:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_47on0")
 0:1/0 = 0
 1:1/0 = 0
 2:1/0 = 0
 3:1/0 = 0
 4:1/0 = 0
+4:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_47on0")
 5:1/0 = 0
+5:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_47on0")
 6:1/0 = 0
+6:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_47on0")
 7:1/0 = 0
+7:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_47on0")
 0:2/0 = 0
 1:2/0 = 0
 2:2/0 = 0
@@ -42,6 +56,7 @@ texture_region_size = Vector2i(64, 64)
 tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 0
 physics_layer_0/collision_mask = 0
+navigation_layer_0/layers = 1
 sources/1 = SubResource("TileSetAtlasSource_47on0")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_524pu"]

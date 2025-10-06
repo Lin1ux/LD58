@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://cf4tw7btmygby"]
+[gd_scene load_steps=8 format=3 uid="uid://cf4tw7btmygby"]
 
+[ext_resource type="PackedScene" uid="uid://ctshvxrunbdbk" path="res://ui/hpBar/hp_bar.tscn" id="1_1xcnr"]
 [ext_resource type="PackedScene" uid="uid://btryo2klgv425" path="res://chunk_manager/chunk_manager.tscn" id="1_2wwxx"]
 [ext_resource type="PackedScene" uid="uid://c7b5sxgwmd8uf" path="res://backpack/backpack.tscn" id="1_3amdw"]
 [ext_resource type="PackedScene" uid="uid://b0del1vpka74w" path="res://Scene/menu.tscn" id="2_3amdw"]
@@ -10,6 +11,23 @@
 size = Vector2(64, 64)
 
 [node name="Scene" type="Node2D"]
+
+[node name="HpBar" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="HpBar"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HPBar" parent="HpBar/Control" instance=ExtResource("1_1xcnr")]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 48.0
+offset_bottom = 48.0
 
 [node name="CanvasLayer" parent="." instance=ExtResource("1_3amdw")]
 

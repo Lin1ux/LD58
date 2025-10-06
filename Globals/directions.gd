@@ -11,6 +11,9 @@ static func get_direction(dir : Vector2) -> Dir:
 	if dir.y >= 0:
 		return Direction.Dir.UP
 	return Direction.Dir.DOWN
-
+	
+static func random_vector(min : float ,max : float) -> Vector2:
+	return Vector2(randf_range(min,max),randf_range(min,max))
+	
 func get_mouse_position() -> Vector2:
 	return get_global_mouse_position()

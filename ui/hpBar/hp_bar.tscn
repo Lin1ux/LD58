@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=3 uid="uid://ctshvxrunbdbk"]
+
+[ext_resource type="Script" uid="uid://cytgnagqglmtg" path="res://ui/hpBar/hp_bar.gd" id="1_orm3u"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_blb03"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_orm3u"]
+bg_color = Color(0.75686276, 0, 0, 1)
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vlbvg"]
+bg_color = Color(0.16470589, 0.16470589, 0.16470589, 1)
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2rlk0"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+
+[node name="HPBar" type="Control" node_paths=PackedStringArray("timer", "hp_bar", "damage_bar")]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 45.0
+offset_bottom = 45.0
+script = ExtResource("1_orm3u")
+timer = NodePath("Timer")
+hp_bar = NodePath("HPBar")
+damage_bar = NodePath("HPBar/DamageBar")
+
+[node name="HPBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_right = 300.0
+offset_bottom = 32.0
+theme_override_styles/background = SubResource("StyleBoxEmpty_blb03")
+theme_override_styles/fill = SubResource("StyleBoxFlat_orm3u")
+value = 60.0
+show_percentage = false
+
+[node name="DamageBar" type="ProgressBar" parent="HPBar"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_vlbvg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_2rlk0")
+value = 80.0
+show_percentage = false
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.7
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
