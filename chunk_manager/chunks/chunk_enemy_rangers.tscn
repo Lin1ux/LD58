@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=4 uid="uid://btioaevfyu5sk"]
+[gd_scene load_steps=5 format=4 uid="uid://0csekngrhsdd"]
 
 [ext_resource type="PackedScene" uid="uid://c5a1fxy00wvl8" path="res://chunk_manager/level_chunk.tscn" id="1_oectx"]
 [ext_resource type="PackedScene" uid="uid://b620rq506fm21" path="res://chunk_manager/level_chunk_link.tscn" id="2_dvhsa"]
