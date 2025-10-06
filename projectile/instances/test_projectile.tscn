@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjxovgs0fu32t"]
+
+[ext_resource type="Script" uid="uid://2iiq302bbkb5" path="res://projectile/enemy_base_projectile.gd" id="1_gtthr"]
+[ext_resource type="Texture2D" uid="uid://4xv7ag7w05ot" path="res://icon.svg" id="2_4owx2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3sxea"]
+radius = 53.08484
+
+[node name="TestProjectile" type="Area2D"]
+collision_layer = 16
+collision_mask = 16
+script = ExtResource("1_gtthr")
+damage = 1
+speed = 200.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_4owx2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_3sxea")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

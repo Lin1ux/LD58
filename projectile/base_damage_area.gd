@@ -6,7 +6,9 @@ extends Node
 	
 func deal_damage():
 	for i in area.get_overlapping_areas():
-		print("hit",i.name)
+		var hp_component : HpComponent = i as HpComponent
+		if hp_component != null:
+			hp_component.health.decrease_hp(damage)
 
 func _on_attack_damage_timeout() -> void:
 	deal_damage()

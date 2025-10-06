@@ -13,4 +13,6 @@ func decrease_hp(value : int):
 	value -= block
 	if value < 0:
 		return
-	base_health.increase_hp(value)
+	base_health.decrease_hp(value)
+	
+	

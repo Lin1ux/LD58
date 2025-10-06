@@ -1,16 +1,23 @@
-[gd_scene load_steps=28 format=3 uid="uid://8wh3usm52nkl"]
+[gd_scene load_steps=33 format=3 uid="uid://8wh3usm52nkl"]
 
 [ext_resource type="Script" uid="uid://c64x6b7ocwvt3" path="res://Player/player_movement.gd" id="1_4ntmi"]
+[ext_resource type="Script" uid="uid://dbydmy6pl4uy4" path="res://components/health/hp_component.gd" id="3_apopc"]
 [ext_resource type="Script" uid="uid://c81ivxele714x" path="res://Player/projectile_shooter.gd" id="3_btcbx"]
+[ext_resource type="Script" uid="uid://bu52csc8672sl" path="res://components/health/health.gd" id="3_x3vf3"]
+[ext_resource type="Script" uid="uid://b0q26mmn2phr" path="res://components/health/block.gd" id="4_apopc"]
 [ext_resource type="Script" uid="uid://d2pb7yrfgwgmm" path="res://Player/melee_attacker.gd" id="4_fhl08"]
 [ext_resource type="PackedScene" uid="uid://c0fui50daxc8i" path="res://backpack/item/item.tscn" id="4_gwnis"]
 [ext_resource type="Texture2D" uid="uid://3ecoqirpae5k" path="res://Player/goblin_anim_front.png" id="5_fhl08"]
 [ext_resource type="Script" uid="uid://c5ixe36f56j44" path="res://Player/player_input.gd" id="5_k53q1"]
 [ext_resource type="Texture2D" uid="uid://6ag3ntqgwpe4" path="res://Player/goblin_anim_side.png" id="7_od3ui"]
 [ext_resource type="Texture2D" uid="uid://dei2v408cknuj" path="res://Player/goblin_anim_back.png" id="8_00tjw"]
+[ext_resource type="PackedScene" uid="uid://cjxovgs0fu32t" path="res://projectile/instances/test_projectile.tscn" id="8_5htga"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x02iy"]
 size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x3vf3"]
+size = Vector2(19, 33)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fhl08"]
 
@@ -149,15 +156,35 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animSprite") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animSprite", "HP") groups=["Player"]]
 script = ExtResource("1_4ntmi")
+start_HP = 100
 animSprite = NodePath("AnimatedSprite2D")
+HP = NodePath("hpComponent/Health")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_x02iy")
 
 [node name="ProjectileShooter" type="Node2D" parent="."]
 script = ExtResource("3_btcbx")
+
+[node name="hpComponent" type="Area2D" parent="." node_paths=PackedStringArray("health")]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("3_apopc")
+health = NodePath("Block")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hpComponent"]
+position = Vector2(-0.5, 6.5)
+shape = SubResource("RectangleShape2D_x3vf3")
+debug_color = Color(0.98425823, 0, 0.34973747, 0.41960785)
+
+[node name="Health" type="Node" parent="hpComponent"]
+script = ExtResource("3_x3vf3")
+
+[node name="Block" type="Node" parent="hpComponent" node_paths=PackedStringArray("base_health")]
+script = ExtResource("4_apopc")
+base_health = NodePath("../Health")
 
 [node name="MeleeAttacker" type="Node2D" parent="."]
 script = ExtResource("4_fhl08")
@@ -171,6 +198,7 @@ collision_mask = 4
 shape = SubResource("RectangleShape2D_fhl08")
 
 [node name="Item" parent="." instance=ExtResource("4_gwnis")]
+proj = ExtResource("8_5htga")
 
 [node name="Input" type="Node" parent="."]
 unique_name_in_owner = true
@@ -178,7 +206,7 @@ script = ExtResource("5_k53q1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5htga")
-animation = &"walk_right"
+animation = &"walk_up"
 autoplay = "idle"
 
 [connection signal="action_primary" from="Input" to="Item" method="do"]
