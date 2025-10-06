@@ -1,7 +1,7 @@
 extends Node
 class_name PlayerInput
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if event.is_pressed():
 		if event.is_action("primary_action"):
 			action_primary.emit()
