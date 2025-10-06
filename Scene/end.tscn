@@ -1,0 +1,59 @@
+[gd_scene load_steps=2 format=3 uid="uid://3ctb2gcp5dfy"]
+
+[ext_resource type="Script" uid="uid://dpwdjyim0u8h2" path="res://Scene/end.gd" id="1_a6pfi"]
+
+[node name="End" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_a6pfi")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -383.0
+offset_top = 72.0
+offset_right = 383.0
+offset_bottom = 209.0
+grow_horizontal = 2
+rotation = 0.06862851
+theme_override_colors/font_color = Color(1, 1, 0.4862745, 1)
+theme_override_colors/font_shadow_color = Color(0.78431374, 0.19215687, 0, 1)
+theme_override_colors/font_outline_color = Color(0.78431374, 0.19215687, 0, 1)
+theme_override_constants/shadow_offset_y = 25
+theme_override_constants/outline_size = 100
+theme_override_constants/shadow_outline_size = 100
+theme_override_font_sizes/font_size = 128
+text = "GAME OVER"
+
+[node name="Retry" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -130.0
+offset_top = 104.0
+offset_right = 130.0
+offset_bottom = 204.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "RETRY"
+
+[connection signal="pressed" from="Retry" to="." method="_on_retry_pressed"]
