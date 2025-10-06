@@ -5,29 +5,30 @@
 [ext_resource type="Texture2D" uid="uid://b0iqprqxcthsq" path="res://backpack/item/item_sprites/dyktafon.png" id="3_6trke"]
 [ext_resource type="Script" uid="uid://c0o2t88bv0vl4" path="res://backpack/item/item_effect_array.gd" id="4_0yd1x"]
 [ext_resource type="Script" uid="uid://b8tubi8yk7j5e" path="res://backpack/item/item_actions/item_action.gd" id="5_22348"]
-[ext_resource type="PackedScene" uid="uid://360smjum6bt5" path="res://projectile/areaInstances/area1.tscn" id="6_6trke"]
+[ext_resource type="PackedScene" uid="uid://ivopei34h6wp" path="res://projectile/areaInstances/wybuchov.tscn" id="6_6trke"]
 [ext_resource type="Script" uid="uid://d2etxl2tonhhm" path="res://backpack/item/item_actions/self_area_attack.gd" id="6_p8u1k"]
 
-[sub_resource type="Resource" id="Resource_6trke"]
+[sub_resource type="Resource" id="Resource_1x8c2"]
 script = ExtResource("6_p8u1k")
-attack_size = Vector2(10, 10)
-damage = 1
+damage = 5
 area = ExtResource("6_6trke")
-scale = 1.0
+scale = 4.0
 mana_cost = 2
 metadata/_custom_type_script = "uid://d2etxl2tonhhm"
 
-[node name="recorder" type="Control"]
+[node name="recorder" type="Control" node_paths=PackedStringArray("triggered")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
 script = ExtResource("1_6trke")
-item_name = "bow2"
+item_name = "recorder"
 spaces_taken = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1)])
-spaces_starred = Array[Vector2i]([Vector2i(-1, 0), Vector2i(-1, 1), Vector2i(-1, 2), Vector2i(-1, 3)])
+spaces_starred = Array[Vector2i]([Vector2i(-1, 0), Vector2i(-1, 1)])
+triggered = NodePath("triggered")
 proj = ExtResource("2_1x8c2")
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -39,5 +40,5 @@ texture = ExtResource("3_6trke")
 
 [node name="triggered" type="Node" parent="."]
 script = ExtResource("4_0yd1x")
-effects = Array[ExtResource("5_22348")]([SubResource("Resource_6trke")])
+effects = Array[ExtResource("5_22348")]([SubResource("Resource_1x8c2")])
 metadata/_custom_type_script = "uid://c0o2t88bv0vl4"
