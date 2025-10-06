@@ -7,6 +7,7 @@ class_name BaseProjectile
 @export var sprite : Sprite2D
 
 func initiate_projectile(vec: Vector2) -> void:
+	print("speeeed",speed)
 	direction = vec * speed
 	rotation = direction.angle() + deg_to_rad(-90)
 
