@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4752dk12ir18"
-path="res://.godot/imported/bow_steel.png-a9dcb10f79fc72d17c15a5f1ef440b81.ctex"
+uid="uid://dmlhwdp0j5go6"
+path="res://.godot/imported/goblin_anim_negative_back.png-d0022e676bdf1c399847df250937a6e9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://backpack/item/bow_steel.png"
-dest_files=["res://.godot/imported/bow_steel.png-a9dcb10f79fc72d17c15a5f1ef440b81.ctex"]
+source_file="res://Player/goblin_anim_negative_back.png"
+dest_files=["res://.godot/imported/goblin_anim_negative_back.png-d0022e676bdf1c399847df250937a6e9.ctex"]
 
 [params]
 

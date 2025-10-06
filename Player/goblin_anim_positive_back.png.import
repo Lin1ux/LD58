@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxjqak2hkhv4p"
-path="res://.godot/imported/sword_wood.png-70ac3786e3c4593b6ffb4632c9224b90.ctex"
+uid="uid://valpm4wkq7ew"
+path="res://.godot/imported/goblin_anim_positive_back.png-52256efb600d381324a8aaa8c3b72fd4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://backpack/item/sword_wood.png"
-dest_files=["res://.godot/imported/sword_wood.png-70ac3786e3c4593b6ffb4632c9224b90.ctex"]
+source_file="res://Player/goblin_anim_positive_back.png"
+dest_files=["res://.godot/imported/goblin_anim_positive_back.png-52256efb600d381324a8aaa8c3b72fd4.ctex"]
 
 [params]
 

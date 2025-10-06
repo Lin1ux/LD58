@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b58nce3j08dry"
-path="res://.godot/imported/item_potion_health.png-e25346cb858a66384e0a0d48b1ce8bef.ctex"
+uid="uid://cvikwt64b24rn"
+path="res://.godot/imported/wybuchov.png-5b533575ea48b47047704001d72439ec.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://backpack/item/item_potion_health.png"
-dest_files=["res://.godot/imported/item_potion_health.png-e25346cb858a66384e0a0d48b1ce8bef.ctex"]
+source_file="res://backpack/item/item_sprites/wybuchov.png"
+dest_files=["res://.godot/imported/wybuchov.png-5b533575ea48b47047704001d72439ec.ctex"]
 
 [params]
 

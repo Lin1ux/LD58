@@ -13,4 +13,11 @@ var nav_region : NavigationRegion2D :
 			nav_region = get_tree().get_first_node_in_group("NavRegion")
 		return nav_region
 
-var backpack_cell_size:int = 128
+#var backpack_cell_size:int = 128
+var backpack : Backpack :
+	get():
+		if backpack == null:
+			backpack = get_tree().get_first_node_in_group("Backpack")
+		return backpack
+
+var backpack_cell_size:int = 98

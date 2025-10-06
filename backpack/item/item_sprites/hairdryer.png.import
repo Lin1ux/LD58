@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvikwt64b24rn"
-path="res://.godot/imported/wybuchov.png-b8cf4ca6182b3e94b920d59094f32b3e.ctex"
+uid="uid://dwvqi5jv01y77"
+path="res://.godot/imported/hairdryer.png-b6c4b98fc68d24d37cfc03c694f17c8a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://backpack/item/wybuchov.png"
-dest_files=["res://.godot/imported/wybuchov.png-b8cf4ca6182b3e94b920d59094f32b3e.ctex"]
+source_file="res://backpack/item/item_sprites/hairdryer.png"
+dest_files=["res://.godot/imported/hairdryer.png-b6c4b98fc68d24d37cfc03c694f17c8a.ctex"]
 
 [params]
 

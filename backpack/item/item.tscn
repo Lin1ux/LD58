@@ -1,14 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c0fui50daxc8i"]
+[gd_scene load_steps=6 format=3 uid="uid://c0fui50daxc8i"]
 
 [ext_resource type="Script" uid="uid://cmnh30wxxmcx4" path="res://backpack/item/item.gd" id="1_fr52q"]
 [ext_resource type="Script" uid="uid://c68p6nb8dqr14" path="res://backpack/item/item_effect.gd" id="2_y5yfc"]
 [ext_resource type="PackedScene" uid="uid://fh5hn81k1hxo" path="res://projectile/instances/projectile1.tscn" id="2_ypcxp"]
-[ext_resource type="Script" uid="uid://b8tubi8yk7j5e" path="res://backpack/item/item_actions/item_action.gd" id="3_q716a"]
-[ext_resource type="Script" uid="uid://d1tfkk6affdod" path="res://backpack/item/item_actions/shoot_projectile_action.gd" id="4_pvjau"]
-
-[sub_resource type="Resource" id="Resource_ypcxp"]
-script = ExtResource("4_pvjau")
-metadata/_custom_type_script = "uid://d1tfkk6affdod"
+[ext_resource type="Texture2D" uid="uid://b58nce3j08dry" path="res://backpack/item/item_sprites/item_potion_health.png" id="5_ypcxp"]
+[ext_resource type="Script" uid="uid://ds6j88erxdmgx" path="res://backpack/item/item_modifiers/get_projectile_charge.gd" id="6_a54v2"]
 
 [node name="Item" type="Control"]
 layout_mode = 3
@@ -18,10 +14,22 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fr52q")
+item_name = "bow2"
 spaces_taken = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 1)])
+spaces_starred = Array[Vector2i]([Vector2i(0, 1), Vector2i(-1, 0)])
 proj = ExtResource("2_ypcxp")
 
 [node name="combat_start" type="Node" parent="."]
 script = ExtResource("2_y5yfc")
-effects = Array[ExtResource("3_q716a")]([SubResource("Resource_ypcxp")])
 metadata/_custom_type_script = "uid://c68p6nb8dqr14"
+
+[node name="get_charge" type="Node" parent="."]
+script = ExtResource("6_a54v2")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+top_level = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_ypcxp")
+expand_mode = 1

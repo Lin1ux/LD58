@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://bu52csc8672sl" path="res://components/health/health.gd" id="7_cxq7f"]
 [ext_resource type="Script" uid="uid://dbydmy6pl4uy4" path="res://components/health/hp_component.gd" id="7_q0hdo"]
 [ext_resource type="Script" uid="uid://b0q26mmn2phr" path="res://components/health/block.gd" id="8_h0tcu"]
-[ext_resource type="Script" uid="uid://bq6sj0hlxjpsc" path="res://components/areaSpawner/area_spawner.gd" id="9_8ccc7"]
+[ext_resource type="Script" uid="uid://bq6sj0hlxjpsc" path="res://components/areaSpawner/enemy_area_spawner.gd" id="9_8ccc7"]
 [ext_resource type="Script" uid="uid://dex36sgb78kcq" path="res://stateMachine/state_machine.gd" id="10_5wtav"]
 [ext_resource type="Script" uid="uid://dom1sktirierh" path="res://Enemies/basic_range/range_patrol.gd" id="11_m1wg7"]
 [ext_resource type="Script" uid="uid://c6u5f62o1dh21" path="res://Enemies/mage/shoot.gd" id="12_8ccc7"]
@@ -168,8 +168,8 @@ size = Vector2(31, 45)
 radius = 529.3411
 
 [node name="MageEnemy" type="CharacterBody2D" node_paths=PackedStringArray("hp", "nav_agent", "animSprite", "attack_component")]
-collision_layer = 4
-collision_mask = 4
+collision_layer = 2
+collision_mask = 5
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_ytdn6")

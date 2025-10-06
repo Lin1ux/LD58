@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0iqprqxcthsq"
-path="res://.godot/imported/dyktafon.png-f6624cba18ffe0ba8c3c6860f3566902.ctex"
+uid="uid://dh74b738aribi"
+path="res://.godot/imported/battery.png-c8669eb7d9a5c18568980e277435c09c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://backpack/item/dyktafon.png"
-dest_files=["res://.godot/imported/dyktafon.png-f6624cba18ffe0ba8c3c6860f3566902.ctex"]
+source_file="res://backpack/item/item_sprites/battery.png"
+dest_files=["res://.godot/imported/battery.png-c8669eb7d9a5c18568980e277435c09c.ctex"]
 
 [params]
 
