@@ -21,6 +21,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="HPBar" parent="HpBar/Control" instance=ExtResource("1_1xcnr")]
 layout_mode = 0
@@ -28,6 +30,7 @@ offset_left = 8.0
 offset_top = 8.0
 offset_right = 48.0
 offset_bottom = 48.0
+metadata/_edit_use_anchors_ = true
 
 [node name="CanvasLayer" parent="." instance=ExtResource("1_3amdw")]
 
