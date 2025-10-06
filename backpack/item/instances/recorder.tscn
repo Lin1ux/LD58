@@ -38,6 +38,7 @@ offset_right = 64.0
 offset_bottom = 128.0
 mouse_filter = 2
 texture = ExtResource("3_6trke")
+expand_mode = 1
 
 [node name="triggered" type="Node" parent="."]
 script = ExtResource("4_0yd1x")
