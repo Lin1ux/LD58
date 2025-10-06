@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cc8w1qek1m2db" path="res://chunk_manager/door.png" id="2_qfrgv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qfrgv"]
-size = Vector2(128, 64)
+size = Vector2(128, 18)
 
 [node name="LevelChunkLink" type="Node2D"]
 script = ExtResource("1_0msia")

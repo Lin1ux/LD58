@@ -76,6 +76,8 @@ func get_starred_items() ->Array[Item]:
 
 	for star_pos in get_rotated_stars():
 		var vec = placement + star_pos
+		if not backpack.check_bounds(vec):
+			continue
 		var item = backpack.items[vec.y][vec.x]
 		if item == null:
 			continue

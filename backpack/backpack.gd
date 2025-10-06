@@ -133,6 +133,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("backpack"):
 		visible = not visible
+		get_tree().paused = visible
 
 	if not visible:
 		return
