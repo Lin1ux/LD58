@@ -8,7 +8,12 @@ var attacker : AreaSpawner
 @export var area : PackedScene
 @export var scale : float
 
+@export var mana_cost : int = 1
+
 func execute(params : CastParams):
+
+
+
 	if attacker == null:
 		attacker = GameInfo.player.get_node("AreaSpawner")
 	var area_attack : DamageArea = area.instantiate()

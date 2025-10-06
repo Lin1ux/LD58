@@ -1,4 +1,4 @@
-extends Node
+extends ItemEffect
 class_name ItemEffectArray
 
 
