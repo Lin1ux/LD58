@@ -25,6 +25,7 @@ func input_queue_first() -> Direction.Dir:
 @export var decel: float = 0.8
 @export var idle_threshold: float = 1
 @export var animSprite : AnimatedSprite2D
+@export var anim : AnimationPlayer
 @export var HP : Health
 
 func _ready():
@@ -106,3 +107,5 @@ func hp_changed(percantege : float):
 
 func get_damage():
 	GlobalSignals.player_get_damage.emit()
+	anim.play("get_damage")
+	print("DAMAGE")

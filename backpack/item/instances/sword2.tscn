@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://mpndlfj1f2ck"]
+[gd_scene load_steps=8 format=3 uid="uid://xjtxgnyi1exo"]
 
 [ext_resource type="Script" uid="uid://cmnh30wxxmcx4" path="res://backpack/item/item.gd" id="1_vixp7"]
 [ext_resource type="PackedScene" uid="uid://fh5hn81k1hxo" path="res://projectile/instances/projectile1.tscn" id="2_hug6a"]
@@ -20,6 +20,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_vixp7")
 item_name = "iron sword"
 spaces_taken = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0)])
@@ -29,6 +30,7 @@ proj = ExtResource("2_hug6a")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
+mouse_filter = 2
 texture = ExtResource("3_vixp7")
 expand_mode = 1
 
