@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://4752dk12ir18" path="res://backpack/item/item_sprites/bow_steel.png" id="3_aguxj"]
 [ext_resource type="Script" uid="uid://c0o2t88bv0vl4" path="res://backpack/item/item_effect_array.gd" id="4_y723p"]
 [ext_resource type="Script" uid="uid://b8tubi8yk7j5e" path="res://backpack/item/item_actions/item_action.gd" id="5_f85hy"]
-[ext_resource type="Script" path="res://backpack/item/item_actions/select_random_projectile_action.gd" id="6_mwwsn"]
+[ext_resource type="Script" uid="uid://c81qb5jdou1gb" path="res://backpack/item/item_actions/select_random_projectile_action.gd" id="6_mwwsn"]
 [ext_resource type="Script" uid="uid://d1tfkk6affdod" path="res://backpack/item/item_actions/shoot_projectile_action.gd" id="6_onvn5"]
 
 [sub_resource type="Resource" id="Resource_5knq6"]

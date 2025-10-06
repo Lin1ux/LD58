@@ -24,8 +24,11 @@ func _input(event: InputEvent) -> void:
 
 
 		if event.button_index == 2 and event.is_pressed():
+
 			if curently_held != null:
 				curently_held.orientation+=1
+			else:
+				pick_up_item()
 
 
 func place_item():
@@ -66,6 +69,21 @@ func check_bounds(vec : Vector2i)->bool:
 
 func check_is_free(vec: Vector2i)->bool:
 	return items[vec.y][vec.x]==null
+
+func pick_up_item():
+	var pos: Vector2i= get_local_mouse_position()
+	var coords: Vector2i= pos/ GameInfo.backpack_cell_size
+
+	if check_bounds(coords):
+		var previev :Item= items[coords.y][coords.x]
+
+		curently_held = previev
+
+		for p in curently_held.get_rotated_ocupations():
+			var vec = p + curently_held.placement
+			items[vec.y][vec.x] = null
+
+
 
 func _ready() -> void:
 	texture_rect.size = Vector2(GameInfo.backpack_cell_size,GameInfo.backpack_cell_size)
