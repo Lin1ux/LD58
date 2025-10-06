@@ -6,9 +6,12 @@ class_name MelleAtacker
 
 
 
-func attack(size : Vector2 = Vector2.ONE * 200, callback : Callable = func x(hp : HpComponent) : pass):
+func attack(size : Vector2 = Vector2.ONE * 200, damage: int = 0):
 	collision_shape_2d.shape.size = size
 	attack_area.position.x = size.x/2
 	look_at(get_global_mouse_position())
-	for x in attack_area.get_overlapping_bodies():
-		print("hitting ", x.name)
+	for x in attack_area.get_overlapping_areas():
+		var hp_component : HpComponent = x as HpComponent
+		if hp_component != null:
+			print("hp:" ,hp_component.name)
+			hp_component.health.decrease_hp(damage)

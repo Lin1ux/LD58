@@ -480,7 +480,7 @@ script = ExtResource("4_fhl08")
 [node name="attack_area" type="Area2D" parent="MeleeAttacker"]
 position = Vector2(10, 0)
 collision_layer = 0
-collision_mask = 4
+collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MeleeAttacker/attack_area"]
 shape = SubResource("RectangleShape2D_fhl08")

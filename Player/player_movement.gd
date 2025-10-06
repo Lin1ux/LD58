@@ -99,7 +99,6 @@ func play_animation_based_on_direction():
 				animSprite.scale.x = 1
 
 func kill_player():
-	print("Player Killed")
 	get_tree().change_scene_to_file("res://Scene/end.tscn")
 
 func hp_changed(percantege : float):
@@ -108,4 +107,3 @@ func hp_changed(percantege : float):
 func get_damage():
 	GlobalSignals.player_get_damage.emit()
 	anim.play("get_damage")
-	print("DAMAGE")

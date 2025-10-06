@@ -7,9 +7,12 @@ var attacker : MelleAtacker
 @export var damage : int
 
 func execute(params : CastParams):
+	print("MELLe")
 	if attacker == null:
 		attacker = GameInfo.player.get_node("MeleeAttacker")
-	attacker.attack(attack_size,callback)
+	#attacker.attack(attack_size,callback)
+	attacker.attack(attack_size,damage)
+
 
 func callback(hp : HpComponent):
 	hp.health.decrease_hp(damage)
