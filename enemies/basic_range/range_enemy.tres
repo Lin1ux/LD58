@@ -9,4 +9,6 @@ hp = 5
 speed = 200.0
 dmg = 5
 attack_pattern = ExtResource("1_o7nna")
+hp_multiplayer = 0.1
+dmg_multiplayer = 0.2
 metadata/_custom_type_script = "uid://bi0128a43c3jb"

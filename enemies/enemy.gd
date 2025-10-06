@@ -17,8 +17,10 @@ var player_in_range : bool = false
 var enemy_direction : int = Direction.Dir.DOWN
 
 func _ready():
+	var start_hp : int = int(stats.hp + stats.hp * GameInfo.finished_rooms * stats.hp_multiplayer)
+	var start_dmg : int = int(stats.dmg + stats.dmg * GameInfo.finished_rooms * stats.dmg_multiplayer)
 	nav_region = GameInfo.nav_region
-	hp.init(stats.hp)
+	hp.init(start_hp)
 	hp.dead.connect(kill)
 	hp.damage_dealt.connect(get_damage)
 
