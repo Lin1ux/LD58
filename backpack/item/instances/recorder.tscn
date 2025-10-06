@@ -10,9 +10,9 @@
 
 [sub_resource type="Resource" id="Resource_1x8c2"]
 script = ExtResource("6_p8u1k")
-damage = 5
+damage = 3
 area = ExtResource("6_6trke")
-scale = 4.0
+scale = 2.0
 mana_cost = 2
 metadata/_custom_type_script = "uid://d2etxl2tonhhm"
 
