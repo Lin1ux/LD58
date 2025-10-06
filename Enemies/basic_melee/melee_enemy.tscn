@@ -429,7 +429,6 @@ enemy = NodePath("../..")
 autostart = true
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-debug_enabled = true
 
 [node name="makePathTimer" type="Timer" parent="."]
 wait_time = 0.5
