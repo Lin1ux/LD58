@@ -405,6 +405,7 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animSprite", "HP") groups=["Player"]]
+collision_mask = 4
 script = ExtResource("1_4ntmi")
 start_HP = 100
 animSprite = NodePath("AnimatedSprite2D")
