@@ -1,7 +1,6 @@
 extends ItemAction
 class_name SelfAreaAttack
 
-
 var attacker : AreaSpawner
 @export var attack_size : Vector2
 @export var damage : int
@@ -11,9 +10,6 @@ var attacker : AreaSpawner
 @export var mana_cost : int = 1
 
 func execute(params : CastParams):
-
-
-
 	if attacker == null:
 		attacker = GameInfo.player.get_node("AreaSpawner")
 	var area_attack : DamageArea = area.instantiate()

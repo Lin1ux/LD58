@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://8wh3usm52nkl"]
+[gd_scene load_steps=71 format=3 uid="uid://8wh3usm52nkl"]
 
 [ext_resource type="Script" uid="uid://c64x6b7ocwvt3" path="res://Player/player_movement.gd" id="1_4ntmi"]
 [ext_resource type="Script" uid="uid://dbydmy6pl4uy4" path="res://components/health/hp_component.gd" id="3_apopc"]
@@ -7,18 +7,19 @@
 [ext_resource type="Script" uid="uid://bu52csc8672sl" path="res://components/health/health.gd" id="3_x3vf3"]
 [ext_resource type="Script" uid="uid://b0q26mmn2phr" path="res://components/health/block.gd" id="4_apopc"]
 [ext_resource type="Script" uid="uid://d2pb7yrfgwgmm" path="res://Player/melee_attacker.gd" id="4_fhl08"]
-[ext_resource type="PackedScene" uid="uid://c0fui50daxc8i" path="res://backpack/item/item.tscn" id="4_gwnis"]
 [ext_resource type="Texture2D" uid="uid://3ecoqirpae5k" path="res://Player/goblin_anim_front.png" id="5_fhl08"]
 [ext_resource type="Script" uid="uid://c5ixe36f56j44" path="res://Player/player_input.gd" id="5_k53q1"]
 [ext_resource type="Texture2D" uid="uid://6ag3ntqgwpe4" path="res://Player/goblin_anim_side.png" id="7_od3ui"]
 [ext_resource type="Texture2D" uid="uid://dei2v408cknuj" path="res://Player/goblin_anim_back.png" id="8_00tjw"]
-[ext_resource type="PackedScene" uid="uid://cjxovgs0fu32t" path="res://projectile/instances/test_projectile.tscn" id="8_5htga"]
+[ext_resource type="PackedScene" uid="uid://cwgs4om42cwf5" path="res://backpack/item/instances/bow2.tscn" id="8_b1ygp"]
+[ext_resource type="PackedScene" uid="uid://be6bygkghmvmi" path="res://projectile/instances/bouncing_projectile.tscn" id="9_o28un"]
 [ext_resource type="Texture2D" uid="uid://dxswbfrgo7q47" path="res://Player/goblin_anim_negative_front.png" id="12_o28un"]
 [ext_resource type="Texture2D" uid="uid://cvlqe3tnv2kcv" path="res://Player/goblin_anim_negative_side.png" id="13_n471f"]
 [ext_resource type="Texture2D" uid="uid://dmlhwdp0j5go6" path="res://Player/goblin_anim_negative_back.png" id="14_7emwf"]
 [ext_resource type="Texture2D" uid="uid://8toc3l10bu37" path="res://Player/goblin_anim_positive_front.png" id="15_hshwv"]
 [ext_resource type="Texture2D" uid="uid://c7b4blo4yv71p" path="res://Player/goblin_anim_positive_side.png" id="16_gpjlu"]
 [ext_resource type="Texture2D" uid="uid://valpm4wkq7ew" path="res://Player/goblin_anim_positive_back.png" id="17_8mwp6"]
+[ext_resource type="PackedScene" uid="uid://c7b5sxgwmd8uf" path="res://backpack/backpack.tscn" id="19_o28un"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x02iy"]
 size = Vector2(64, 64)
@@ -447,8 +448,8 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MeleeAttacker/attack_area"]
 shape = SubResource("RectangleShape2D_fhl08")
 
-[node name="Item" parent="." instance=ExtResource("4_gwnis")]
-proj = ExtResource("8_5htga")
+[node name="bow2" parent="." instance=ExtResource("8_b1ygp")]
+proj = ExtResource("9_o28un")
 
 [node name="Input" type="Node" parent="."]
 unique_name_in_owner = true
@@ -459,5 +460,7 @@ sprite_frames = SubResource("SpriteFrames_5htga")
 animation = &"walk_up"
 autoplay = "idle"
 
-[connection signal="action_primary" from="Input" to="Item" method="do"]
-[connection signal="action_secondary" from="Input" to="MeleeAttacker" method="attack"]
+[node name="CanvasLayer" parent="." instance=ExtResource("19_o28un")]
+visible = false
+
+[connection signal="action_primary" from="Input" to="bow2" method="do"]
