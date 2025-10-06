@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://btryo2klgv425"]
+[gd_scene load_steps=11 format=3 uid="uid://btryo2klgv425"]
 
 [ext_resource type="Script" uid="uid://cu37qgnce03l0" path="res://chunk_manager/chunk_manager.gd" id="1_vpwjp"]
 [ext_resource type="Script" uid="uid://cjk8gcwd56ms8" path="res://chunk_manager/chunks/chunk_enemy_cross.gd" id="2_gjjr6"]
@@ -9,10 +9,6 @@ script = ExtResource("2_gjjr6")
 metadata/_custom_type_script = "uid://cjk8gcwd56ms8"
 
 [sub_resource type="Resource" id="Resource_fesic"]
-script = ExtResource("2_r0fes")
-metadata/_custom_type_script = "uid://dk0nkmpdt6wav"
-
-[sub_resource type="Resource" id="Resource_4xryt"]
 script = ExtResource("2_r0fes")
 metadata/_custom_type_script = "uid://dk0nkmpdt6wav"
 
@@ -38,7 +34,6 @@ metadata/_custom_type_script = "uid://dk0nkmpdt6wav"
 [sub_resource type="Resource" id="Resource_05tkj"]
 script = ExtResource("2_r0fes")
 left = SubResource("Resource_fesic")
-right = SubResource("Resource_4xryt")
 up = SubResource("Resource_wuc6d")
 down = SubResource("Resource_nft2y")
 metadata/_custom_type_script = "uid://dk0nkmpdt6wav"
