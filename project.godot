@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 GameInfo="*res://globals/game_info.gd"
 Holder="*res://globals/holder.gd"
 GlobalSignals="*res://Globals/global_signals.gd"
+Directions="*res://Globals/directions.gd"
 
 [display]
 
