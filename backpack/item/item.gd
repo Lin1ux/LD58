@@ -110,8 +110,9 @@ func _ready():
 			var cal2 = cal.bind(params)
 			print("AAAA")
 			GameInfo.player.get_node("Input").action_primary.connect(cal2)
-			GameInfo.player.get_node("Input").action_primary.connect(func x(): print("xxxxxxx"))
 			connected = true
+
+
 
 
 func placed():
