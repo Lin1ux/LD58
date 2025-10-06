@@ -4,6 +4,7 @@ class_name PlayerInput
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_pressed():
 		if event.is_action("primary_action"):
+			print("kurwa")
 			action_primary.emit()
 		elif event.is_action("secondary_action"):
 			action_secondary.emit()
