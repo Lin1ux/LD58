@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://6ag3ntqgwpe4" path="res://Player/goblin_anim_side.png" id="7_od3ui"]
 [ext_resource type="Texture2D" uid="uid://dei2v408cknuj" path="res://Player/goblin_anim_back.png" id="8_00tjw"]
 [ext_resource type="PackedScene" uid="uid://cwgs4om42cwf5" path="res://backpack/item/instances/bow2.tscn" id="8_b1ygp"]
-[ext_resource type="PackedScene" uid="uid://be6bygkghmvmi" path="res://projectile/instances/bouncing_projectile.tscn" id="9_o28un"]
+[ext_resource type="PackedScene" path="res://projectile/instances/bouncing_projectile.tscn" id="9_o28un"]
 [ext_resource type="Texture2D" uid="uid://dxswbfrgo7q47" path="res://Player/goblin_anim_negative_front.png" id="12_o28un"]
 [ext_resource type="Texture2D" uid="uid://cvlqe3tnv2kcv" path="res://Player/goblin_anim_negative_side.png" id="13_n471f"]
 [ext_resource type="Texture2D" uid="uid://dmlhwdp0j5go6" path="res://Player/goblin_anim_negative_back.png" id="14_7emwf"]

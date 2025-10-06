@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=3 uid="uid://mpndlfj1f2ck"]
+
+[ext_resource type="Script" uid="uid://cmnh30wxxmcx4" path="res://backpack/item/item.gd" id="1_vixp7"]
+[ext_resource type="PackedScene" uid="uid://fh5hn81k1hxo" path="res://projectile/instances/projectile1.tscn" id="2_hug6a"]
+[ext_resource type="Texture2D" uid="uid://bu4otvd7iadt4" path="res://backpack/item/item_sprites/sword_metal.png" id="3_vixp7"]
+[ext_resource type="Script" uid="uid://c0o2t88bv0vl4" path="res://backpack/item/item_effect_array.gd" id="4_bs23g"]
+[ext_resource type="Script" uid="uid://b8tubi8yk7j5e" path="res://backpack/item/item_actions/item_action.gd" id="5_lngjy"]
+[ext_resource type="Script" uid="uid://bekttgc0qudc3" path="res://backpack/item/item_actions/melle_attack.gd" id="6_0w73f"]
+
+[sub_resource type="Resource" id="Resource_30mwm"]
+script = ExtResource("6_0w73f")
+attack_size = Vector2(100, 100)
+damage = 3
+metadata/_custom_type_script = "uid://bekttgc0qudc3"
+
+[node name="sword2" type="Control" node_paths=PackedStringArray("triggered")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vixp7")
+item_name = "iron sword"
+spaces_taken = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0)])
+spaces_starred = Array[Vector2i]([Vector2i(1, 1), Vector2i(1, 1), Vector2i(2, 1)])
+triggered = NodePath("triggered")
+proj = ExtResource("2_hug6a")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+texture = ExtResource("3_vixp7")
+expand_mode = 1
+
+[node name="triggered" type="Node" parent="."]
+script = ExtResource("4_bs23g")
+effects = Array[ExtResource("5_lngjy")]([SubResource("Resource_30mwm")])
+metadata/_custom_type_script = "uid://c0o2t88bv0vl4"

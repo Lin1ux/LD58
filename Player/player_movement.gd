@@ -8,11 +8,11 @@ func input_queue_push(input: Direction.Dir) -> void:
 	if input_queue.has(input):
 		input_queue.erase(input)
 	input_queue.append(input)
-	
+
 func input_queue_erase(input: Direction.Dir) -> void:
 	if input_queue.has(input):
 		input_queue.erase(input)
-		
+
 func input_queue_first() -> Direction.Dir:
 	if input_queue.size() == 0:
 		return _input_queue_first
@@ -29,7 +29,7 @@ func input_queue_first() -> Direction.Dir:
 
 func _ready():
 	HP.init(start_HP)
-	HP.dead.connect(kill_player)	
+	HP.dead.connect(kill_player)
 	HP.hp_changed.connect(hp_changed)
 	HP.damage_dealt.connect(get_damage)
 
@@ -96,12 +96,12 @@ func play_animation_based_on_direction():
 			Direction.Dir.RIGHT:
 				animSprite.play("walk_right")
 				animSprite.scale.x = 1
-	
+
 func kill_player():
 	print("Player Killed")
-	
+
 func hp_changed(percantege : float):
 	GlobalSignals.player_amount_hp.emit(percantege)
-	
+
 func get_damage():
 	GlobalSignals.player_get_damage.emit()

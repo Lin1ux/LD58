@@ -8,6 +8,7 @@ extends CharacterBody2D
 @export var nav_agent : NavigationAgent2D
 @export var animSprite : AnimatedSprite2D
 @export var attack_component : Node2D
+@export var anim : AnimationPlayer
 @export_group("From Globals")
 @export var player : CharacterBody2D
 @export var nav_region : NavigationRegion2D
@@ -19,6 +20,7 @@ func _ready():
 	nav_region = GameInfo.nav_region
 	hp.init(stats.hp)
 	hp.dead.connect(kill)
+	hp.damage_dealt.connect(get_damage)
 	
 func move():
 	var dir = to_local(nav_agent.get_next_path_position()).normalized()
@@ -31,11 +33,6 @@ func make_path_to_player():
 	
 func make_path_to_point(new_position :Vector2):
 	nav_agent.target_position = new_position
-
-#func deal_damage(value : int):
-#	hp.decrease_hp(value)
-#	if hp.health < 0:
-#		queue_free()
 	
 func heal(value : int):
 	hp.increase_hp(value)
@@ -68,6 +65,11 @@ func attack():
 		attack_component.spawn_area(stats.attack_pattern)
 		return
 		
+func get_damage():
+	print("get_damage")		
+	if anim != null:
+		anim.play("get_damage")
+
 func kill():
 	GlobalSignals.enemy_dead.emit()
 	queue_free()
