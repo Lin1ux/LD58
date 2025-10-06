@@ -24,8 +24,10 @@ corner_radius_bottom_right = 5
 [node name="HPBar" type="Control" node_paths=PackedStringArray("timer", "hp_bar", "damage_bar")]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 45.0
+offset_bottom = 45.0
 script = ExtResource("1_orm3u")
 timer = NodePath("Timer")
 hp_bar = NodePath("HPBar")
