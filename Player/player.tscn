@@ -1,8 +1,9 @@
-[gd_scene load_steps=33 format=3 uid="uid://8wh3usm52nkl"]
+[gd_scene load_steps=34 format=3 uid="uid://8wh3usm52nkl"]
 
 [ext_resource type="Script" uid="uid://c64x6b7ocwvt3" path="res://Player/player_movement.gd" id="1_4ntmi"]
-[ext_resource type="Script" path="res://components/health/hp_component.gd" id="3_apopc"]
+[ext_resource type="Script" uid="uid://dbydmy6pl4uy4" path="res://components/health/hp_component.gd" id="3_apopc"]
 [ext_resource type="Script" uid="uid://c81ivxele714x" path="res://Player/projectile_shooter.gd" id="3_btcbx"]
+[ext_resource type="Script" uid="uid://b6ouphi3wytqd" path="res://components/areaSpawner/area_spawner.gd" id="3_p5o4e"]
 [ext_resource type="Script" uid="uid://bu52csc8672sl" path="res://components/health/health.gd" id="3_x3vf3"]
 [ext_resource type="Script" uid="uid://b0q26mmn2phr" path="res://components/health/block.gd" id="4_apopc"]
 [ext_resource type="Script" uid="uid://d2pb7yrfgwgmm" path="res://Player/melee_attacker.gd" id="4_fhl08"]
@@ -167,6 +168,9 @@ shape = SubResource("RectangleShape2D_x02iy")
 
 [node name="ProjectileShooter" type="Node2D" parent="."]
 script = ExtResource("3_btcbx")
+
+[node name="AreaSpawner" type="Node2D" parent="."]
+script = ExtResource("3_p5o4e")
 
 [node name="hpComponent" type="Area2D" parent="." node_paths=PackedStringArray("health")]
 collision_layer = 8
