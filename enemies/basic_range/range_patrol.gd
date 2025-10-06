@@ -9,9 +9,12 @@ func _ready() -> void:
 
 func init() -> void:
 	timer.set_paused(false)
+	target_position = enemy.global_position + Direction.random_vector(-100,100)
+	enemy.make_path_to_point(target_position)
+	return
 	if enemy.nav_region != null:
-		target_position = NavigationServer2D.region_get_random_point(enemy.nav_region.get_rid(), 1, false)
-		#print(NavigationServer2D.region_get_random_point(enemy.nav_region.get_rid(), 1, false))
+		#target_position = NavigationServer2D.region_get_random_point(enemy.nav_region.get_rid(), 1, false)
+		#print("ENEMY: ",NavigationServer2D.region_get_random_point(enemy.nav_region.get_rid(), 1, false))
 		enemy.make_path_to_point(target_position)
 	else:
 		target_position = Vector2.ZERO

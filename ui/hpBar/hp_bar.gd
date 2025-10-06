@@ -25,12 +25,9 @@ func init_health(value : int):
 	damage_bar.value = value
 	
 func update_hp_bar():
-	print("UPDATE HP BAR")
 	hp_bar.value = GameInfo.player.HP.health
 	hp = hp_bar.value
 	timer.start()
-	print("HP",hp)
 
 func _on_timer_timeout() -> void:
 	damage_bar.value = hp
-	print("TIME OUT")

@@ -5,7 +5,7 @@ var target_position : Vector2
 func init() -> void:
 	if enemy.nav_region != null:
 		target_position = NavigationServer2D.region_get_random_point(enemy.nav_region.get_rid(), 1, false)
-		print(NavigationServer2D.region_get_random_point(enemy.nav_region.get_rid(), 1, false))
+		#print(NavigationServer2D.region_get_random_point(enemy.nav_region.get_rid(), 1, false))
 		enemy.make_path_to_point(target_position)
 	else:
 		target_position = Vector2.ZERO
