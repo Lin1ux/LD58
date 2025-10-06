@@ -1,17 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cwgs4om42cwf5"]
+[gd_scene load_steps=5 format=3 uid="uid://cwgs4om42cwf5"]
 
 [ext_resource type="Script" uid="uid://cmnh30wxxmcx4" path="res://backpack/item/item.gd" id="1_aguxj"]
 [ext_resource type="PackedScene" uid="uid://fh5hn81k1hxo" path="res://projectile/instances/projectile1.tscn" id="2_y723p"]
 [ext_resource type="Texture2D" uid="uid://4752dk12ir18" path="res://backpack/item/item_sprites/bow_steel.png" id="3_aguxj"]
 [ext_resource type="Script" uid="uid://c68p6nb8dqr14" path="res://backpack/item/item_effect.gd" id="4_5knq6"]
-[ext_resource type="Script" uid="uid://b8tubi8yk7j5e" path="res://backpack/item/item_actions/item_action.gd" id="5_f85hy"]
-[ext_resource type="Script" uid="uid://d1tfkk6affdod" path="res://backpack/item/item_actions/shoot_projectile_action.gd" id="6_onvn5"]
 
-[sub_resource type="Resource" id="Resource_ypcxp"]
-script = ExtResource("6_onvn5")
-metadata/_custom_type_script = "uid://d1tfkk6affdod"
-
-[node name="Item" type="Control"]
+[node name="bow2" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,6 +13,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_aguxj")
+item_name = "bow2"
 spaces_taken = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 2), Vector2i(0, 3)])
 spaces_starred = Array[Vector2i]([Vector2i(-1, 0), Vector2i(-1, 1), Vector2i(-1, 2), Vector2i(-1, 3)])
 proj = ExtResource("2_y723p")
@@ -32,5 +27,4 @@ texture = ExtResource("3_aguxj")
 
 [node name="combat_start" type="Node" parent="."]
 script = ExtResource("4_5knq6")
-effects = Array[ExtResource("5_f85hy")]([SubResource("Resource_ypcxp")])
 metadata/_custom_type_script = "uid://c68p6nb8dqr14"
